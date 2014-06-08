@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.pt_assistant_sergio"
+    android:versionCode="1"
+    android:versionName="1.0" >
+    <instrumentation android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="your.package"
+        android:label="your tests label" />
+    <uses-sdk
+       
+        android:minSdkVersion="11"    
+        android:targetSdkVersion="19" />
+
+    <application
+       
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"  >
+        <activity
+            android:name="com.example.pt_assistant_sergio.MainActivity"
+            android:label="@string/app_name" >
+           
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.example.pt_assistant_sergio.DisplayMessageActivity"
+            android:label="@string/title_activity_display_message"
+            android:parentActivityName="com.example.pt_assistant_sergio.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pt_assistant_sergio.MainActivity" />
+        </activity>
+       
+        <uses-library android:name="android.test.runner" />
+	  
+	   
+       
+	    
+    </application>
+
+</manifest>
