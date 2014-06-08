@@ -1,31 +1,27 @@
 package com.example.pt_assistant_sergio;
 
+import org.junit.Test;
+
 import junit.framework.TestCase;
 
-public class patient_profileTest extends TestCase {
+public class Patient_ProfileTest extends TestCase {
 
+	@Test
 	public void testCreate_patient_profile() {
-		String name = "Sergio";
-		int patientId = 25;
-		int injury_ID = 1234;
 		
-		patient_profile newPatientTest = new patient_profile();
-		patient result_patient = new patient();
+		//create Patient object
+		Patient p = new Patient();
 		
-		newPatientTest.create_patient_profile(name, patientId, injury_ID);
+		//set the Patient's ID, Name, and Injury
+		p.setPatientID(1);
+		p.setName("John Doe");
+		p.setInjury(5);
 		
-		result_patient = newPatientTest.get_patient_profile( );
-		
-		assertEquals(name, result_patient.name);
-		assertEquals(patientId, result_patient.patientID);
-		assertEquals(injury_ID, result_patient.injury);
-		
-		
-		
-		
-		
+		/*Asserts that two integers are equal. The "create_patient" method 
+		 * will return an integer (either 1 for the row count of a successful
+		 * SQL statement or a 0 for SQL statements that return nothing
+		*/
+		assertEquals(1, p.create_patient());
 	}
-	
-	
 
 }

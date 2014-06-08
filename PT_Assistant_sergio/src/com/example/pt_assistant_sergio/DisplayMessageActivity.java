@@ -24,10 +24,10 @@ public class DisplayMessageActivity extends ActionBarActivity {
 		    // Create the text view
 		    TextView textView = new TextView(this);
 		    textView.setTextSize(40);
-		    textView.setText(pt.therapistName);
-		    textView.setText( "Name: " + pt.therapistName + "\r\n"+
+		    textView.setText(pt.getTherapistName());
+		    textView.setText( "Name: " + pt.getTherapistName() + "\r\n"+
 		    		          "ID :" + message+ "\r\n" +
-		    		          "report ID: " + pt.report );
+		    		          "report ID: " + pt.getReport());
 		    //textView.setText(message);
 		    // Set the text view as the activity layout
 		    setContentView(textView);
