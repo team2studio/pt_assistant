@@ -1,4 +1,4 @@
-package com.example.pt_assistant_sergio;
+package com.example.pt_assistant;
 
 public class patient_profile {
 	

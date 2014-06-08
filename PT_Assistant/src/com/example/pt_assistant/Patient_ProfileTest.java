@@ -1,4 +1,4 @@
-package com.example.pt_assistant_sergio;
+package com.example.pt_assistant;
 
 import org.junit.Test;
 

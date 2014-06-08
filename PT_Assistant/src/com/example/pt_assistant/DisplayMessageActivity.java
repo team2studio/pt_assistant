@@ -1,4 +1,6 @@
-package com.example.pt_assistant_sergio;
+package com.example.pt_assistant;
+
+import com.example.pt_assistant_sergio.R;
 
 import android.content.Intent;
 import android.os.Bundle;
