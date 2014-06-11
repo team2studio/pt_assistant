@@ -1,27 +1,47 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.pt_assistant.MainActivity$PlaceholderFragment" 
-    android:orientation= "horizontal" >
-     <EditText android:id="@+id/edit_message"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content" 
-        android:hint="@string/edit_message" />
-       
-       
-     <Button
+<TableLayout 
+    android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableRow>
+        <Button
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:onClick="sendMessage"
+        	android:text="@string/button_get" />
+        
+        <EditText
+          	android:id="@+id/patient_ID"
+          	android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+          	android:hint="@string/edit_message" />
+   </TableRow>
+   
+   <TableRow>
+        <Button
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:text="@string/button_send"
-        android:onClick="sendMessage"     />
-      
-    
-</LinearLayout>
-    
-
+        android:layout_height="wrap_content"
+        android:onClick="createPatient"
+        android:text="@string/button_create_patient" />
+   </TableRow>
+   <TableRow>
+        <EditText
+          	android:id="@+id/name"
+          	android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+          	android:hint="@string/patient_name" />
+   </TableRow>
+   <TableRow>
+         <EditText
+          	android:id="@+id/pID"
+          	android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+          	android:hint="@string/patient_ID" />
+    </TableRow>
+    <TableRow>
+          <EditText
+          	android:id="@+id/IID"
+          	android:layout_width="wrap_content"
+         	android:layout_height="wrap_content"
+          	android:hint="@string/injury_id" />
+   </TableRow>
+</TableLayout>
