@@ -17,19 +17,19 @@ public class DisplayMessageActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		 super.onCreate(savedInstanceState);
-		   PhysicalTherapist pt = new PhysicalTherapist();
+		    Patient pt = new Patient();
 		    // Get the message from the intent
 		    Intent intent = getIntent();
 		    String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
-		    pt.getTherapist(message);
+		    pt.get_patient(message);
 		    // Create the text view
 		    TextView textView = new TextView(this);
 		    textView.setTextSize(40);
-		    textView.setText(pt.getTherapistName());
-		    textView.setText( "Name: " + pt.getTherapistName() + "\r\n"+
+		    textView.setText(pt.getName());
+		    textView.setText( "Name: " + pt.getName() + "\r\n"+
 		    		          "ID :" + message+ "\r\n" +
-		    		          "report ID: " + pt.getReport());
+		    		          "Injury ID: " + pt.getInjury());
 		    //textView.setText(message);
 		    // Set the text view as the activity layout
 		    setContentView(textView);

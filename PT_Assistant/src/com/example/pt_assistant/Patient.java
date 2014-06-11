@@ -46,4 +46,10 @@ public class Patient {
 		//NO IMPLEMENTATION
 		return 0;
 	}
+	public void get_patient(String ID)
+	{
+		name = "John Doe";
+		patientID = Integer.parseInt(ID);
+		injury = 23;
+	}
 }
