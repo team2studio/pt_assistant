@@ -1,6 +1,6 @@
 package com.example.pt_assistant;
 
-public class patient_profile {
+public class Patient_Profile {
 	
 	
 	Patient current_patient;
