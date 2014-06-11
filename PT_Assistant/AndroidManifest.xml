@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.pt_assistant_sergio"
+    package="com.example.pt_assistant"
     android:versionCode="1"
     android:versionName="1.0" >
     <instrumentation android:name="android.test.InstrumentationTestRunner"
@@ -34,9 +34,18 @@
             android:parentActivityName="com.example.pt_assistant.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.pt_assistant_sergio.MainActivity" />
+                android:value="com.example.pt_assistant.MainActivity" />
         </activity>
        
+        <activity
+            android:name="com.example.pt_assistant.RecordCreatedActivity"
+            android:label="@string/title_record_created_activity"
+            android:parentActivityName="com.example.pt_assistant.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pt_assistant.MainActivity" />
+        </activity>
+        
         <uses-library android:name="android.test.runner" />
 	  
 	   

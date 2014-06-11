@@ -11,6 +11,6 @@
     <string name="patient_name">Name</string> 
     <string name="patient_ID">Paitient ID</string> 
     <string name="injury_id">Injury ID</string> 
-   
+    <string name="title_record_created_activity">PT Assistant: Patient Created</string>
 
 </resources>
