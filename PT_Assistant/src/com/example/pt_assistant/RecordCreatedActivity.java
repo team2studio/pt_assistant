@@ -1,5 +1,7 @@
 package com.example.pt_assistant;
 
+
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,26 +12,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class RecordCreatedActivity extends ActionBarActivity{
+public class RecordCreatedActivity extends ActionBarActivity     {
+	/**
+	 * 
+	 */
+	
+		
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		  PT_SQLiteHelper pt_db =   new PT_SQLiteHelper(this);
 		 super.onCreate(savedInstanceState);
-		    Patient pt = new Patient();
-		    // Get the message from the intent
+		    Patient pat = new Patient();
+		    // Get he message from the intent
 		    Intent intent = getIntent();
-		    String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-
-		    pt.get_patient(message);
-		    // Create the text view
+		    pat = (Patient) intent.getSerializableExtra("Patient");
+		    pt_db.addPatient(pat);
 		    TextView textView = new TextView(this);
-		    textView.setTextSize(40);
-		    textView.setText(pt.getName());
-		    textView.setText( "Name: " + pt.getName() + "\r\n"+
-		    		          "ID :" + message+ "\r\n" +
-		    		          "Injury ID: " + pt.getInjury());
-		    //textView.setText(message);
-		    // Set the text view as the activity layout
-		    setContentView(textView);
+		    textView.setTextSize(20);
+		    textView.setText(pat.getName());
+		    textView.setText( "Name: " + pat.getName() + "\r\n"+
+		    		          "ID :" + pat.getPatientID() + "\r\n" +
+		    		          "Injury ID: " + pat.getInjury());
+		  
 	}
 
 //	@Override

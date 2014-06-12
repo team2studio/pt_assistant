@@ -22,13 +22,15 @@ public class DisplayMessageActivity extends ActionBarActivity {
 		    Intent intent = getIntent();
 		    String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
-		    pt.get_patient(message);
+		    //pt.get_patient(message);
+		    PT_SQLiteHelper pt_db =   new PT_SQLiteHelper(this);
+		    pt =  pt_db.getPatient(Integer.parseInt(message));
 		    // Create the text view
 		    TextView textView = new TextView(this);
 		    textView.setTextSize(40);
 		    textView.setText(pt.getName());
 		    textView.setText( "Name: " + pt.getName() + "\r\n"+
-		    		          "ID :" + message+ "\r\n" +
+		    		          "ID :" + pt.getPatientID()+ "\r\n" +
 		    		          "Injury ID: " + pt.getInjury());
 		    //textView.setText(message);
 		    // Set the text view as the activity layout

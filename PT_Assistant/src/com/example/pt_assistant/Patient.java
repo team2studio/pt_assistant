@@ -1,10 +1,12 @@
 package com.example.pt_assistant;
 
-public class Patient {
+import java.io.Serializable;
+
+public class Patient  implements Serializable {
 	private int patientID;
 	private String name;
 	private int injury;
-	
+	private static final long serialVersionUID = -2813029214068905410L;
 	public int getPatientID() {
 		return patientID;
 	}
@@ -30,8 +32,8 @@ public class Patient {
 	}
 
 
-	public void setInjury(int injury) {
-		this.injury = injury;
+	public void setInjury(int injuryid) {
+		injury = injuryid;
 	}
 	
 	
@@ -48,8 +50,8 @@ public class Patient {
 	}
 	public void get_patient(String ID)
 	{
-		name = "John Doe";
-		patientID = Integer.parseInt(ID);
-		injury = 23;
+		//name = "John Doe";
+		//patientID = Integer.parseInt(ID);
+		//injury = 23;
 	}
 }

@@ -25,21 +25,21 @@
    </TableRow>
    <TableRow>
         <EditText
-          	android:id="@+id/name"
+          	android:id="@+id/new_patient_name"
           	android:layout_width="wrap_content"
          	android:layout_height="wrap_content"
           	android:hint="@string/patient_name" />
    </TableRow>
    <TableRow>
          <EditText
-          	android:id="@+id/pID"
+          	android:id="@+id/new_pID"
           	android:layout_width="wrap_content"
          	android:layout_height="wrap_content"
           	android:hint="@string/patient_ID" />
     </TableRow>
     <TableRow>
           <EditText
-          	android:id="@+id/IID"
+          	android:id="@+id/new_IID"
           	android:layout_width="wrap_content"
          	android:layout_height="wrap_content"
           	android:hint="@string/injury_id" />

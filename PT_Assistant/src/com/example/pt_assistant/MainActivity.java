@@ -15,7 +15,8 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 
 public class MainActivity extends  ActionBarActivity{
-	public final static String EXTRA_MESSAGE = "com.example.pt_assistant_sergio.MESSAGE";
+	
+	public final static String EXTRA_MESSAGE = "com.example.pt_assistant.MESSAGE";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +33,8 @@ public class MainActivity extends  ActionBarActivity{
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // If your minSdkVersion is 11 or higher, instead use:
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        
-        
+       
+       
         
     }
 
@@ -98,8 +99,27 @@ public class MainActivity extends  ActionBarActivity{
     	intent.putExtra(EXTRA_MESSAGE, message);
     	startActivity(intent);
     }
-   
-  
+    public void createPatient(View view) {
+    	EditText eText;
+        // Do something in response to button
+    	Intent intent = new Intent(this, RecordCreatedActivity.class);
+    	Patient newPat = new Patient();
+    	eText = (EditText) findViewById(R.id.new_patient_name );
+    	newPat.setName(eText.getText().toString()); 
+    	
+    	eText = (EditText) findViewById(R.id.new_pID );
+    	newPat.setPatientID(  Integer.parseInt(eText.getText().toString())  ); 
+    	
+    	eText = (EditText) findViewById(R.id.new_IID );
+    	newPat.setInjury( Integer.parseInt(eText.getText().toString()));
+    	
+    	//String message = editText.getText().toString();
+    	
+    	
+    	intent.putExtra("Patient", newPat);
+    	startActivity(intent);
+    }
+    
     
 
 }
