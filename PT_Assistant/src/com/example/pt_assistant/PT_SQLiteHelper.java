@@ -17,6 +17,7 @@ public class PT_SQLiteHelper extends SQLiteOpenHelper {
     public PT_SQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);  
     }
+    
  
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -53,7 +54,7 @@ public class PT_SQLiteHelper extends SQLiteOpenHelper {
  
     private static final String[] COLUMNS = {P_ID,NAME,INJURY_ID,};
  
-    public void addPatient(Patient patient){
+    public long addPatient(Patient patient){
         Log.d("addPatient", patient.toString());
         // 1. get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
@@ -73,6 +74,7 @@ public class PT_SQLiteHelper extends SQLiteOpenHelper {
  
         // 4. close
         db.close(); 
+        return temp;
     }
  
     public Patient getPatient(int p_id){

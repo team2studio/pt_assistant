@@ -14,14 +14,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
+
+
 public class MainActivity extends  ActionBarActivity{
 	
 	public final static String EXTRA_MESSAGE = "com.example.pt_assistant.MESSAGE";
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        		
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.container, new PlaceholderFragment())

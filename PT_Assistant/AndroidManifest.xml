@@ -4,8 +4,8 @@
     android:versionCode="1"
     android:versionName="1.0" >
     <instrumentation android:name="android.test.InstrumentationTestRunner"
-        android:targetPackage="your.package"
-        android:label="your tests label" />
+        android:targetPackage="com.example.pt_assistant"
+        android:label="Android JUnit TestCase" />
     <uses-sdk
        
         android:minSdkVersion="11"    
