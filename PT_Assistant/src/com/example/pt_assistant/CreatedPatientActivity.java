@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class RecordCreatedActivity extends ActionBarActivity     {
+public class CreatedPatientActivity extends ActionBarActivity     {
 	/**
 	 * 
 	 */

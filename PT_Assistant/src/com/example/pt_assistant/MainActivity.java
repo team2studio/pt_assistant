@@ -102,7 +102,7 @@ public class MainActivity extends  ActionBarActivity{
     public void createPatient(View view) {
     	EditText eText;
         // Do something in response to button
-    	Intent intent = new Intent(this, RecordCreatedActivity.class);
+    	Intent intent = new Intent(this, CreatedPatientActivity.class);
     	Patient newPat = new Patient();
     	eText = (EditText) findViewById(R.id.new_patient_name );
     	newPat.setName(eText.getText().toString()); 
