@@ -32,7 +32,7 @@ public class RecordCreatedActivity extends ActionBarActivity     {
 		    textView.setTextSize(20);
 		    textView.setText(pat.getName());
 		    textView.setText( "Name: " + pat.getName() + "\r\n"+
-		    		          "ID :" + pat.getPatientID() + "\r\n" +
+		    		          "id :" + pat.getPatientID() + "\r\n" +
 		    		          "Injury ID: " + pat.getInjury());
 		  
 	}
