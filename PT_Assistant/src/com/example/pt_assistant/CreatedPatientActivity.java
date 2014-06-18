@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class RecordCreatedActivity extends ActionBarActivity     {
+public class CreatedPatientActivity extends ActionBarActivity     {
 	/**
 	 * 
 	 */
@@ -32,7 +32,7 @@ public class RecordCreatedActivity extends ActionBarActivity     {
 		    textView.setTextSize(20);
 		    textView.setText(pat.getName());
 		    textView.setText( "Name: " + pat.getName() + "\r\n"+
-		    		          "ID :" + pat.getPatientID() + "\r\n" +
+		    		          "IDD :" + pat.getPatientID() + "\r\n" +
 		    		          "Injury ID: " + pat.getInjury());
 		  
 	}
