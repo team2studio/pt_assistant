@@ -23,9 +23,9 @@ public class Patient_ProfileTest extends InstrumentationTestCase {
 			Patient p = new Patient();
 			
 			//set the Patient's ID, Name, and Injury
-			p.setPatientID(103);
-			p.setName("John Johnson");
-			p.setInjury(1);
+			p.setPatientID(104);
+			p.setName("John Marlon");
+			p.setInjury(5);
 			
 			long patientVal = ptsql.addPatient(p);
 			//System.out.println("Long value returned was: "+patientVal);
