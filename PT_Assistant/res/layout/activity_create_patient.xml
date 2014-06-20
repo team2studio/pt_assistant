@@ -1,0 +1,96 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.pt_assistant.RecordCreatedActivity$PlaceholderFragment" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/editText_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:hint="@string/patient_name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editText_pid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/editText_name"
+        android:ems="10"
+        android:hint="@string/patient_ID"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editText_dob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText_pid"
+        android:layout_below="@+id/editText_pid"
+        android:ems="10"
+        android:hint="@string/birth_date"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/editText_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText_dob"
+        android:layout_below="@+id/editText_dob"
+        android:ems="10"
+        android:hint="@string/pat_age"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editText_injurycode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText_age"
+        android:layout_below="@+id/editText_age"
+        android:ems="10"
+        android:hint="@string/injury_code"
+        android:inputType="number" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupSex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/editText_injurycode"
+        android:layout_below="@+id/editText_injurycode" >
+
+        <RadioButton
+            android:id="@+id/radioMale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/radio_male" />
+
+        <RadioButton
+            android:id="@+id/radioFemale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_female" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button_reg_pat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/radioGroupSex"
+        android:layout_below="@+id/radioGroupSex"
+        android:onClick="Register"
+        android:text="Register Patient" />
+
+</RelativeLayout>

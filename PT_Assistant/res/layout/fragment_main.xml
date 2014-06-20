@@ -1,47 +1,37 @@
-<TableLayout 
+<LinearLayout  
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent" 
-	android:layout_height="fill_parent" 
-	xmlns:android="http://schemas.android.com/apk/res/android">
-    <TableRow>
-        <Button
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:onClick="sendMessage"
-        	android:text="@string/button_get" />
+	android:layout_height="fill_parent"
+	android:orientation="vertical" >
+   
+  <LinearLayout
+      android:layout_width="317dp"
+      android:layout_height="wrap_content" >
+
+       <Button
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:onClick="sendMessage"
+           android:text="@string/button_get" />
         
-        <EditText
+       <EditText
           	android:id="@+id/patient_ID"
           	android:layout_width="wrap_content"
          	android:layout_height="wrap_content"
           	android:hint="@string/edit_message" />
-   </TableRow>
-   
-   <TableRow>
-        <Button
+     </LinearLayout>
+    
+    <LinearLayout 
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="createPatient"
-        android:text="@string/button_create_patient" />
-   </TableRow>
-   <TableRow>
-        <EditText
-          	android:id="@+id/new_patient_name"
-          	android:layout_width="wrap_content"
-         	android:layout_height="wrap_content"
-          	android:hint="@string/patient_name" />
-   </TableRow>
-   <TableRow>
-         <EditText
-          	android:id="@+id/new_pID"
-          	android:layout_width="wrap_content"
-         	android:layout_height="wrap_content"
-          	android:hint="@string/patient_ID" />
-    </TableRow>
-    <TableRow>
-          <EditText
-          	android:id="@+id/new_IID"
-          	android:layout_width="wrap_content"
-         	android:layout_height="wrap_content"
-          	android:hint="@string/injury_id" />
-   </TableRow>
-</TableLayout>
+        android:layout_height="fill_parent" 
+        android:orientation="vertical" >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="createPatient"
+            android:text="@string/button_Register" />
+
+     </LinearLayout>
+   
+</LinearLayout >

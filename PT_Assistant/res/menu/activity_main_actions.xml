@@ -13,5 +13,9 @@
     <item android:id="@+id/action_settings"
           android:title="@string/action_settings"
           android:showAsAction="collapseActionView|always"/>
+    
+    <item android:id="@+id/action_register_patient"
+          android:title="@string/action_register_patient"
+          android:showAsAction="collapseActionView|always"/>
 
 </menu>
