@@ -5,7 +5,7 @@ public class PhysicalTherapist {
 	private String therapistName;
 	private int exam;
 	private int report;
-	
+
 	public int getTherapistID() {
 		return therapistID;
 	}
@@ -37,13 +37,11 @@ public class PhysicalTherapist {
 	public void setReport(int report) {
 		this.report = report;
 	}
-	
-	public void getTherapist(String ID)
-	{
+
+	public void getTherapist(String ID) {
 		therapistName = "John Doe";
 		exam = 1;
 		report = 10;
 	}
-	
 
 }
