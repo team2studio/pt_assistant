@@ -1,5 +1,8 @@
 package com.example.pt_assistant;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -116,35 +119,39 @@ public class PT_SQLiteHelper extends SQLiteOpenHelper {
 	}
 
 	// Get All PATIENTS
-	// public List<Book> getAllBooks() {
-	// List<Book> books = new LinkedList<Book>();
+	public List<Patient> getAllPatients() {
+		List<Patient> patients = new LinkedList<Patient>();
 
-	// // 1. build the query
-	// String query = "SELECT  * FROM " + TABLE_BOOKS;
+		// // 1. build the query
+		String query = "SELECT  * FROM " + TABLE_PATIENT;
 
-	// // 2. get reference to writable DB
-	// SQLiteDatabase db = this.getWritableDatabase();
-	// Cursor cursor = db.rawQuery(query, null);
+		// // 2. get reference to writable DB
+		SQLiteDatabase db = this.getWritableDatabase();
+		Cursor cursor = db.rawQuery(query, null);
 
-	// // 3. go over each row, build book and add it to list
-	// Book book = null;
-	// if (cursor.moveToFirst()) {
-	// do {
-	// book = new Book();
-	// book.setId(Integer.parseInt(cursor.getString(0)));
-	// book.setTitle(cursor.getString(1));
-	// book.setAuthor(cursor.getString(2));
+		// // 3. go over each row, build book and add it to list
 
-	// // Add book to books
-	// books.add(book);
-	// } while (cursor.moveToNext());
-	// }
+		Patient patient = null;
+		if (cursor.moveToFirst()) {
+			do {
+				patient = new Patient();
+				patient.setPatientID(Integer.parseInt(cursor.getString(0)));
+				patient.setName(cursor.getString(1));
+				patient.DOB = cursor.getString(2);
+				patient.age = Integer.parseInt(cursor.getString(3));
+				patient.sex = Integer.parseInt(cursor.getString(4));
+				patient.setInjury(Integer.parseInt(cursor.getString(5)));
+				// // Add patient to patients
+				patients.add(patient);
+			} while (cursor.moveToNext());
+		}
 
-	// Log.d("getAllBooks()", books.toString());
+		Log.d("getAllPatients()", patients.toString());
 
-	// // return books
-	// return books;
-	// }
+		// // return books
+		return patients;
+	}
+
 	// Updating single book
 	public int updatePatient(Patient patient) {
 
@@ -159,7 +166,7 @@ public class PT_SQLiteHelper extends SQLiteOpenHelper {
 																		// author
 		values.put(DOB, patient.DOB); // get author
 		values.put(AGE, String.valueOf(patient.age)); // get author
-		values.put(SEX, String.valueOf(patient.age));
+		values.put(SEX, String.valueOf(patient.sex));
 
 		// // 3. updating row
 		int i = db.update(TABLE_PATIENT, // table

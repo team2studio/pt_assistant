@@ -111,7 +111,7 @@ public class MainActivity extends ActionBarActivity {
 		intent.putExtra(EXTRA_MESSAGE, message);
 		startActivity(intent);
 	}
-
+   
 	public void createPatient(View view) {
 
 		openRegisterPatient();
@@ -136,6 +136,13 @@ public class MainActivity extends ActionBarActivity {
 		 * //puts the message in patient and intent.putExtra("Patient", newPat);
 		 * startActivity(intent);
 		 */
+	}
+	public void getPatientList(View view){
+		// another activity
+		Intent intent = new Intent(this, PatientListActivity.class);
+		intent.putExtra(EXTRA_MESSAGE, "test");
+		startActivity(intent);
+		
 	}
 
 }

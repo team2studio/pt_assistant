@@ -1092,9 +1092,9 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_register_patient=0x7f050057;
-        public static final int action_search=0x7f050055;
-        public static final int action_settings=0x7f050056;
+        public static final int action_register_patient=0x7f050058;
+        public static final int action_search=0x7f050056;
+        public static final int action_settings=0x7f050057;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
@@ -1132,6 +1132,7 @@ containing a value of this type.
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
         public static final int patient_ID=0x7f050054;
+        public static final int patientlist=0x7f050055;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radGrpSex2=0x7f05004f;
@@ -1225,7 +1226,8 @@ containing a value of this type.
         public static final int activity_main=0x7f03001a;
         public static final int fragment_get_patient=0x7f03001b;
         public static final int fragment_main=0x7f03001c;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001d;
+        public static final int patient_list_view=0x7f03001d;
+        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
     }
     public static final class menu {
         public static final int activity_main_actions=0x7f0c0000;
@@ -1281,6 +1283,7 @@ containing a value of this type.
         public static final int button_Register=0x7f0a0013;
         public static final int button_create_patient=0x7f0a0016;
         public static final int button_get=0x7f0a0012;
+        public static final int button_getPatientList=0x7f0a0020;
         public static final int button_update=0x7f0a0014;
         public static final int edit_message=0x7f0a000e;
         public static final int injury_code=0x7f0a001f;
@@ -1288,6 +1291,7 @@ containing a value of this type.
         public static final int pat_age=0x7f0a001e;
         public static final int patient_ID=0x7f0a0018;
         public static final int patient_name=0x7f0a0017;
+        public static final int pattient_list=0x7f0a0021;
         public static final int radio_female=0x7f0a001c;
         public static final int radio_male=0x7f0a001b;
         public static final int title_activity_display_message=0x7f0a0011;
