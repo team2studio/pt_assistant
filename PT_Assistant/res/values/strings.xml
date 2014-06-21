@@ -21,4 +21,6 @@
     <string name="birth_date">DOB(mm/dd/yyyy)</string>
     <string name="pat_age">age</string>
     <string name="injury_code">injury code</string>
+    <string name="button_getPatientList"> Patient List</string>
+    <string name="pattient_list"> Patients</string>
 </resources>

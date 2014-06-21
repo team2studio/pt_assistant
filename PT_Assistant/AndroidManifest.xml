@@ -45,7 +45,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.pt_assistant.MainActivity" />
         </activity>
-        
+       
+      <activity
+            android:name="com.example.pt_assistant.PatientListActivity"
+            android:label="@string/pattient_list"
+            android:parentActivityName="com.example.pt_assistant.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pt_assistant.MainActivity" />
+        </activity>
         <uses-library android:name="android.test.runner" />
 	  
 	   
