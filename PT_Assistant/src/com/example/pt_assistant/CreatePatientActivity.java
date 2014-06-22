@@ -119,15 +119,15 @@ public class CreatePatientActivity extends ActionBarActivity {
 		newPat.setInjury(Integer.parseInt(eText.getText().toString()));
 
 		eText = (EditText) findViewById(R.id.editText_dob);
-		newPat.DOB = eText.getText().toString();
+		newPat.setDOB(eText.getText().toString());
 
 		eText = (EditText) findViewById(R.id.editText_age);
-		newPat.age = Integer.parseInt(eText.getText().toString());
+		newPat.setAge(Integer.parseInt(eText.getText().toString()));
 
 		RadioGroup rg = (RadioGroup) findViewById(R.id.radioGroupSex);
 		int radioButtonID = rg.getCheckedRadioButtonId();
 		View radioButton = rg.findViewById(radioButtonID);
-		newPat.sex = rg.indexOfChild(radioButton);
+		newPat.setSex(rg.indexOfChild(radioButton));
 		pt_db.addPatient(newPat);
 
 		Context context = getApplicationContext();

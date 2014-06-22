@@ -42,16 +42,16 @@ public class GetPatientActivity extends ActionBarActivity {
 		eText.setText(Integer.toString(pt.getPatientID()));
 
 		eText = (EditText) findViewById(R.id.editDOB);
-		eText.setText(pt.DOB);
+		eText.setText(pt.getDOB());
 
 		eText = (EditText) findViewById(R.id.editage);
-		eText.setText(Integer.toString(pt.age));
+		eText.setText(Integer.toString(pt.getAge()));
 
 		eText = (EditText) findViewById(R.id.editinId);
 		eText.setText(Integer.toString(pt.getInjury()));
 
 		RadioButton but;// = (RadioButton)findViewById(R.id.radioFemale);
-		if (pt.sex == 0) {
+		if (pt.getSex() == 0) {
 			but = (RadioButton) findViewById(R.id.radiomale);
 			but.setChecked(true);
 		} else {
@@ -107,15 +107,15 @@ public class GetPatientActivity extends ActionBarActivity {
 		existPat.setInjury(Integer.parseInt(eText.getText().toString()));
 
 		eText = (EditText) findViewById(R.id.editDOB);
-		existPat.DOB = eText.getText().toString();
+		existPat.setDOB(eText.getText().toString());
 
 		eText = (EditText) findViewById(R.id.editage);
-		existPat.age = Integer.parseInt(eText.getText().toString());
+		existPat.setAge(Integer.parseInt(eText.getText().toString()));
 
 		RadioGroup rg = (RadioGroup) findViewById(R.id.radGrpSex2);
 		int radioButtonID = rg.getCheckedRadioButtonId();
 		View radioButton = rg.findViewById(radioButtonID);
-		existPat.sex = rg.indexOfChild(radioButton);
+		existPat.setSex(rg.indexOfChild(radioButton));
 
 		pt_db.updatePatient(existPat);
 

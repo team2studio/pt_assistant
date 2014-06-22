@@ -68,9 +68,9 @@ public class PT_SQLiteHelper extends SQLiteOpenHelper {
 		ContentValues values = new ContentValues();
 		values.put(P_ID, patient.getPatientID());
 		values.put(NAME, patient.getName());
-		values.put(DOB, patient.DOB);
-		values.put(AGE, patient.age);
-		values.put(SEX, patient.sex);
+		values.put(DOB, patient.getDOB());
+		values.put(AGE, patient.getAge());
+		values.put(SEX, patient.getSex());
 		values.put(INJURY_CODE, patient.getInjury());
 
 		// 3. insert
@@ -107,9 +107,9 @@ public class PT_SQLiteHelper extends SQLiteOpenHelper {
 		Patient patient = new Patient();
 		patient.setPatientID(Integer.parseInt(cursor.getString(0)));
 		patient.setName(cursor.getString(1));
-		patient.DOB = cursor.getString(2);
-		patient.age = Integer.parseInt(cursor.getString(3));
-		patient.sex = Integer.parseInt(cursor.getString(4));
+		patient.setDOB(cursor.getString(2));
+		patient.setAge(Integer.parseInt(cursor.getString(3)));
+		patient.setSex(Integer.parseInt(cursor.getString(4)));
 		patient.setInjury(Integer.parseInt(cursor.getString(5)));
 
 		Log.d("get(" + p_id + ")", patient.toString());
@@ -137,9 +137,9 @@ public class PT_SQLiteHelper extends SQLiteOpenHelper {
 				patient = new Patient();
 				patient.setPatientID(Integer.parseInt(cursor.getString(0)));
 				patient.setName(cursor.getString(1));
-				patient.DOB = cursor.getString(2);
-				patient.age = Integer.parseInt(cursor.getString(3));
-				patient.sex = Integer.parseInt(cursor.getString(4));
+				patient.setDOB(cursor.getString(2));
+				patient.setAge(Integer.parseInt(cursor.getString(3)));
+				patient.setSex(Integer.parseInt(cursor.getString(4)));
 				patient.setInjury(Integer.parseInt(cursor.getString(5)));
 				// // Add patient to patients
 				patients.add(patient);
@@ -161,12 +161,12 @@ public class PT_SQLiteHelper extends SQLiteOpenHelper {
 		// // 2. create ContentValues to add key "column"/value
 		ContentValues values = new ContentValues();
 		values.put(NAME, patient.getName()); // get title
-		values.put(AGE, String.valueOf(patient.age)); // get author
+		values.put(AGE, String.valueOf(patient.getAge())); // get author
 		values.put(INJURY_CODE, String.valueOf(patient.getInjury())); // get
 																		// author
-		values.put(DOB, patient.DOB); // get author
-		values.put(AGE, String.valueOf(patient.age)); // get author
-		values.put(SEX, String.valueOf(patient.sex));
+		values.put(DOB, patient.getDOB()); // get author
+		values.put(AGE, String.valueOf(patient.getAge())); // get author
+		values.put(SEX, String.valueOf(patient.getSex()));
 
 		// // 3. updating row
 		int i = db.update(TABLE_PATIENT, // table

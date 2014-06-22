@@ -6,11 +6,34 @@ public class Patient implements Serializable {
 	private int patientID;
 	private String name;
 	private int injury;
-	public int sex;
-	public int age;
-	public String DOB;
-
+	private int sex;
+	private int age;
+	private String DOB;
 	private static final long serialVersionUID = -2813029214068905410L;
+	
+	public int getSex() {
+		return sex;
+	}
+
+	public void setSex(int sex) {
+		this.sex = sex;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getDOB() {
+		return DOB;
+	}
+
+	public void setDOB(String dOB) {
+		DOB = dOB;
+	}
 
 	public int getPatientID() {
 		return patientID;
@@ -34,16 +57,6 @@ public class Patient implements Serializable {
 
 	public void setInjury(int injuryid) {
 		injury = injuryid;
-	}
-
-	public int create_patient() {
-		// NO IMPLEMENTATION
-		return 0;
-	}
-
-	public int udpate_patient() {
-		// NO IMPLEMENTATION
-		return 0;
 	}
 
 	public void get_patient(String ID) {
