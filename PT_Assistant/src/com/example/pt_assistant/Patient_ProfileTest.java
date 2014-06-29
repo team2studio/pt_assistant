@@ -33,8 +33,8 @@ public class Patient_ProfileTest extends InstrumentationTestCase {
 		public void testCreate_patient_profile() {
 		  	
 			//set the Patient's ID, Name, Injury, Age, DOB, and Sex
-			p.setPatientID(79);
-			p.setName("Laura Reagan");
+			p.setPatientID(80);
+			p.setName("Jim Curry");
 			p.setInjury(5);
 			p.setAge(30);
 			p.setDOB("02/03/1983");
@@ -48,12 +48,9 @@ public class Patient_ProfileTest extends InstrumentationTestCase {
 		public void testUpdate_patient_profile() {
 		  	
 		    //lets set the Patient attributes with an existing Patient record
-		  	p.setPatientID(79);
-			p.setName("Laura Reagan");
-			
-			//lets update the patients injury id
-			p.setInjury(6);
-			
+		  	p.setPatientID(80);
+			p.setName("Jim Curry");
+			p.setInjury(6);		//lets update the patients injury
 			p.setAge(30);
 			p.setDOB("02/03/1983");
 			p.setSex(1);
@@ -61,8 +58,7 @@ public class Patient_ProfileTest extends InstrumentationTestCase {
 			int patientUpdateVal = ptsql.updatePatient(p);
 			
 			//Assert whether 1 row was updated in the database
-			//We will pass an integer value of 0 to make the test case fail.
-			assertEquals(0, patientUpdateVal);
+			assertEquals(1, patientUpdateVal);
 	  } 
 
 }
