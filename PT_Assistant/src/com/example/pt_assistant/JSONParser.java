@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.List;
 
 import org.apache.http.HttpEntity;
@@ -19,6 +21,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.net.Proxy;
 import android.util.Log;
 
 public class JSONParser {
@@ -99,16 +102,33 @@ public class JSONParser {
 				is = httpEntity.getContent();
 
 			} else if (method == "GET") {
-				// request method is GET
-				DefaultHttpClient httpClient = new DefaultHttpClient();
+				
+				//This body of code demonstrates two ways to make a http request 1. DefaultHttpClient
+				//and the other is HttpURLConnection. I did this because of slow response time on first query to server
+				// Turns out either method is not faster than the other
+				//
+				
+
 				String paramString = URLEncodedUtils.format(params, "utf-8");
 				url += "?" + paramString;
-				HttpGet httpGet = new HttpGet(url);
-
-				HttpResponse httpResponse = httpClient.execute(httpGet);
-				HttpEntity httpEntity = httpResponse.getEntity();
-				is = httpEntity.getContent();
-			}
+				
+//				uses DefaultHttpClient
+//		        DefaultHttpClient httpClient = new DefaultHttpClient();
+//				HttpGet httpGet = new HttpGet(url);
+//				HttpResponse httpResponse = httpClient.execute(httpGet);
+//				HttpEntity httpEntity = httpResponse.getEntity();
+//				is = httpEntity.getContent();
+				
+				//uses HttpURLConnection 
+				 URL nURL = new URL(url);
+				 HttpURLConnection conn = (HttpURLConnection) nURL.openConnection();
+		         conn.setReadTimeout(10000);
+		         conn.setConnectTimeout(15000);
+		         conn.setRequestMethod("GET");
+		         //conn.setDoInput(true);
+		         // conn.connect();
+		         is = conn.getInputStream();
+    		}
 
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();

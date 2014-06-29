@@ -29,9 +29,7 @@ public class CreatePatientActivity extends ActionBarActivity {
 	/**
 	 * 
 	 */
-	private String paname, dob;
-	private int pid, injury_code, age;
-	private int male;
+	Patient newPat;
 
 	// Progress Dialog
 	private ProgressDialog pDialog;
@@ -50,7 +48,7 @@ public class CreatePatientActivity extends ActionBarActivity {
 	// "http://xxx.xxx.x.x:1234/webservice/login.php";
 
 	// testing on Emulator:
-	private static final String CREATE_PATIENT_URL = "http://192.168.1.8/webservice/create_patient2.php";
+	private static final String CREATE_PATIENT_URL = "http://192.168.1.8/webservice/register_patient.php";
 
 	// testing from a real server:
 	// private static final String CREATE_PATIENT_URL =
@@ -82,7 +80,7 @@ public class CreatePatientActivity extends ActionBarActivity {
 		 * setContentView(textView); //this is the remote DB paname =
 		 * pat.getName(); pid = pat.getPatientID(); iid = pat.getInjury();
 		 */
-		// new CreatePatient().execute();
+		
 	}
 
 	// @Override
@@ -108,7 +106,7 @@ public class CreatePatientActivity extends ActionBarActivity {
 	public void Register(View view) {
 
 		EditText eText;
-		Patient newPat = new Patient();
+		newPat = new Patient();
 		eText = (EditText) findViewById(R.id.editText_name);
 		newPat.setName(eText.getText().toString());
 
@@ -128,8 +126,16 @@ public class CreatePatientActivity extends ActionBarActivity {
 		int radioButtonID = rg.getCheckedRadioButtonId();
 		View radioButton = rg.findViewById(radioButtonID);
 		newPat.setSex(rg.indexOfChild(radioButton));
+		//
+		//this line updates the local DB
+		//
 		pt_db.addPatient(newPat);
-
+		//
+		//this line updates the remote DB
+		//
+		new RegisterPatient().execute();
+		
+        //creates the toast
 		Context context = getApplicationContext();
 		CharSequence text = "Registration Successfull!";
 		int duration = Toast.LENGTH_SHORT;
@@ -158,7 +164,7 @@ public class CreatePatientActivity extends ActionBarActivity {
 		}
 	}
 
-	class CreatePatient extends AsyncTask<String, String, String> {
+	class RegisterPatient extends AsyncTask<String, String, String> {
 
 		/**
 		 * Before starting background thread Show Progress Dialog
@@ -180,15 +186,22 @@ public class CreatePatientActivity extends ActionBarActivity {
 			// TODO Auto-generated method stub
 			// Check for success tag
 			int success;
-			String patientname = paname;
-			String patientid = String.valueOf(pid);
-			String injuryid = String.valueOf(injury_code);
+			String patient_name = newPat.getName();
+			String patient_id = String.valueOf(newPat.getPatientID());
+			String injury_id = String.valueOf(newPat.getInjury());
+			String birth_date  = newPat.getDOB();
+			String age  = String.valueOf(newPat.getAge());
+			String sex  = String.valueOf(newPat.getSex());
+			
 			try {
 				// Building Parameters
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
-				params.add(new BasicNameValuePair("patientname", patientname));
-				params.add(new BasicNameValuePair("patientid", patientid));
-				params.add(new BasicNameValuePair("injuryid", injuryid));
+				params.add(new BasicNameValuePair("patient_id", patient_id));
+				params.add(new BasicNameValuePair("patient_name", patient_name));
+				params.add(new BasicNameValuePair("b_date", birth_date));
+				params.add(new BasicNameValuePair("patient_age", age));
+				params.add(new BasicNameValuePair("patient_sex", sex));
+				params.add(new BasicNameValuePair("injury_id", injury_id));
 
 				Log.d("request!", "starting");
 				// getting product details by making HTTP request
@@ -196,7 +209,7 @@ public class CreatePatientActivity extends ActionBarActivity {
 						CREATE_PATIENT_URL, "POST", params);
 
 				// check your log for json response
-				Log.d("Create patient attempt", json.toString());
+				Log.d("Cregeoate patient attempt", json.toString());
 
 				// json success tag
 				success = json.getInt(TAG_SUCCESS);
