@@ -47,34 +47,34 @@ public class PatientListActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.patient_list_view);
 
-		
+		//get the patient list from the web server
 		new loadPatients().execute();
 	}
-
-	void GetPatientList() {
-
-		// ***********This commented block gets it from the local DB Sergio
-//		 String pid_name;
-//		 List<Patient> patientList = pt_db.getAllPatients();
-//		 List<Map> patlist = new ArrayList<Map>();
-//		 // List<Map> patlist = new ArrayList<Map>();
-//		 Patient thispat;
-//		 Iterator<Patient> iterator = patientList.iterator();
-//		 while (iterator.hasNext()) {
-//		 Map map = new HashMap();
-//		 thispat = iterator.next();
-//		
-//		 thispat.getName();
-//		 pid_name = Integer.toString(thispat.getPatientID()) + "  "
-//		 + thispat.getName();
-//		
-//		 map.put("pid_name", pid_name);
-//		
-//		 patlist.add(map);
-//		
-//		 }
-//		
-//		 return patlist;
+	// This function gets the patient list from a local DB
+	List<Map>  GetPatientList() {
+		
+		
+		 String pid_name;
+		 List<Patient> patientList = pt_db.getAllPatients();
+		 List<Map> patlist = new ArrayList<Map>();
+		 // List<Map> patlist = new ArrayList<Map>();
+		 Patient thispat;
+		 Iterator<Patient> iterator = patientList.iterator();
+		 while (iterator.hasNext()) {
+		 Map map = new HashMap();
+		 thispat = iterator.next();
+		
+		 thispat.getName();
+		 pid_name = Integer.toString(thispat.getPatientID()) + "  "
+		 + thispat.getName();
+		
+		 map.put("pid_name", pid_name);
+		
+		 patlist.add(map);
+		
+		 }
+		
+		 return patlist;
 		// ******************************************************************
 
 	}
