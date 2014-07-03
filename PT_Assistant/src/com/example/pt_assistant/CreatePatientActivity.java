@@ -47,8 +47,8 @@ public class CreatePatientActivity extends ActionBarActivity {
 	// private static final String CREATE_PATIENT_URL =
 	// "http://xxx.xxx.x.x:1234/webservice/login.php";
 
-	// testing on Emulator:
-	private static final String CREATE_PATIENT_URL = "http://192.168.1.8/webservice/register_patient.php";
+	// testing on Emulator: http://199.255.250.71
+	private static final String CREATE_PATIENT_URL = "http://199.255.250.71/register_patient.php";
 
 	// testing from a real server:
 	// private static final String CREATE_PATIENT_URL =
@@ -80,7 +80,7 @@ public class CreatePatientActivity extends ActionBarActivity {
 		 * setContentView(textView); //this is the remote DB paname =
 		 * pat.getName(); pid = pat.getPatientID(); iid = pat.getInjury();
 		 */
-		
+
 	}
 
 	// @Override
@@ -127,23 +127,16 @@ public class CreatePatientActivity extends ActionBarActivity {
 		View radioButton = rg.findViewById(radioButtonID);
 		newPat.setSex(rg.indexOfChild(radioButton));
 		//
-		//this line updates the local DB
+		// *******This line updates the local DB
 		//
-		pt_db.addPatient(newPat);
+		// pt_db.addPatient(newPat);
 		//
-		//this line updates the remote DB
+		// this line updates the remote DB
 		//
 		new RegisterPatient().execute();
-		
-        //creates the toast
-		Context context = getApplicationContext();
-		CharSequence text = "Registration Successfull!";
-		int duration = Toast.LENGTH_SHORT;
 
-		Toast toast = Toast.makeText(context, text, duration);
-		toast.show();
-		// go back to main activity
-		finish();
+		
+		
 
 	}
 
@@ -189,10 +182,10 @@ public class CreatePatientActivity extends ActionBarActivity {
 			String patient_name = newPat.getName();
 			String patient_id = String.valueOf(newPat.getPatientID());
 			String injury_id = String.valueOf(newPat.getInjury());
-			String birth_date  = newPat.getDOB();
-			String age  = String.valueOf(newPat.getAge());
-			String sex  = String.valueOf(newPat.getSex());
-			
+			String birth_date = newPat.getDOB();
+			String age = String.valueOf(newPat.getAge());
+			String sex = String.valueOf(newPat.getSex());
+
 			try {
 				// Building Parameters
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -213,12 +206,12 @@ public class CreatePatientActivity extends ActionBarActivity {
 
 				// json success tag
 				success = json.getInt(TAG_SUCCESS);
+				
 				if (success == 1) {
 					Log.d("patient created Successful!", json.toString());
-					// Intent i = new Intent(Login.this, ReadComments.class);
-					finish();
-					// startActivity(i);
+					
 					return json.getString(TAG_MESSAGE);
+					
 				} else {
 					Log.d("create patient Failure!",
 							json.getString(TAG_MESSAGE));
@@ -238,7 +231,19 @@ public class CreatePatientActivity extends ActionBarActivity {
 		 * **/
 		protected void onPostExecute(String file_url) {
 			// dismiss the dialog once product deleted
-			pDialog.dismiss();
+			if (pDialog != null) {
+				if (pDialog.isShowing()) {
+					pDialog.dismiss();
+					// creates the toast
+					Context context = getApplicationContext();
+					CharSequence text = "Registration Successfull!";
+					int duration = Toast.LENGTH_SHORT;
+
+					Toast toast = Toast.makeText(context, text, duration);
+					toast.show();
+					finish();
+				}
+			}
 			if (file_url != null) {
 				Toast.makeText(CreatePatientActivity.this, file_url,
 						Toast.LENGTH_LONG).show();
