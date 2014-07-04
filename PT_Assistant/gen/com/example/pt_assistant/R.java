@@ -1286,6 +1286,7 @@ containing a value of this type.
         public static final int button_getPatientList=0x7f0a0020;
         public static final int button_update=0x7f0a0014;
         public static final int edit_message=0x7f0a000e;
+        public static final int hello_world=0x7f0a0023;
         public static final int injury_code=0x7f0a001f;
         public static final int injury_id=0x7f0a0019;
         public static final int pat_age=0x7f0a001e;
@@ -1295,6 +1296,7 @@ containing a value of this type.
         public static final int radio_female=0x7f0a001c;
         public static final int radio_male=0x7f0a001b;
         public static final int title_activity_display_message=0x7f0a0011;
+        public static final int title_activity_trend_report=0x7f0a0022;
         public static final int title_record_created_activity=0x7f0a001a;
     }
     public static final class style {
