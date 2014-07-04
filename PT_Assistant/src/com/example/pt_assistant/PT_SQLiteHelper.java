@@ -182,7 +182,13 @@ public class PT_SQLiteHelper extends SQLiteOpenHelper {
 		return i;
 
 	}
-
+	
+	
+	public long addPatientNotes(Patient patient, Patient_Notes notes) {
+		//no implementation
+		return 0;
+	}
+	
 	// Deleting single book
 	// public void deleteBook(Book book) {
 
