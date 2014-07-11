@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="romMax">180</integer>
+    <integer name="strengthMax">10</integer>
+    <integer name="painMax">10</integer>
+    <integer name="palpMax">10</integer>
+    <integer name="jointMobMax">10</integer>
+    <integer name="specTestMax">10</integer>
+</resources>

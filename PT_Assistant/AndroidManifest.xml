@@ -60,6 +60,46 @@
             android:name="com.example.pt_assistant.TrendReportActivity"
             android:label="@string/title_activity_trend_report" >
         </activity>
+        <activity
+            android:name="com.example.pt_assistant.CreateNotesActivity"
+            android:label="@string/title_activity_create_notes"
+            android:parentActivityName="com.example.pt_assistant.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pt_assistant.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.pt_assistant.SubjectiveNotes"
+            android:label="@string/title_activity_subjective_notes"
+            android:parentActivityName="com.example.pt_assistant.CreateNotesActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pt_assistant.CreateNotesActivity" />
+        </activity>
+        <activity
+            android:name="com.example.pt_assistant.ObjectiveNotesActivity"
+            android:label="@string/title_activity_objective_notes"
+            android:parentActivityName="com.example.pt_assistant.CreateNotesActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pt_assistant.CreateNotesActivity" />
+        </activity>
+        <activity
+            android:name="com.example.pt_assistant.AssessmentNotesActivity"
+            android:label="@string/title_activity_assessment_notes"
+            android:parentActivityName="com.example.pt_assistant.CreateNotesActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pt_assistant.CreateNotesActivity" />
+        </activity>
+        <activity
+            android:name="com.example.pt_assistant.PlanNotesActivity"
+            android:label="@string/title_activity_plan_notes"
+            android:parentActivityName="com.example.pt_assistant.CreateNotesActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.pt_assistant.CreateNotesActivity" />
+        </activity>
     </application>
 
 </manifest>

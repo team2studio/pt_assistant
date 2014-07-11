@@ -24,5 +24,10 @@
     <string name="pattient_list"> Patients</string>
     <string name="title_activity_trend_report">TrendReportActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_create_notes">CreateNotesActivity</string>
+    <string name="title_activity_subjective_notes">SubjectiveNotes</string>
+    <string name="title_activity_objective_notes">ObjectiveNotesActivity</string>
+    <string name="title_activity_assessment_notes">AssessmentNotesActivity</string>
+    <string name="title_activity_plan_notes">PlanNotesActivity</string>
 
 </resources>
