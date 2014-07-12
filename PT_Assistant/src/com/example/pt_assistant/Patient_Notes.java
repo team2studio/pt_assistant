@@ -1,13 +1,14 @@
 package com.example.pt_assistant;
 
-import java.util.ArrayList;
 
 public class Patient_Notes {
 	
 	//Subjective Section
 	private String pastDiagnosis;
-	private ArrayList<String> medications;
+	private String medications;
 	private String other_PatientHistory;
+	private String goals;
+	private String reasons;
 	
 	//Objective Section
 	private int pain;
@@ -15,12 +16,14 @@ public class Patient_Notes {
 	private int rangeOfMotion;
 	private int palpatation;
 	private int jointMobilization;
+	private String special_test;
 	
 	//Assessment Section
-	private StringBuilder patient_diagnosis;
+	private String patient_diagnosis;
+	private String injury;
 	
 	//Plan Section
-	private StringBuilder patient_special_plan_notes;
+	private String additional_plan_notes;
 	
 	
 	public String getPastDiagnosis() {
@@ -31,11 +34,11 @@ public class Patient_Notes {
 		this.pastDiagnosis = pastDiagnosis;
 	}
 
-	public ArrayList<String> getMedications() {
+	public String getMedications() {
 		return medications;
 	}
 
-	public void setMedications(ArrayList<String> medications) {
+	public void setMedications(String medications) {
 		this.medications = medications;
 	}
 
@@ -87,21 +90,52 @@ public class Patient_Notes {
 		this.jointMobilization = jointMobilization;
 	}
 
-	public StringBuilder getPatient_diagnosis() {
+	public String getPatient_diagnosis() {
 		return patient_diagnosis;
 	}
 
-	public void setPatient_diagnosis(StringBuilder patient_diagnosis) {
+	public void setPatient_diagnosis(String patient_diagnosis) {
 		this.patient_diagnosis = patient_diagnosis;
 	}
 
-	public StringBuilder getPatient_special_plan_notes() {
-		return patient_special_plan_notes;
+	public String getAdditionalPlanNotes() {
+		return additional_plan_notes;
 	}
 
-	public void setPatient_special_plan_notes(
-			StringBuilder patient_special_plan_notes) {
-		this.patient_special_plan_notes = patient_special_plan_notes;
+	public void setAdditionalPlanNotes(
+			String additional_plan_notes) {
+		this.additional_plan_notes = additional_plan_notes;
+	}
+	
+	public void setInjury(String injury){
+		this.injury = injury;
+	}
+	
+	public String getInjury(){
+		return injury;
 	}
 		
+	public void setGoals(String goals){
+		this.goals = goals;
+	}
+	
+	public String getGoals(){
+		return goals;
+	}
+	
+	public void setReasons(String reasons){
+		this.reasons = reasons;
+	}
+	
+	public String getReasons(){
+		return reasons;
+	}
+	
+	public void setSpecialTest(String special_test){
+		this.special_test = special_test;
+	}
+	
+	public String getSpecialTest(){
+		return special_test;
+	}
 }
