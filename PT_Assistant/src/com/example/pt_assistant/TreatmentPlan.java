@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import android.util.Log;
 
 public class TreatmentPlan {
-	private static final String LOWER_BACK_INJURY = "LOWER BACK INJURY (LUMBAR)";	//LOWER BACK INJURY
+	private static final String LOWER_BACK_INJURY = "LOWER BACK INJURY LUMBAR";	//LOWER BACK INJURY
 	private static final String SHOULDER_INJURY = "ROTATOR CUFF TENDINITIS";	//SHOULDER INJURY
 	
 	//treatment plan options for lower back

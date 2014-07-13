@@ -15,12 +15,11 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 	
 	private static final String CREATE_PATIENT_URL = "http://199.255.250.71/register_patient.php";
 	private static final String UPDATE_PATIENT_URL = "http://199.255.250.71/update_patient.php";
+	private static final String CREATE_PATIENT_NOTES_URL = "http://199.255.250.71/patient_create_notes.php";
 	private static final String TAG_SUCCESS = "success";
+	
 	Patient p;
 	Patient_Notes pn;
-	ArrayList<String> patientMedications;
-	StringBuilder diagnosis;
-	StringBuilder plan_notes;
 	TreatmentPlan tp;
 	List<NameValuePair> params;
 	JSONParser jsonParser;
@@ -69,12 +68,12 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  	int success = 0;	//initialize success variable
 		  	
 			//set the Patient's ID, Name, Injury, Age, DOB, and Sex
-			p.setPatientID(1009);
-			p.setName("Martin Robinson");
-			p.setInjury(2);
+			p.setPatientID(1011);
+			p.setName("Amy Gibson");
+			p.setInjury(3);
 			p.setAge(30);
 			p.setDOB("02/03/1983");
-			p.setSex(1);
+			p.setSex(0);
 			
 			String patient_name = p.getName();
 			String patient_id = String.valueOf(p.getPatientID());
@@ -120,7 +119,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 			p.setName("Craig Smithson");
 			p.setInjury(1);		//LETS UPDATE THE PATIENT INJURY
 			p.setAge(30);
-			p.setDOB("02/03/1983");	//UPDATE THE PATIENTS DOB
+			p.setDOB("02/06/1983");	//UPDATE THE PATIENTS DOB
 			p.setSex(1);
 			
 			String patient_name = p.getName();
@@ -160,38 +159,84 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		@Test
 		public void testEnterNotes() {
 		  	
+			int success = 0;	//initialize success variable
+			
+			//lets set a patient id to use
+			p.setPatientID(1011);
+			
 		    //lets test entering the patients notes
 		    //***SUBJECTIVE***
-		  	pn.setPastDiagnosis("Bulging Disc in lower back");
-		  	patientMedications.add("Ibuprofen");	//add medication
-		  	patientMedications.add("Extra Strength Tylenol");	//add other medications
+		  	pn.setPastDiagnosis("jamel test");
 		  	pn.setMedications("meds");			  	
-		  	pn.setOther_PatientHistory("Severe Arthritis in both knees; Surgery for herniated disc");
-		  	pn.setGoals("none at this time");
-		  	pn.setReasons("bulging disc causes sever pain");
+		  	pn.setOther_PatientHistory("test");
+		  	pn.setGoals("none");
+		  	pn.setReasons("test");
 		  	
 		  	//***OBJECTIVE***
-		  	pn.setPain(10);
+		  	pn.setPain(1);
 		  	pn.setStrength(2);
-		  	pn.setRangeOfMotion(40);	//in degrees
-		  	pn.setPalpatation(0);
+		  	pn.setRangeOfMotion(30);	//in degrees
+		  	pn.setPalpatation(1);
 		  	pn.setJointMobilization(1);
 		  	pn.setSpecialTest("test");
 		  	
 		  	//***ASSESSMENT***
 		  	pn.setPatient_diagnosis("diagnosis");
-		  	pn.setInjury("LOWER BACK INJURY (LUMBAR)");
+		  	pn.setInjury("LOWER BACK INJURY");
 		  	
 		  	//***PLAN***
 		  	pn.setAdditionalPlanNotes("test");
-		  	
-		  	//add the patient notes to the database
-			//long patientAddNotesVal = ptsql.addPatientNotes(p, pn);
-			long patientAddNotesVal = 0;
 			
-			//determine if 1 record was inserted into the database
-			assertTrue(patientAddNotesVal >= 0);
+			String patient_id = String.valueOf(p.getPatientID());
+			String past_diagnosis = pn.getPastDiagnosis();
+			String other = pn.getOther_PatientHistory();
+			String medications = pn.getMedications();
+			String goals = pn.getGoals();
+			String reasons = pn.getReasons();
+			String range_of_motion = String.valueOf(pn.getRangeOfMotion());
+			String strength = String.valueOf(pn.getStrength());
+			String joint_mobilization = String.valueOf(pn.getJointMobilization());
+			String pain = String.valueOf(pn.getPain());
+			String palpation = String.valueOf(pn.getPalpatation());
+			String special_test = pn.getSpecialTest();
+			String injury_name = pn.getInjury();
+			String diagnosis = pn.getPatient_diagnosis();
+			String additional_plan_notes = pn.getAdditionalPlanNotes();
+			
+			try{
+				
+				//build parameters sent in the http request
+				params.add(new BasicNameValuePair("patient_id", patient_id));
+				params.add(new BasicNameValuePair("past_diagnosis", past_diagnosis));
+				params.add(new BasicNameValuePair("other", other));
+				params.add(new BasicNameValuePair("medications", medications));
+				params.add(new BasicNameValuePair("goals", goals));
+				params.add(new BasicNameValuePair("reasons", reasons));
+				params.add(new BasicNameValuePair("range_of_motion", range_of_motion));
+				params.add(new BasicNameValuePair("strength", strength));
+				params.add(new BasicNameValuePair("joint_mobilization", joint_mobilization));
+				params.add(new BasicNameValuePair("pain", pain));
+				params.add(new BasicNameValuePair("palpation", palpation));
+				params.add(new BasicNameValuePair("special_test", special_test));
+				params.add(new BasicNameValuePair("injury_name", injury_name));
+				params.add(new BasicNameValuePair("diagnosis", diagnosis));
+				params.add(new BasicNameValuePair("additional_plan_notes", additional_plan_notes));
+				
+				// make http request
+				JSONObject json = jsonParser.makeHttpRequest(
+						CREATE_PATIENT_NOTES_URL, "POST", params);
+
+				// json success tag
+				success = json.getInt(TAG_SUCCESS);
+			}
+			catch (JSONException e) {
+				e.printStackTrace();
+			}
+			
+			//if success equals 1, then the patient's notes was successfully created
+			assertTrue(success == 1);
 	  } 
+		
 		
 		@Test
 		public void testInitializeTreatmentPlans() {
@@ -207,8 +252,6 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 			//lets test entering the patients notes
 		    //***SUBJECTIVE***
 		  	pn.setPastDiagnosis("Bulging Disc in lower back");
-		  	patientMedications.add("Ibuprofen");	//add medication
-		  	patientMedications.add("Extra Strength Tylenol");	//add other medications
 		  	pn.setMedications("meds");			  	
 		  	pn.setOther_PatientHistory("Severe Arthritis in both knees; Surgery for herniated disc");
 		  	pn.setGoals("none at this time");
@@ -226,7 +269,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  	
 		  	//***ASSESSMENT***
 		  	pn.setPatient_diagnosis("diagnosis test");
-		  	pn.setInjury("LOWER BACK INJURY (LUMBAR)");
+		  	pn.setInjury("LOWER BACK INJURY LUMBAR");
 		  	
 		  	//***PLAN***
 		  	pn.setAdditionalPlanNotes("More plan notes");
@@ -239,5 +282,6 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  //patients SOAP data
 		  assertEquals(2, treatmentPlanVal);
 	  }	
+	  
 	  
 }
