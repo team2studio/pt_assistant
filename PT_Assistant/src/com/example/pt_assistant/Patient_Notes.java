@@ -1,8 +1,14 @@
 package com.example.pt_assistant;
 
+import java.io.Serializable;
 
-public class Patient_Notes {
+
+public class Patient_Notes implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//Subjective Section
 	private String pastDiagnosis;
 	private String medications;

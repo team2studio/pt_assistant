@@ -176,9 +176,9 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  	pn.setPain(1);
 		  	pn.setStrength(2);
 		  	pn.setRangeOfMotion(30);	//in degrees
-		  	pn.setPalpatation(1);
+		  	pn.setPalpation(1);
 		  	pn.setJointMobilization(1);
-		  	pn.setSpecialTest("test");
+		  	pn.setSpecialTest(1);
 		  	
 		  	//***ASSESSMENT***
 		  	pn.setPatient_diagnosis("diagnosis");
@@ -197,8 +197,8 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 			String strength = String.valueOf(pn.getStrength());
 			String joint_mobilization = String.valueOf(pn.getJointMobilization());
 			String pain = String.valueOf(pn.getPain());
-			String palpation = String.valueOf(pn.getPalpatation());
-			String special_test = pn.getSpecialTest();
+			String palpation = String.valueOf(pn.getPalpation());
+			String special_test = String.valueOf(pn.getSpecialTest());
 			String injury_name = pn.getInjury();
 			String diagnosis = pn.getPatient_diagnosis();
 			String additional_plan_notes = pn.getAdditionalPlanNotes();
@@ -263,9 +263,9 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  	pn.setPain(6);
 		  	pn.setStrength(4);
 		  	pn.setRangeOfMotion(55);	//in degrees
-		  	pn.setPalpatation(0);
+		  	pn.setPalpation(1);
 		  	pn.setJointMobilization(1);
-		  	pn.setSpecialTest("test");
+		  	pn.setSpecialTest(1);
 		  	
 		  	//***ASSESSMENT***
 		  	pn.setPatient_diagnosis("diagnosis test");
