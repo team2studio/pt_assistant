@@ -1,5 +1,7 @@
 package com.example.pt_assistant;
 
+import com.example.pt_assistant.GetPatientActivity.doPatient;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -9,9 +11,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.os.Build;
 
 public class AssessmentNotesActivity extends ActionBarActivity {
+	Patient_Notes notes;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +50,25 @@ public class AssessmentNotesActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	public void setAssessment(View view) {
+
+		EditText eText;
+		notes = new Patient_Notes();
+		eText = (EditText) findViewById(R.id.editAssessment);
+		notes.setPatient_diagnosis(eText.getText().toString());
+		
+		//Spinner spin;
+		//spin = (Spinner) findViewById(R.id.spinnerInjury);
+		//notes.setInjury(spin).getText().toString());
+		/*will implement a spinner dropdown menu for Injury once we implement the Injury data
+		 May need to change setInjury method to spinner type rather than string */
+
+		//need database update here
+		// pt_db.updatePatient(existPat);
+		//new doPatient(UPDATE_PATIENT).execute();
+		
+	}	
+	
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */

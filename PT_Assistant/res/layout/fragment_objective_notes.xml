@@ -9,7 +9,7 @@
     tools:context="com.example.pt_assistant.ObjectiveNotesActivity$PlaceholderFragment" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textViewRom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -18,121 +18,121 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <SeekBar
-        android:id="@+id/seekBar1"
+        android:id="@+id/seekBarROM"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/textView1"
-        android:layout_below="@+id/textView1"
+        android:layout_alignRight="@+id/textViewRom"
+        android:layout_below="@+id/textViewRom"
         android:max="@integer/romMax" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewStrength"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/seekBar1"
+        android:layout_above="@+id/seekBarROM"
         android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_toRightOf="@+id/textViewRom"
         android:text="Strength"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <SeekBar
-        android:id="@+id/seekBar2"
+        android:id="@+id/seekBarStrength"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignLeft="@+id/textViewStrength"
         android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/seekBar1"
+        android:layout_alignTop="@+id/seekBarROM"
         android:max="@integer/strengthMax" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewJointMob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/seekBar1"
-        android:layout_below="@+id/seekBar1"
+        android:layout_alignLeft="@+id/seekBarROM"
+        android:layout_below="@+id/seekBarROM"
         android:layout_marginTop="40dp"
         android:text="Joint Mobilization"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <SeekBar
-        android:id="@+id/seekBar3"
+        android:id="@+id/seekBarJointMob"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/seekBar1"
-        android:layout_below="@+id/textView3"
+        android:layout_alignRight="@+id/seekBarROM"
+        android:layout_below="@+id/textViewJointMob"
         android:max="@integer/jointMobMax" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textViewPain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
-        android:layout_alignLeft="@+id/seekBar2"
+        android:layout_alignBaseline="@+id/textViewJointMob"
+        android:layout_alignBottom="@+id/textViewJointMob"
+        android:layout_alignLeft="@+id/seekBarStrength"
         android:text="Pain"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <SeekBar
-        android:id="@+id/seekBar4"
+        android:id="@+id/seekBarPain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignTop="@+id/seekBar3"
+        android:layout_alignLeft="@+id/textViewPain"
+        android:layout_alignTop="@+id/seekBarJointMob"
         android:max="@integer/painMax" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewPalpation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/seekBar3"
-        android:layout_below="@+id/seekBar3"
+        android:layout_alignLeft="@+id/seekBarJointMob"
+        android:layout_below="@+id/seekBarJointMob"
         android:layout_marginTop="40dp"
         android:text="Palpation"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <SeekBar
-        android:id="@+id/seekBar5"
+        android:id="@+id/seekBarPalpation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/seekBar3"
-        android:layout_below="@+id/textView5"
+        android:layout_alignRight="@+id/seekBarJointMob"
+        android:layout_below="@+id/textViewPalpation"
         android:max="@integer/palpMax" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textViewSpecialTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_alignLeft="@+id/seekBar4"
+        android:layout_alignBottom="@+id/textViewPalpation"
+        android:layout_alignLeft="@+id/seekBarPain"
         android:text="Special Test"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <SeekBar
-        android:id="@+id/seekBar6"
+        android:id="@+id/seekBarSpecialTest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView6"
-        android:layout_alignTop="@+id/seekBar5"
+        android:layout_alignLeft="@+id/textViewSpecialTest"
+        android:layout_alignTop="@+id/seekBarPalpation"
         android:max="@integer/specTestMax" />
 
     <Button
-        android:id="@+id/buttonNext3"
+        android:id="@+id/buttonInjuryLookup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/seekBar5"
-        android:layout_below="@+id/seekBar5"
+        android:layout_alignLeft="@+id/seekBarPalpation"
+        android:layout_below="@+id/seekBarPalpation"
         android:layout_marginTop="56dp"
         android:text="Injury Lookup" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/editInjuryLookup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/buttonNext3"
-        android:layout_toRightOf="@+id/buttonNext3"
+        android:layout_alignBottom="@+id/buttonInjuryLookup"
+        android:layout_toRightOf="@+id/buttonInjuryLookup"
         android:ems="10" >
 
         <requestFocus />
@@ -145,6 +145,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:onClick="setObjective"
         android:text="Next" />
+
+    <TextView
+        android:id="@+id/textViewROMCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/seekBarROM"
+        android:layout_below="@+id/seekBarROM" />
 
 </RelativeLayout>

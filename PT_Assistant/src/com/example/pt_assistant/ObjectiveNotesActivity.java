@@ -9,9 +9,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
 import android.os.Build;
 
 public class ObjectiveNotesActivity extends ActionBarActivity {
+	Patient_Notes notes;
+	 private SeekBar seekBar;
+	 private TextView textViewCtr;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +28,32 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
+			}
+			  seekBar = (SeekBar) findViewById(R.id.seekBarROM);
+			  textViewCtr = (TextView) findViewById(R.id.textViewROMCount);
+			  // Initialize the textview with '0'
+			  textViewCtr.setText(seekBar.getProgress() + "/" + seekBar.getMax());
+			  seekBar.setOnSeekBarChangeListener(
+
+			  new OnSeekBarChangeListener() {
+			    int progress = 0;
+			        @Override
+			      public void onProgressChanged(SeekBar seekBar, int progresValue, boolean fromUser) {
+			        progress = progresValue;
+			      }
+
+			      @Override
+			      public void onStartTrackingTouch(SeekBar seekBar) {
+			       
+			      }
+
+			      @Override
+			      public void onStopTrackingTouch(SeekBar seekBar) {
+			        // Display the value
+			        textViewCtr.setText(progress + "/" + seekBar.getMax());
+			      }
+			  }); 
 		}
-	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -44,6 +75,40 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	public void setObjective(View view) {
+
+		EditText eText;
+		notes = new Patient_Notes();
+		eText = (EditText) findViewById(R.id.editInjuryLookup);
+		notes.getInjury();
+		/*not sure what we want to do here. will figure out when we do injuries
+		We need to get the list of injuries here, we don't want to actually set it yet until Assessment*/
+		
+		SeekBar seek;
+		seek = (SeekBar) findViewById(R.id.seekBarROM);
+		notes.setRangeOfMotion(seek.getProgress());
+		
+		seek = (SeekBar) findViewById(R.id.seekBarStrength);
+		notes.setStrength(seek.getProgress());
+		
+		seek = (SeekBar) findViewById(R.id.seekBarJointMob);
+		notes.setJointMobilization(seek.getProgress());
+		
+		seek = (SeekBar) findViewById(R.id.seekBarPain);
+		notes.setPain(seek.getProgress());
+
+		seek = (SeekBar) findViewById(R.id.seekBarPalpation);
+		notes.setPalpation(seek.getProgress());
+		
+		seek = (SeekBar) findViewById(R.id.seekBarSpecialTest);
+		notes.setSpecialTest(seek.getProgress());
+		
+		//need database update here
+		// pt_db.updatePatient(existPat);
+		//new doPatient(UPDATE_PATIENT).execute();
+		
+	}	
+	
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */

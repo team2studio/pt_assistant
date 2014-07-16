@@ -14,9 +14,9 @@ public class Patient_Notes {
 	private int pain;
 	private int strength;
 	private int rangeOfMotion;
-	private int palpatation;
+	private int palpation;
 	private int jointMobilization;
-	private String special_test;
+	private int special_test;
 	
 	//Assessment Section
 	private String patient_diagnosis;
@@ -74,12 +74,12 @@ public class Patient_Notes {
 		this.rangeOfMotion = rangeOfMotion;
 	}
 
-	public int getPalpatation() {
-		return palpatation;
+	public int getPalpation() {
+		return palpation;
 	}
 
-	public void setPalpatation(int palpatation) {
-		this.palpatation = palpatation;
+	public void setPalpation(int palpation) {
+		this.palpation = palpation;
 	}
 
 	public int getJointMobilization() {
@@ -131,11 +131,11 @@ public class Patient_Notes {
 		return reasons;
 	}
 	
-	public void setSpecialTest(String special_test){
+	public void setSpecialTest(int special_test){
 		this.special_test = special_test;
 	}
 	
-	public String getSpecialTest(){
+	public int getSpecialTest(){
 		return special_test;
 	}
 }

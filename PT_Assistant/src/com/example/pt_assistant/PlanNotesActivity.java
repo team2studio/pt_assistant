@@ -1,5 +1,7 @@
 package com.example.pt_assistant;
 
+import com.example.pt_assistant.GetPatientActivity.doPatient;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -9,10 +11,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.os.Build;
 
 public class PlanNotesActivity extends ActionBarActivity {
-
+	Patient_Notes notes;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -43,6 +48,19 @@ public class PlanNotesActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	public void setPlanNotes(View view) {
+
+		EditText eText;
+		notes = new Patient_Notes();
+		eText = (EditText) findViewById(R.id.editPlanNotes);
+		notes.setAdditionalPlanNotes(eText.getText().toString());
+
+		//need database update here
+		// pt_db.updatePatient(existPat);
+		//new doPatient(UPDATE_PATIENT).execute();
+
+	}	
 
 	/**
 	 * A placeholder fragment containing a simple view.

@@ -18,7 +18,7 @@
         android:text="Back to SOAP Home" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/editPlanNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -29,7 +29,7 @@
         android:inputType="textMultiLine" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textViewPlanNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -41,9 +41,10 @@
         android:id="@+id/buttonSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textView1"
-        android:layout_below="@+id/editText1"
+        android:layout_alignRight="@+id/textViewPlanNotes"
+        android:layout_below="@+id/editPlanNotes"
         android:layout_marginTop="40dp"
+        android:onClick="setPlanNotes"
         android:text="Submit Notes" />
 
     <Button

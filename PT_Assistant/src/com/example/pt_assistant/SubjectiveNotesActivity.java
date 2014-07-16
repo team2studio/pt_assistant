@@ -9,9 +9,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.os.Build;
 
 public class SubjectiveNotesActivity extends ActionBarActivity {
+	Patient_Notes notes;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,31 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	public void setSubjective(View view) {
+
+		EditText eText;
+		notes = new Patient_Notes();
+		eText = (EditText) findViewById(R.id.editPastDiag);
+		notes.setPastDiagnosis(eText.getText().toString());
+		
+		eText = (EditText) findViewById(R.id.editMedications);
+		notes.setMedications(eText.getText().toString());
+		
+		eText = (EditText) findViewById(R.id.editOther);
+		notes.setOther_PatientHistory(eText.getText().toString());
+		
+		eText = (EditText) findViewById(R.id.editGoals);
+		notes.setGoals(eText.getText().toString());
+		
+		eText = (EditText) findViewById(R.id.editReason);
+		notes.setReasons(eText.getText().toString());
+
+		//need database update here
+		// pt_db.updatePatient(existPat);
+		//new doPatient(UPDATE_PATIENT).execute();
+		
+	}	
+	
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
