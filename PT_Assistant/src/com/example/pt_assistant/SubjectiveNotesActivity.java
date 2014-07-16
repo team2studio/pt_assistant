@@ -15,7 +15,8 @@ import android.widget.Spinner;
 import android.os.Build;
 
 public class SubjectiveNotesActivity extends ActionBarActivity {
-	Patient_Notes notes;
+	Patient_Notes pn;
+	Patient p;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,26 +51,26 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 
 	public void setSubjective(View view) {
 
+		//receive serialized patient and notes objects from previous activity
+		p = (Patient)getIntent().getSerializableExtra("PatientObject");
+		pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
+				
 		EditText eText;
-		notes = new Patient_Notes();
+		//notes = new Patient_Notes();
 		eText = (EditText) findViewById(R.id.editPastDiag);
-		notes.setPastDiagnosis(eText.getText().toString());
+		pn.setPastDiagnosis(eText.getText().toString());
 		
 		eText = (EditText) findViewById(R.id.editMedications);
-		notes.setMedications(eText.getText().toString());
+		pn.setMedications(eText.getText().toString());
 		
 		eText = (EditText) findViewById(R.id.editOther);
-		notes.setOther_PatientHistory(eText.getText().toString());
+		pn.setOther_PatientHistory(eText.getText().toString());
 		
 		eText = (EditText) findViewById(R.id.editGoals);
-		notes.setGoals(eText.getText().toString());
+		pn.setGoals(eText.getText().toString());
 		
 		eText = (EditText) findViewById(R.id.editReason);
-		notes.setReasons(eText.getText().toString());
-		
-		//receive serialized patient and notes objects from previous activity
-		Patient p = (Patient)getIntent().getSerializableExtra("PatientObject");
-		Patient_Notes pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
+		pn.setReasons(eText.getText().toString());
 
 		//Serialize, start next activity and send intent
 		Intent intent = new Intent(this, ObjectiveNotesActivity.class);

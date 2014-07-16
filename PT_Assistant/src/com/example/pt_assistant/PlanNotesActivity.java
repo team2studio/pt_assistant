@@ -46,10 +46,12 @@ public class PlanNotesActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_plan_notes);
 
+		
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		
 	}
 
 	@Override
@@ -73,15 +75,14 @@ public class PlanNotesActivity extends ActionBarActivity {
 	}
 	
 	public void setPlanNotes(View view) {
-
+		//receive serialized patient and notes objects from previous activity
+		p = (Patient)getIntent().getSerializableExtra("PatientObject");
+		notes = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
+		
 		EditText eText;
 		//notes = new Patient_Notes();
 		eText = (EditText) findViewById(R.id.editPlanNotes);
 		notes.setAdditionalPlanNotes(eText.getText().toString());
-		
-		//receive serialized patient and notes objects from previous activity
-		p = (Patient)getIntent().getSerializableExtra("PatientObject");
-		notes = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
 
 		new EnterSessionNotes().execute();
 

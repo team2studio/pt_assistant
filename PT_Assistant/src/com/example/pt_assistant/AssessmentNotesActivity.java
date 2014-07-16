@@ -18,17 +18,20 @@ import android.widget.Spinner;
 import android.os.Build;
 
 public class AssessmentNotesActivity extends ActionBarActivity {
-	Patient_Notes notes;
+	Patient_Notes pn;
+	Patient p;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_assessment_notes);
 
+		
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		
 	}
 
 	@Override
@@ -53,20 +56,20 @@ public class AssessmentNotesActivity extends ActionBarActivity {
 
 	public void setAssessment(View view) {
 
+		//receive serialized patient and notes objects from previous activity
+		p = (Patient)getIntent().getSerializableExtra("PatientObject");
+		pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
+				
 		EditText eText;
-		notes = new Patient_Notes();
+		//notes = new Patient_Notes();
 		eText = (EditText) findViewById(R.id.editAssessment);
-		notes.setPatient_diagnosis(eText.getText().toString());
+		pn.setPatient_diagnosis(eText.getText().toString());
 		
 		//Spinner spin;
 		//spin = (Spinner) findViewById(R.id.spinnerInjury);
 		//notes.setInjury(spin).getText().toString());
 		/*will implement a spinner dropdown menu for Injury once we implement the Injury data
 		 May need to change setInjury method to spinner type rather than string */
-		
-		//receive serialized patient and notes objects from previous activity
-		Patient p = (Patient)getIntent().getSerializableExtra("PatientObject");
-		Patient_Notes pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
 
 		//Serialize, start next activity and send intent
 		Intent intent = new Intent(this, PlanNotesActivity.class);

@@ -162,6 +162,21 @@ public class GetPatientActivity extends ActionBarActivity {
 		new doPatient(UPDATE_PATIENT).execute();
 
 	}
+	
+	public void gotoNotes(View view) {
+		EditText eText;
+		existPat = new Patient();
+
+		eText = (EditText) findViewById(R.id.editpid);
+		existPat.setPatientID(Integer.parseInt(eText.getText().toString()));
+		
+		//Serialize, start next activity and send intent
+		//Patient p = new Patient();
+		Intent intent = new Intent(this, CreateNotesActivity.class);
+		intent.putExtra("PatientObject", existPat);
+		startActivity(intent);
+
+	}
 
 	/**
 	 * A placeholder fragment containing a simple view.

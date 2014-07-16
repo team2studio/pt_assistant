@@ -69,7 +69,7 @@
                 android:value="com.example.pt_assistant.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.pt_assistant.SubjectiveNotes"
+            android:name="com.example.pt_assistant.SubjectiveNotesActivity"
             android:label="@string/title_activity_subjective_notes"
             android:parentActivityName="com.example.pt_assistant.CreateNotesActivity" >
             <meta-data

@@ -133,6 +133,13 @@
             android:layout_height="wrap_content"
             android:onClick="updatePatient"
             android:text="@string/button_update" />
+
+        <Button
+            android:id="@+id/buttonPatientNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="gotoNotes"
+            android:text="Patient Notes" />
         
     </LinearLayout>
 

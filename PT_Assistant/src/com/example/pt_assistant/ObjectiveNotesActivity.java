@@ -17,7 +17,8 @@ import android.widget.TextView;
 import android.os.Build;
 
 public class ObjectiveNotesActivity extends ActionBarActivity {
-	Patient_Notes notes;
+	Patient_Notes pn;
+	Patient p;
 	 private SeekBar seekBar;
 	 private TextView textViewCtr;
 
@@ -26,10 +27,12 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_objective_notes);
 
+		
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 			}
+		/*
 			  seekBar = (SeekBar) findViewById(R.id.seekBarROM);
 			  textViewCtr = (TextView) findViewById(R.id.textViewROMCount);
 			  // Initialize the textview with '0'
@@ -54,6 +57,7 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 			        textViewCtr.setText(progress + "/" + seekBar.getMax());
 			      }
 			  }); 
+			  */
 		}
 
 	@Override
@@ -78,35 +82,35 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 
 	public void setObjective(View view) {
 
+		//receive serialized patient and notes objects from previous activity
+		p = (Patient)getIntent().getSerializableExtra("PatientObject");
+		pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
+				
 		EditText eText;
-		notes = new Patient_Notes();
+		//notes = new Patient_Notes();
 		eText = (EditText) findViewById(R.id.editInjuryLookup);
-		notes.getInjury();
+		pn.getInjury();
 		/*not sure what we want to do here. will figure out when we do injuries
 		We need to get the list of injuries here, we don't want to actually set it yet until Assessment*/
 		
 		SeekBar seek;
 		seek = (SeekBar) findViewById(R.id.seekBarROM);
-		notes.setRangeOfMotion(seek.getProgress());
+		pn.setRangeOfMotion(seek.getProgress());
 		
 		seek = (SeekBar) findViewById(R.id.seekBarStrength);
-		notes.setStrength(seek.getProgress());
+		pn.setStrength(seek.getProgress());
 		
 		seek = (SeekBar) findViewById(R.id.seekBarJointMob);
-		notes.setJointMobilization(seek.getProgress());
+		pn.setJointMobilization(seek.getProgress());
 		
 		seek = (SeekBar) findViewById(R.id.seekBarPain);
-		notes.setPain(seek.getProgress());
+		pn.setPain(seek.getProgress());
 
 		seek = (SeekBar) findViewById(R.id.seekBarPalpation);
-		notes.setPalpation(seek.getProgress());
+		pn.setPalpation(seek.getProgress());
 		
 		seek = (SeekBar) findViewById(R.id.seekBarSpecialTest);
-		notes.setSpecialTest(seek.getProgress());
-		
-		//receive serialized patient and notes objects from previous activity
-		Patient p = (Patient)getIntent().getSerializableExtra("PatientObject");
-		Patient_Notes pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
+		pn.setSpecialTest(seek.getProgress());
 
 		//Serialize, start next activity and send intent
 		Intent intent = new Intent(this, AssessmentNotesActivity.class);
