@@ -3,6 +3,7 @@ package com.example.pt_assistant;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -103,9 +104,15 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 		seek = (SeekBar) findViewById(R.id.seekBarSpecialTest);
 		notes.setSpecialTest(seek.getProgress());
 		
-		//need database update here
-		// pt_db.updatePatient(existPat);
-		//new doPatient(UPDATE_PATIENT).execute();
+		//receive serialized patient and notes objects from previous activity
+		Patient p = (Patient)getIntent().getSerializableExtra("PatientObject");
+		Patient_Notes pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
+
+		//Serialize, start next activity and send intent
+		Intent intent = new Intent(this, AssessmentNotesActivity.class);
+		intent.putExtra("PatientObject", p);
+		intent.putExtra("PatientNotesObject", pn);
+		startActivity(intent);
 		
 	}	
 	

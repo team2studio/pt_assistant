@@ -5,6 +5,7 @@ import com.example.pt_assistant.GetPatientActivity.doPatient;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -55,10 +56,15 @@ public class PlanNotesActivity extends ActionBarActivity {
 		notes = new Patient_Notes();
 		eText = (EditText) findViewById(R.id.editPlanNotes);
 		notes.setAdditionalPlanNotes(eText.getText().toString());
+		
+		//receive serialized patient and notes objects from previous activity
+		Patient p = (Patient)getIntent().getSerializableExtra("PatientObject");
+		Patient_Notes pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
+
 
 		//need database update here
-		// pt_db.updatePatient(existPat);
-		//new doPatient(UPDATE_PATIENT).execute();
+		//local // pt_db.updatePatient(existPat);
+		//remote // new doPatient(UPDATE_PATIENT).execute();
 
 	}	
 

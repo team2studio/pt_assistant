@@ -5,6 +5,7 @@ import com.example.pt_assistant.GetPatientActivity.doPatient;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -62,10 +63,17 @@ public class AssessmentNotesActivity extends ActionBarActivity {
 		//notes.setInjury(spin).getText().toString());
 		/*will implement a spinner dropdown menu for Injury once we implement the Injury data
 		 May need to change setInjury method to spinner type rather than string */
+		
+		//receive serialized patient and notes objects from previous activity
+		Patient p = (Patient)getIntent().getSerializableExtra("PatientObject");
+		Patient_Notes pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
 
-		//need database update here
-		// pt_db.updatePatient(existPat);
-		//new doPatient(UPDATE_PATIENT).execute();
+		//Serialize, start next activity and send intent
+		Intent intent = new Intent(this, PlanNotesActivity.class);
+		intent.putExtra("PatientObject", p);
+		intent.putExtra("PatientNotesObject", pn);
+		startActivity(intent);
+
 		
 	}	
 	

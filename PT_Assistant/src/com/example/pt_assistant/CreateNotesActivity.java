@@ -3,12 +3,15 @@ package com.example.pt_assistant;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.SeekBar;
 import android.os.Build;
 
 public class CreateNotesActivity extends ActionBarActivity {
@@ -44,6 +47,17 @@ public class CreateNotesActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	public void startNotes(View view) {
+		//Serialize, start next activity and send intent
+		Patient p = new Patient();
+		Patient_Notes pn = new Patient_Notes();
+		Intent intent = new Intent(this, SubjectiveNotesActivity.class);
+		intent.putExtra("PatientObject", p);
+		intent.putExtra("PatientNotesObject", pn);
+		startActivity(intent);
+		
+	}	
+	
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */

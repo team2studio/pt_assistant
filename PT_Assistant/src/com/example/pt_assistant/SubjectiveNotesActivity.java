@@ -3,6 +3,7 @@ package com.example.pt_assistant;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -65,10 +66,16 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 		
 		eText = (EditText) findViewById(R.id.editReason);
 		notes.setReasons(eText.getText().toString());
+		
+		//receive serialized patient and notes objects from previous activity
+		Patient p = (Patient)getIntent().getSerializableExtra("PatientObject");
+		Patient_Notes pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
 
-		//need database update here
-		// pt_db.updatePatient(existPat);
-		//new doPatient(UPDATE_PATIENT).execute();
+		//Serialize, start next activity and send intent
+		Intent intent = new Intent(this, ObjectiveNotesActivity.class);
+		intent.putExtra("PatientObject", p);
+		intent.putExtra("PatientNotesObject", pn);
+		startActivity(intent);
 		
 	}	
 	

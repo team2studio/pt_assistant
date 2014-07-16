@@ -9,43 +9,13 @@
     tools:context="com.example.pt_assistant.CreateNotesActivity$PlaceholderFragment" >
 
     <Button
-        android:id="@+id/buttonSub"
+        android:id="@+id/buttonNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"
-        android:text="Subjective" />
-
-    <Button
-        android:id="@+id/buttonObj"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/buttonSub"
-        android:layout_alignRight="@+id/buttonSub"
-        android:layout_below="@+id/buttonSub"
-        android:layout_marginTop="50dp"
-        android:text="Objective" />
-
-    <Button
-        android:id="@+id/buttonAssess"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/buttonObj"
-        android:layout_alignRight="@+id/buttonObj"
-        android:layout_below="@+id/buttonObj"
-        android:layout_marginTop="50dp"
-        android:text="Assessment" />
-
-    <Button
-        android:id="@+id/buttonPlan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/buttonAssess"
-        android:layout_alignRight="@+id/buttonAssess"
-        android:layout_below="@+id/buttonAssess"
-        android:layout_marginTop="50dp"
-        android:text="Plan" />
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="38dp"
+        android:onClick="startNotes"
+        android:text="Go to Patient Notes" />
 
 </RelativeLayout>
