@@ -70,7 +70,10 @@ public class AssessmentNotesActivity extends ActionBarActivity {
 		//notes.setInjury(spin).getText().toString());
 		/*will implement a spinner dropdown menu for Injury once we implement the Injury data
 		 May need to change setInjury method to spinner type rather than string */
-
+		
+		//ADDED IN BY JAMEL...BUT WE NEED TO SET THE INJURY IN THE GUI TO MAKE THIS WORK
+		pn.setInjury("ROTATOR CUFF TENDINITIS");
+				
 		//Serialize, start next activity and send intent
 		Intent intent = new Intent(this, PlanNotesActivity.class);
 		intent.putExtra("PatientObject", p);

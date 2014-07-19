@@ -94,7 +94,7 @@ public class PlanNotesActivity extends ActionBarActivity {
 		notes = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
 		
 		//Serialize, start next activity and send intent
-		Intent intent = new Intent(this, PlanNotesActivity.class);
+		Intent intent = new Intent(this, TreatmentPlanActivity.class);
 		intent.putExtra("PatientObject", p);
 		intent.putExtra("PatientNotesObject", notes);
 		startActivity(intent);
