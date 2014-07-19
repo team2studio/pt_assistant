@@ -29,5 +29,14 @@
     <string name="title_activity_objective_notes">ObjectiveNotesActivity</string>
     <string name="title_activity_assessment_notes">AssessmentNotesActivity</string>
     <string name="title_activity_plan_notes">PlanNotesActivity</string>
+    <string name="title_activity_treatment_plan">TreatmentPlanActivity</string>
+    <string name="injuryName"></string>
+    <string name="phaseName"></string>
+    <string name="instructIntReps"></string>
+    <string name="instructIntMin"></string>
+    <string name="instructIntMax"></string>
+    <string name="exerciseOne"></string>
+    <string name="exerciseTwo"></string>
+    <string name="exerciseThree"></string>
 
 </resources>
