@@ -1,0 +1,178 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.pt_assistant.TreatmentPlanActivity$PlaceholderFragment" >
+
+    <TextView
+        android:id="@+id/textViewTreatmentPlan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Treatment Plan"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textViewInjury2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/textViewTreatmentPlan"
+        android:layout_marginTop="36dp"
+        android:text="Injury: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewPhase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewInjury2"
+        android:layout_alignBottom="@+id/textViewInjury2"
+        android:layout_toRightOf="@+id/textViewTreatmentPlan"
+        android:text="Phase: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/injuryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewInjury2"
+        android:layout_below="@+id/textViewInjury2"
+        android:layout_marginTop="24dp"
+        android:inputType="text"
+        android:text="@string/injuryName" />
+
+    <TextView
+        android:id="@+id/phaseName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewPhase"
+        android:layout_alignTop="@+id/injuryName"
+        android:inputType="text"
+        android:text="@string/phaseName" />
+
+    <TextView
+        android:id="@+id/textViewInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/injuryName"
+        android:layout_below="@+id/injuryName"
+        android:layout_marginTop="35dp"
+        android:text="Instructions:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewInstruct1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewInstructions"
+        android:layout_below="@+id/textViewInstructions"
+        android:layout_marginTop="24dp"
+        android:text="For each exercise, repeat " />
+
+    <TextView
+        android:id="@+id/instructIntReps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewInstruct1"
+        android:layout_alignBottom="@+id/textViewInstruct1"
+        android:layout_toRightOf="@+id/textViewInstruct1"
+        android:inputType="number"
+        android:text="@string/instructIntReps" />
+
+    <TextView
+        android:id="@+id/textViewInstruct2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/instructIntReps"
+        android:layout_alignBottom="@+id/instructIntReps"
+        android:layout_toRightOf="@+id/instructIntReps"
+        android:text="times " />
+
+    <TextView
+        android:id="@+id/textViewInstruct4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewInstruct2"
+        android:layout_alignBottom="@+id/textViewInstruct2"
+        android:layout_toRightOf="@+id/textViewInstruct2"
+        android:text="for " />
+
+    <TextView
+        android:id="@+id/instructIntMin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewInstruct1"
+        android:layout_below="@+id/instructIntReps"
+        android:inputType="number"
+        android:text="@string/instructIntMin" />
+
+    <TextView
+        android:id="@+id/textViewInstruct5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/instructIntMin"
+        android:layout_alignBottom="@+id/instructIntMin"
+        android:layout_toRightOf="@+id/instructIntMin"
+        android:text="to" />
+
+    <TextView
+        android:id="@+id/instructIntMax"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewInstruct5"
+        android:layout_alignBottom="@+id/textViewInstruct5"
+        android:layout_toRightOf="@+id/textViewInstruct5"
+        android:inputType="number"
+        android:text="@string/instructIntMax" />
+
+    <TextView
+        android:id="@+id/textViewInstruct6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/instructIntMax"
+        android:layout_alignBottom="@+id/instructIntMax"
+        android:layout_toRightOf="@+id/instructIntMax"
+        android:text="mins a day." />
+
+    <TextView
+        android:id="@+id/textViewExercises"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/instructIntMin"
+        android:layout_below="@+id/instructIntMin"
+        android:layout_marginTop="20dp"
+        android:text="Exercises"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/exerciseOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewExercises"
+        android:layout_below="@+id/textViewExercises"
+        android:layout_marginTop="16dp"
+        android:text="@string/exerciseOne" />
+
+    <TextView
+        android:id="@+id/exerciseTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/exerciseOne"
+        android:layout_below="@+id/exerciseOne"
+        android:text="@string/exerciseTwo" />
+
+    <TextView
+        android:id="@+id/exerciseThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textViewInjury2"
+        android:layout_below="@+id/exerciseTwo"
+        android:text="@string/exerciseThree" />
+
+</RelativeLayout>
