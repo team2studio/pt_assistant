@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:onClick="backHome"
         android:text="Back to SOAP Home" />
 
     <EditText
@@ -54,6 +55,7 @@
         android:layout_below="@+id/buttonSubmit"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
+        android:onClick="generateTreatmentPlan"
         android:text="Generate Treatment Plan" />
 
 </RelativeLayout>

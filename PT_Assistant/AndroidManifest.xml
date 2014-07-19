@@ -100,6 +100,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.pt_assistant.CreateNotesActivity" />
         </activity>
+        <activity
+            android:name="com.example.pt_assistant.TreatmentPlanActivity"
+            android:label="@string/title_activity_treatment_plan" >
+        </activity>
     </application>
 
 </manifest>
