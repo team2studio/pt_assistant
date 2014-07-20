@@ -28,54 +28,6 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textViewPhase"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textViewInjury2"
-        android:layout_alignBottom="@+id/textViewInjury2"
-        android:layout_toRightOf="@+id/textViewTreatmentPlan"
-        android:text="Phase: "
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/injuryName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewInjury2"
-        android:layout_below="@+id/textViewInjury2"
-        android:layout_marginTop="24dp"
-        android:inputType="text"
-        android:text="@string/injuryName" />
-
-    <TextView
-        android:id="@+id/phaseName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewPhase"
-        android:layout_alignTop="@+id/injuryName"
-        android:inputType="text"
-        android:text="@string/phaseName" />
-
-    <TextView
-        android:id="@+id/textViewInstructions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/injuryName"
-        android:layout_below="@+id/injuryName"
-        android:layout_marginTop="35dp"
-        android:text="Instructions:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/textViewInstruct1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewInstructions"
-        android:layout_below="@+id/textViewInstructions"
-        android:layout_marginTop="24dp"
-        android:text="For each exercise, repeat " />
-
-    <TextView
         android:id="@+id/instructIntReps"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,24 +36,6 @@
         android:layout_toRightOf="@+id/textViewInstruct1"
         android:inputType="number"
         android:text="@string/instructIntReps" />
-
-    <TextView
-        android:id="@+id/textViewInstruct2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/instructIntReps"
-        android:layout_alignBottom="@+id/instructIntReps"
-        android:layout_toRightOf="@+id/instructIntReps"
-        android:text="times " />
-
-    <TextView
-        android:id="@+id/textViewInstruct4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textViewInstruct2"
-        android:layout_alignBottom="@+id/textViewInstruct2"
-        android:layout_toRightOf="@+id/textViewInstruct2"
-        android:text="for " />
 
     <TextView
         android:id="@+id/instructIntMin"
@@ -119,7 +53,7 @@
         android:layout_alignBaseline="@+id/instructIntMin"
         android:layout_alignBottom="@+id/instructIntMin"
         android:layout_toRightOf="@+id/instructIntMin"
-        android:text="to" />
+        android:text=" to " />
 
     <TextView
         android:id="@+id/instructIntMax"
@@ -138,7 +72,54 @@
         android:layout_alignBaseline="@+id/instructIntMax"
         android:layout_alignBottom="@+id/instructIntMax"
         android:layout_toRightOf="@+id/instructIntMax"
-        android:text="mins a day." />
+        android:text=" mins a day." />
+
+    <TextView
+        android:id="@+id/textViewPhase"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/injuryName"
+        android:layout_below="@+id/injuryName"
+        android:layout_marginTop="15dp"
+        android:text="Phase: "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/phaseName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewPhase"
+        android:layout_below="@+id/textViewPhase"
+        android:inputType="text"
+        android:text="@string/phaseName" />
+
+    <TextView
+        android:id="@+id/injuryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewInjury2"
+        android:layout_below="@+id/textViewInjury2"
+        android:inputType="text"
+        android:text="@string/injuryName" />
+
+    <TextView
+        android:id="@+id/textViewInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/phaseName"
+        android:layout_below="@+id/phaseName"
+        android:layout_marginTop="24dp"
+        android:text="Instructions:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewInstruct1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewInstructions"
+        android:layout_below="@+id/textViewInstructions"
+        android:layout_marginTop="19dp"
+        android:text="For each exercise, repeat " />
 
     <TextView
         android:id="@+id/textViewExercises"
@@ -146,7 +127,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/instructIntMin"
         android:layout_below="@+id/instructIntMin"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         android:text="Exercises"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -156,7 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textViewExercises"
         android:layout_below="@+id/textViewExercises"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="19dp"
         android:text="@string/exerciseOne" />
 
     <TextView
@@ -171,8 +152,17 @@
         android:id="@+id/exerciseThree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textViewInjury2"
+        android:layout_alignLeft="@+id/exerciseTwo"
         android:layout_below="@+id/exerciseTwo"
         android:text="@string/exerciseThree" />
+
+    <TextView
+        android:id="@+id/textViewInstruct2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/instructIntReps"
+        android:layout_alignBottom="@+id/instructIntReps"
+        android:layout_toRightOf="@+id/instructIntReps"
+        android:text=" times for " />
 
 </RelativeLayout>

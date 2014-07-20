@@ -83,6 +83,12 @@ public class PlanNotesActivity extends ActionBarActivity {
 		//notes = new Patient_Notes();
 		eText = (EditText) findViewById(R.id.editPlanNotes);
 		notes.setAdditionalPlanNotes(eText.getText().toString());
+		
+		//Serialize, start next activity and send intent
+		Intent intent = new Intent(this, PlanNotesActivity.class);
+		intent.putExtra("PatientObject", p);
+		intent.putExtra("PatientNotesObject", notes);
+		startActivity(intent);
 
 		new EnterSessionNotes().execute();
 
