@@ -6,6 +6,10 @@ import android.util.Log;
 public class TreatmentPlan {
 	private static final String LOWER_BACK_INJURY = "LOWER BACK INJURY LUMBAR";	//LOWER BACK INJURY
 	private static final String SHOULDER_INJURY = "ROTATOR CUFF TENDINITIS";	//SHOULDER INJURY
+	private static final String PHASE1 = "Phase I (Beginner)";
+	private static final String PHASE2 = "Phase II (Intermediate)";
+	private static final String PHASE3 = "Phase III (Advanced)";
+	private static final String TREATMENT_TAG = "Treatment Plan Selected is: ";
 	
 	//treatment plan options for lower back
 	private ArrayList<String> TREATMENT_PLAN1_LOWER_BACK = new ArrayList<String>();
@@ -18,13 +22,31 @@ public class TreatmentPlan {
 	private ArrayList<String> TREATMENT_PLAN3_SHOULDER = new ArrayList<String>();
 	
 	private int planID;
-	
-	//added by Jamel
 	private ArrayList<String> treatmentDescription = null;
 	private String treatmentType;
-	
-	//added by Jamel
+	private int exerciseReps;
+	private int exerciseMinTime;
+	private int exerciseMaxTime;
 	private boolean treatmentPlansInitialized;
+	
+	public int getExerciseReps() {
+		return exerciseReps;
+	}
+	public void setExerciseReps(int exerciseReps) {
+		this.exerciseReps = exerciseReps;
+	}
+	public int getExerciseMinTime() {
+		return exerciseMinTime;
+	}
+	public void setExerciseMinTime(int exerciseMinTime) {
+		this.exerciseMinTime = exerciseMinTime;
+	}
+	public int getExerciseMaxTime() {
+		return exerciseMaxTime;
+	}
+	public void setExerciseMaxTime(int exerciseMaxTime) {
+		this.exerciseMaxTime = exerciseMaxTime;
+	}
 	
 	public int getPlanID() {
 		return planID;
@@ -60,13 +82,30 @@ public class TreatmentPlan {
 		
 		//LOWER BACK
 		TREATMENT_PLAN1_LOWER_BACK.add("Ankle Pumps");
+		TREATMENT_PLAN1_LOWER_BACK.add("Heel Slides");
+		TREATMENT_PLAN1_LOWER_BACK.add("Abdominal Contraction");
+		
+		
 		TREATMENT_PLAN2_LOWER_BACK.add("Single Knee to Chest Stretch");
+		TREATMENT_PLAN2_LOWER_BACK.add("Hamstring Stretch");
+		TREATMENT_PLAN2_LOWER_BACK.add("Lumbar Stabilization Exercises With Swiss Ball");
+		
 		TREATMENT_PLAN3_LOWER_BACK.add("Hip Flexor Stretch");
+		TREATMENT_PLAN3_LOWER_BACK.add("Piriformis Stretch");
+		TREATMENT_PLAN3_LOWER_BACK.add("Aerobic Exercises");
 		
 		//SHOULDER
 		TREATMENT_PLAN1_SHOULDER.add("Pendulums");
+		TREATMENT_PLAN1_SHOULDER.add("Standing Scapular Mobility (no resistance)");
+		TREATMENT_PLAN1_SHOULDER.add("Supine or Standing Passive External Rotation ");
+	
 		TREATMENT_PLAN2_SHOULDER.add("Supine Passive External Rotation in scapular plane progressing to 90 deg of Abduction");
+		TREATMENT_PLAN2_SHOULDER.add("Table slides in flexion with progression to wall slides"); 
+		TREATMENT_PLAN2_SHOULDER.add("Supine or standing cross body stretch");
+		
 		TREATMENT_PLAN3_SHOULDER.add("Prone Extension");
+		TREATMENT_PLAN3_SHOULDER.add("Prone Horizontal Abduction");
+		TREATMENT_PLAN3_SHOULDER.add("Standing/Prone Scaption");
 		
 		setIsTreatmentPlansInitialized(true);	//set it to true so that its only executed once
 	}
@@ -103,9 +142,12 @@ public class TreatmentPlan {
 					
 					//set an initial treatment plan 
 					setPlanID(1);
-					setTreatmentType("Phase I - Beginner - Lower Back");
+					setTreatmentType(PHASE1);
 					setTreatmentDescription(TREATMENT_PLAN1_LOWER_BACK);
-					Log.v("Treatment Plan Selected is: ", "1" );
+					setExerciseReps(10);
+					setExerciseMinTime(10);
+					setExerciseMaxTime(30);
+					Log.d(TREATMENT_TAG, "1" );
 				}
 			}
 		}
@@ -119,9 +161,12 @@ public class TreatmentPlan {
 							
 							//set an initial treatment plan 
 							setPlanID(2);
-							setTreatmentType("Phase II - Intermediate - Lower Back");
+							setTreatmentType(PHASE2);
 							setTreatmentDescription(TREATMENT_PLAN2_LOWER_BACK);
-							Log.v("Treatment Plan Selected is: ", "2" );
+							setExerciseReps(5);
+							setExerciseMinTime(10);
+							setExerciseMaxTime(30);
+							Log.d(TREATMENT_TAG, "2" );
 						}
 					}
 				}
@@ -135,9 +180,12 @@ public class TreatmentPlan {
 							
 							//set an initial treatment plan 
 							setPlanID(3);
-							setTreatmentType("Phase III - Advanced - Lower Back");
+							setTreatmentType(PHASE3);
 							setTreatmentDescription(TREATMENT_PLAN3_LOWER_BACK);
-							Log.v("Treatment Plan Selected is: ", "3" );
+							setExerciseReps(5);
+							setExerciseMinTime(10);
+							setExerciseMaxTime(30);
+							Log.d(TREATMENT_TAG, "3" );
 						}
 					}
 				}
@@ -145,9 +193,12 @@ public class TreatmentPlan {
 			//lets start the patient off slowly with Phase I
 			//set an initial treatment plan 
 			setPlanID(1);
-			setTreatmentType("Phase I - Beginner - Lower Back");
+			setTreatmentType(PHASE1);
 			setTreatmentDescription(TREATMENT_PLAN1_LOWER_BACK);
-			Log.v("Treatment Plan Selected is: ", "1" );
+			setExerciseReps(10);
+			setExerciseMinTime(10);
+			setExerciseMaxTime(30);
+			Log.d(TREATMENT_TAG, "1" );
 		}
 		
 		return getPlanID();
@@ -165,9 +216,12 @@ public class TreatmentPlan {
 							
 							//set an initial treatment plan 
 							setPlanID(4);
-							setTreatmentType("Phase I - Beginner - Shoulder");
+							setTreatmentType(PHASE1);
 							setTreatmentDescription(TREATMENT_PLAN1_SHOULDER);
-							Log.v("Treatment Plan Selected is: ", "4" );
+							setExerciseReps(10);
+							setExerciseMinTime(1);
+							setExerciseMaxTime(3);
+							Log.d(TREATMENT_TAG, "4" );
 						}
 					}
 				}
@@ -181,9 +235,12 @@ public class TreatmentPlan {
 									
 									//set an initial treatment plan 
 									setPlanID(5);
-									setTreatmentType("Phase II - Intermediate - Shoulder");
+									setTreatmentType(PHASE2);
 									setTreatmentDescription(TREATMENT_PLAN2_SHOULDER);
-									Log.v("Treatment Plan Selected is: ", "5" );
+									setExerciseReps(15);
+									setExerciseMinTime(1);
+									setExerciseMaxTime(3);
+									Log.d(TREATMENT_TAG, "5" );
 								}
 							}
 						}
@@ -197,9 +254,12 @@ public class TreatmentPlan {
 									
 									//set an initial treatment plan 
 									setPlanID(6);
-									setTreatmentType("Phase III - Advanced - Shoulder");
+									setTreatmentType(PHASE3);
 									setTreatmentDescription(TREATMENT_PLAN3_SHOULDER);
-									Log.v("Treatment Plan Selected is: ", "6" );
+									setExerciseReps(15);
+									setExerciseMinTime(1);
+									setExerciseMaxTime(3);
+									Log.d(TREATMENT_TAG, "6" );
 								}
 							}
 						}
@@ -207,9 +267,12 @@ public class TreatmentPlan {
 					//lets start the patient off slowly with Phase I
 					//set an initial treatment plan 
 					setPlanID(4);
-					setTreatmentType("Phase I - Beginner - Shoulder");
+					setTreatmentType(PHASE1);
 					setTreatmentDescription(TREATMENT_PLAN1_SHOULDER);
-					Log.v("Treatment Plan Selected is: ", "4" );
+					setExerciseReps(10);
+					setExerciseMinTime(1);
+					setExerciseMaxTime(3);
+					Log.d(TREATMENT_TAG, "4" );
 				}
 				
 				return getPlanID();

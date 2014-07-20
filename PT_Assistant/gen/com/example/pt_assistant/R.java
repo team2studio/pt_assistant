@@ -1095,9 +1095,9 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_register_patient=0x7f050092;
-        public static final int action_search=0x7f050090;
-        public static final int action_settings=0x7f050091;
+        public static final int action_register_patient=0x7f050093;
+        public static final int action_search=0x7f050091;
+        public static final int action_settings=0x7f050092;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
@@ -1159,8 +1159,8 @@ containing a value of this type.
         public static final int none=0x7f050010;
         public static final int normal=0x7f050000;
         public static final int patient_ID=0x7f05005b;
-        public static final int patientlist=0x7f05008f;
-        public static final int phaseName=0x7f050088;
+        public static final int patientlist=0x7f050090;
+        public static final int phaseName=0x7f050082;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radGrpSex2=0x7f050055;
@@ -1309,14 +1309,14 @@ containing a value of this type.
         public static final int support_simple_spinner_dropdown_item=0x7f03002a;
     }
     public static final class menu {
-        public static final int activity_main_actions=0x7f0d0000;
-        public static final int assessment_notes=0x7f0d0001;
-        public static final int create_notes=0x7f0d0002;
-        public static final int display_message=0x7f0d0003;
-        public static final int main=0x7f0d0004;
-        public static final int objective_notes=0x7f0d0005;
-        public static final int plan_notes=0x7f0d0006;
-        public static final int subjective_notes=0x7f0d0007;
+        public static final int activity_main_actions=0x7f0c0000;
+        public static final int assessment_notes=0x7f0c0001;
+        public static final int create_notes=0x7f0c0002;
+        public static final int display_message=0x7f0c0003;
+        public static final int main=0x7f0c0004;
+        public static final int objective_notes=0x7f0c0005;
+        public static final int plan_notes=0x7f0c0006;
+        public static final int subjective_notes=0x7f0c0007;
         public static final int treatment_plan=0x7f0d0008;
     }
     public static final class string {
