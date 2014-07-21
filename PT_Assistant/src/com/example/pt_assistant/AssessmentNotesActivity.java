@@ -41,18 +41,17 @@ public class AssessmentNotesActivity extends ActionBarActivity implements OnItem
         // Spinner element
         Spinner spin = (Spinner) findViewById(R.id.spinnerInjury);
  
-        // Spinner click listener
-        spin.setOnItemSelectedListener(this);
- 
         // Creating adapter for spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.array.injury_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.injury_array, android.R.layout.simple_spinner_item);
  
         // Drop down layout style - list view with radio button
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
  
-        // attaching data adapter to spinner
+        // attaching adapter to spinner
         spin.setAdapter(adapter);
-		
+        
+        // Spinner click listener
+        spin.setOnItemSelectedListener(this);
 	}
 
 	@Override
@@ -86,10 +85,9 @@ public class AssessmentNotesActivity extends ActionBarActivity implements OnItem
 		eText = (EditText) findViewById(R.id.editAssessment);
 		pn.setPatient_diagnosis(eText.getText().toString());
 		
-		//Spinner spin;
-		//spin = (Spinner) findViewById(R.id.spinnerInjury);
-		//pn.setInjury(adapter.getPosition().toString());//probably not right need to resolve
-		//need the actual position value from below in onItemSelected
+		Spinner spin;
+		spin = (Spinner) findViewById(R.id.spinnerInjury);
+		pn.setInjury(spin.getSelectedItem().toString());
 
 		//Serialize, start next activity and send intent
 		Intent intent = new Intent(this, PlanNotesActivity.class);
@@ -121,7 +119,7 @@ public class AssessmentNotesActivity extends ActionBarActivity implements OnItem
 	public void onItemSelected(AdapterView<?> pn, View view, int position,
 			long id) {
         String item = pn.getItemAtPosition(position).toString();
- 
+        
         // Showing selected spinner item
         //Toast.makeText(pn.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
 	}

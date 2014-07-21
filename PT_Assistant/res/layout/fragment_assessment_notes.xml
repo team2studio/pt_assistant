@@ -31,7 +31,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/textViewInjury"
-            android:layout_toRightOf="@+id/textViewAssess" />
+            android:layout_toRightOf="@+id/textViewAssess"
+            android:entries="@array/injury_array" />
 
         <EditText
             android:id="@+id/editAssessment"
