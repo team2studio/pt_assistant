@@ -186,7 +186,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  	
 		  	//***ASSESSMENT***
 		  	pn.setPatient_diagnosis("diagnosis");
-		  	pn.setInjury("LOWER BACK INJURY");
+		  	pn.setInjury("LUMBAR STRAIN");
 		  	
 		  	//***PLAN***
 		  	pn.setAdditionalPlanNotes("test");
@@ -274,7 +274,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  	
 		  	//***ASSESSMENT***
 		  	pn.setPatient_diagnosis("diagnosis test");
-		  	pn.setInjury("LOWER BACK INJURY LUMBAR");
+		  	pn.setInjury("LUMBAR STRAIN");
 		  	
 		  	//***PLAN***
 		  	pn.setAdditionalPlanNotes("More plan notes");

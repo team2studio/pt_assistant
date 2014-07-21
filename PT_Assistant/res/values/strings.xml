@@ -39,8 +39,8 @@
     <string name="exerciseTwo"></string>
     <string name="exerciseThree"></string>
     <string-array name="injury_array">
-        <item>LOWER BACK INJURY LUMBAR</item>
-        <item>ROTATOR CUFF TENDINITIS</item>
+        <item>LUMBAR STRAIN</item>
+        <item>ROTATOR CUFF TEAR</item>
     </string-array>
 
 </resources>
