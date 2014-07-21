@@ -6,20 +6,20 @@ import android.util.Log;
 public class TreatmentPlan {
 	private static final String LOWER_BACK_INJURY = "LOWER BACK INJURY LUMBAR";	//LOWER BACK INJURY
 	private static final String SHOULDER_INJURY = "ROTATOR CUFF TENDINITIS";	//SHOULDER INJURY
-	private static final String PHASE1 = "Phase I (Beginner)";
-	private static final String PHASE2 = "Phase II (Intermediate)";
-	private static final String PHASE3 = "Phase III (Advanced)";
+	private static final String PHASE1 = "I (Beginner)";
+	private static final String PHASE2 = "II (Intermediate)";
+	private static final String PHASE3 = "III (Advanced)";
 	private static final String TREATMENT_TAG = "Treatment Plan Selected is: ";
 	
 	//treatment plan options for lower back
-	private ArrayList<String> TREATMENT_PLAN1_LOWER_BACK = new ArrayList<String>();
-	private ArrayList<String> TREATMENT_PLAN2_LOWER_BACK = new ArrayList<String>();
-	private ArrayList<String> TREATMENT_PLAN3_LOWER_BACK = new ArrayList<String>();
+	private ArrayList<String> TREATMENT_PLAN1_LOWER_BACK; 	// = new ArrayList<String>();
+	private ArrayList<String> TREATMENT_PLAN2_LOWER_BACK;	// = new ArrayList<String>();
+	private ArrayList<String> TREATMENT_PLAN3_LOWER_BACK;	// = new ArrayList<String>();
 	
 	//treatment plan options for shoulder
-	private ArrayList<String> TREATMENT_PLAN1_SHOULDER = new ArrayList<String>();
-	private ArrayList<String> TREATMENT_PLAN2_SHOULDER = new ArrayList<String>();
-	private ArrayList<String> TREATMENT_PLAN3_SHOULDER = new ArrayList<String>();
+	private ArrayList<String> TREATMENT_PLAN1_SHOULDER;	// = new ArrayList<String>();
+	private ArrayList<String> TREATMENT_PLAN2_SHOULDER;	// = new ArrayList<String>();
+	private ArrayList<String> TREATMENT_PLAN3_SHOULDER;	// = new ArrayList<String>();
 	
 	private int planID;
 	private ArrayList<String> treatmentDescription = null;
@@ -115,9 +115,23 @@ public class TreatmentPlan {
 		int selectedTreatmentPlanID = 0;
 		
 		//lets determine if we set up our treatment plans
-		if (getIsTreatmentPlansInitialized() == false){
-			initializeTreatmentPlans();		//add list of exercises to each arraylist object
-		}
+		//if (getIsTreatmentPlansInitialized() == false){
+		//	initializeTreatmentPlans();		//add list of exercises to each arraylist object
+		//}
+		TREATMENT_PLAN1_LOWER_BACK = new ArrayList<String>();
+		TREATMENT_PLAN2_LOWER_BACK = new ArrayList<String>();
+		TREATMENT_PLAN3_LOWER_BACK = new ArrayList<String>();
+		
+		TREATMENT_PLAN1_SHOULDER = new ArrayList<String>();
+		TREATMENT_PLAN2_SHOULDER = new ArrayList<String>();
+		TREATMENT_PLAN3_SHOULDER = new ArrayList<String>();
+		
+		initializeTreatmentPlans();
+		
+		//if its empty, initialize all the array list
+		//if (TREATMENT_PLAN1_LOWER_BACK.isEmpty()){
+		//	initializeTreatmentPlans();
+		//}
 		
 		//determine a treatment plan based on the injury
 		if (patientNotes.getInjury().equalsIgnoreCase(LOWER_BACK_INJURY)){
@@ -132,13 +146,13 @@ public class TreatmentPlan {
 	public int generateLowerBackInjuryTreatmentPlan(Patient_Notes patientNotes){
 		
 		//lets determine the patients pain level
-		if ((patientNotes.getPain() >= 7) && (patientNotes.getPain() <=10)){
+		if ((patientNotes.getPain() >= 7) && (patientNotes.getPain() <=10) && (patientNotes.getStrength() >= 0) && (patientNotes.getStrength() <= 3) && (patientNotes.getRangeOfMotion() >= 40) && (patientNotes.getRangeOfMotion() <= 45)){
 			
 			//lets determine the patients strength level
-			if ((patientNotes.getStrength() >= 0) && (patientNotes.getStrength() <= 3)){
+			//if ((patientNotes.getStrength() >= 0) && (patientNotes.getStrength() <= 3)){
 				
 				//lets determine the patients range of motion
-				if ((patientNotes.getRangeOfMotion() >= 40) && (patientNotes.getRangeOfMotion() <= 45)){
+				//if ((patientNotes.getRangeOfMotion() >= 40) && (patientNotes.getRangeOfMotion() <= 45)){
 					
 					//set an initial treatment plan 
 					setPlanID(1);
@@ -148,16 +162,16 @@ public class TreatmentPlan {
 					setExerciseMinTime(10);
 					setExerciseMaxTime(30);
 					Log.d(TREATMENT_TAG, "1" );
-				}
-			}
+				//}
+			//}
 		}
-		else if ((patientNotes.getPain() >= 3) && (patientNotes.getPain() <=6)){
+		else if ((patientNotes.getPain() >= 3) && (patientNotes.getPain() <=6) && (patientNotes.getStrength() >= 4) && (patientNotes.getStrength() <= 7) && (patientNotes.getRangeOfMotion() > 45) && (patientNotes.getRangeOfMotion() <= 55)){
 					
 					//lets determine the patients strength level
-					if ((patientNotes.getStrength() >= 4) && (patientNotes.getStrength() <= 7)){
+					//if ((patientNotes.getStrength() >= 4) && (patientNotes.getStrength() <= 7)){
 						
 						//lets determine the patients range of motion
-						if ((patientNotes.getRangeOfMotion() > 45) && (patientNotes.getRangeOfMotion() <= 55)){
+						//if ((patientNotes.getRangeOfMotion() > 45) && (patientNotes.getRangeOfMotion() <= 55)){
 							
 							//set an initial treatment plan 
 							setPlanID(2);
@@ -167,16 +181,16 @@ public class TreatmentPlan {
 							setExerciseMinTime(10);
 							setExerciseMaxTime(30);
 							Log.d(TREATMENT_TAG, "2" );
-						}
-					}
+						//}
+					//}
 				}
-		else if ((patientNotes.getPain() >= 0) && (patientNotes.getPain() <=2)){
+		else if ((patientNotes.getPain() >= 0) && (patientNotes.getPain() <=2) && (patientNotes.getStrength() >= 8) && (patientNotes.getStrength() <= 10) && (patientNotes.getRangeOfMotion() > 55) && (patientNotes.getRangeOfMotion() <= 60)){
 					
 					//lets determine the patients strength level
-					if ((patientNotes.getStrength() >= 8) && (patientNotes.getStrength() <= 10)){
+					//if ((patientNotes.getStrength() >= 8) && (patientNotes.getStrength() <= 10)){
 						
 						//lets determine the patients range of motion
-						if ((patientNotes.getRangeOfMotion() > 55) && (patientNotes.getRangeOfMotion() <= 60)){
+						//if ((patientNotes.getRangeOfMotion() > 55) && (patientNotes.getRangeOfMotion() <= 60)){
 							
 							//set an initial treatment plan 
 							setPlanID(3);
@@ -186,8 +200,8 @@ public class TreatmentPlan {
 							setExerciseMinTime(10);
 							setExerciseMaxTime(30);
 							Log.d(TREATMENT_TAG, "3" );
-						}
-					}
+						//}
+					//}
 				}
 		else{
 			//lets start the patient off slowly with Phase I
@@ -206,62 +220,62 @@ public class TreatmentPlan {
 	
 	public int generateShoulderInjuryTreatmentPlan(Patient_Notes patientNotes){
 				//lets determine the patients pain level
-				if ((patientNotes.getPain() >= 7) && (patientNotes.getPain() <=10)){
+				if ((patientNotes.getPain() >= 7) && (patientNotes.getPain() <=10) && (patientNotes.getStrength() >= 0) && (patientNotes.getStrength() <= 3) && (patientNotes.getRangeOfMotion() >= 0) && (patientNotes.getRangeOfMotion() <= 60)){
 					
 					//lets determine the patients strength level
-					if ((patientNotes.getStrength() >= 0) && (patientNotes.getStrength() <= 3)){
+					//if ((patientNotes.getStrength() >= 0) && (patientNotes.getStrength() <= 3)){
 						
 						//lets determine the patients range of motion
-						if ((patientNotes.getRangeOfMotion() >= 0) && (patientNotes.getRangeOfMotion() <= 60)){
+						//if ((patientNotes.getRangeOfMotion() >= 0) && (patientNotes.getRangeOfMotion() <= 60)){
 							
 							//set an initial treatment plan 
 							setPlanID(4);
 							setTreatmentType(PHASE1);
 							setTreatmentDescription(TREATMENT_PLAN1_SHOULDER);
 							setExerciseReps(10);
-							setExerciseMinTime(1);
-							setExerciseMaxTime(3);
+							setExerciseMinTime(10);
+							setExerciseMaxTime(20);
 							Log.d(TREATMENT_TAG, "4" );
-						}
-					}
+						//}
+					//}
 				}
-				else if ((patientNotes.getPain() >= 3) && (patientNotes.getPain() <=6)){
+				else if ((patientNotes.getPain() >= 3) && (patientNotes.getPain() <=6) && (patientNotes.getStrength() >= 4) && (patientNotes.getStrength() <= 7) && (patientNotes.getRangeOfMotion() > 61) && (patientNotes.getRangeOfMotion() <= 120)){
 							
 							//lets determine the patients strength level
-							if ((patientNotes.getStrength() >= 4) && (patientNotes.getStrength() <= 7)){
+							//if ((patientNotes.getStrength() >= 4) && (patientNotes.getStrength() <= 7)){
 								
 								//lets determine the patients range of motion
-								if ((patientNotes.getRangeOfMotion() > 61) && (patientNotes.getRangeOfMotion() <= 120)){
+								//if ((patientNotes.getRangeOfMotion() > 61) && (patientNotes.getRangeOfMotion() <= 120)){
 									
 									//set an initial treatment plan 
 									setPlanID(5);
 									setTreatmentType(PHASE2);
 									setTreatmentDescription(TREATMENT_PLAN2_SHOULDER);
 									setExerciseReps(15);
-									setExerciseMinTime(1);
-									setExerciseMaxTime(3);
+									setExerciseMinTime(10);
+									setExerciseMaxTime(20);
 									Log.d(TREATMENT_TAG, "5" );
-								}
-							}
+								//}
+							//}
 						}
-				else if ((patientNotes.getPain() >= 0) && (patientNotes.getPain() <=2)){
+				else if ((patientNotes.getPain() >= 0) && (patientNotes.getPain() <=2) && (patientNotes.getStrength() >= 8) && (patientNotes.getStrength() <= 10) && (patientNotes.getRangeOfMotion() > 121) && (patientNotes.getRangeOfMotion() <= 180)){
 							
 							//lets determine the patients strength level
-							if ((patientNotes.getStrength() >= 8) && (patientNotes.getStrength() <= 10)){
+							//if ((patientNotes.getStrength() >= 8) && (patientNotes.getStrength() <= 10)){
 								
 								//lets determine the patients range of motion
-								if ((patientNotes.getRangeOfMotion() > 121) && (patientNotes.getRangeOfMotion() <= 180)){
+								//if ((patientNotes.getRangeOfMotion() > 121) && (patientNotes.getRangeOfMotion() <= 180)){
 									
 									//set an initial treatment plan 
 									setPlanID(6);
 									setTreatmentType(PHASE3);
 									setTreatmentDescription(TREATMENT_PLAN3_SHOULDER);
 									setExerciseReps(15);
-									setExerciseMinTime(1);
-									setExerciseMaxTime(3);
+									setExerciseMinTime(10);
+									setExerciseMaxTime(20);
 									Log.d(TREATMENT_TAG, "6" );
-								}
-							}
+								//}
+							//}
 						}
 				else{
 					//lets start the patient off slowly with Phase I
@@ -270,8 +284,8 @@ public class TreatmentPlan {
 					setTreatmentType(PHASE1);
 					setTreatmentDescription(TREATMENT_PLAN1_SHOULDER);
 					setExerciseReps(10);
-					setExerciseMinTime(1);
-					setExerciseMaxTime(3);
+					setExerciseMinTime(10);
+					setExerciseMaxTime(20);
 					Log.d(TREATMENT_TAG, "4" );
 				}
 				

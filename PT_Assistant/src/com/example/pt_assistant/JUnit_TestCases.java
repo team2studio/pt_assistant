@@ -23,6 +23,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 	TreatmentPlan tp;
 	List<NameValuePair> params;
 	JSONParser jsonParser;
+	Injury injury;
 	
 	  public JUnit_TestCases() {
 	    super();
@@ -59,6 +60,9 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 			
 			//lets create our json parse object
 			jsonParser = new JSONParser();
+			
+			//create a new Injury object
+			injury = new Injury();
 	  }
 	 
 	  
@@ -68,8 +72,8 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  	int success = 0;	//initialize success variable
 		  	
 			//set the Patient's ID, Name, Injury, Age, DOB, and Sex
-			p.setPatientID(1011);
-			p.setName("Amy Gibson");
+			p.setPatientID(1019);
+			p.setName("Amy Myers");
 			p.setInjury(3);
 			p.setAge(30);
 			p.setDOB("02/03/1983");
@@ -117,8 +121,8 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 			//set the Patient's ID, Name, Injury, Age, DOB, and Sex
 			p.setPatientID(1007);
 			p.setName("Craig Smithson");
-			p.setInjury(1);		//LETS UPDATE THE PATIENT INJURY
-			p.setAge(30);
+			p.setInjury(2);		//LETS UPDATE THE PATIENT INJURY
+			p.setAge(34);
 			p.setDOB("02/06/1983");	//UPDATE THE PATIENTS DOB
 			p.setSex(1);
 			
@@ -162,7 +166,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 			int success = 0;	//initialize success variable
 			
 			//lets set a patient id to use
-			p.setPatientID(1011);
+			p.setPatientID(1007);
 			
 		    //lets test entering the patients notes
 		    //***SUBJECTIVE***
@@ -175,7 +179,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  	//***OBJECTIVE***
 		  	pn.setPain(1);
 		  	pn.setStrength(2);
-		  	pn.setRangeOfMotion(30);	//in degrees
+		  	pn.setRangeOfMotion(40);	//in degrees
 		  	pn.setPalpation(1);
 		  	pn.setJointMobilization(1);
 		  	pn.setSpecialTest(1);
@@ -237,7 +241,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 			assertTrue(success == 1);
 	  } 
 		
-		
+		/*
 		@Test
 		public void testInitializeTreatmentPlans() {
 		  
@@ -246,6 +250,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  
 		  assertTrue(tp.getIsTreatmentPlansInitialized() == true);
 	  }	
+	  */
 		
 		@Test
 		public void testGenerateTreatmentPlan() {
@@ -283,5 +288,11 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  assertEquals(2, treatmentPlanVal);
 	  }	
 	  
-	  
+		@Test
+		public void testGetSpecificInjuryHelp() {
+			int injuryID = 5;
+			String commonInjury = injury.getSpecificInjuryHelp(injuryID);
+			
+			assertTrue(commonInjury.equalsIgnoreCase("ACL Injury"));
+		}
 }

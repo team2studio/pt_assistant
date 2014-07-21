@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,6 +28,7 @@ import android.os.Build;
 public class AssessmentNotesActivity extends ActionBarActivity implements OnItemSelectedListener{
 	Patient_Notes pn;
 	Patient p;
+	private static final String TAG = "AssessmentNotesActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,7 @@ public class AssessmentNotesActivity extends ActionBarActivity implements OnItem
 		
 		Spinner spin;
 		spin = (Spinner) findViewById(R.id.spinnerInjury);
+		Log.i(TAG, "Injury name is: "+spin.getSelectedItem().toString());
 		pn.setInjury(spin.getSelectedItem().toString());
 
 		//Serialize, start next activity and send intent
