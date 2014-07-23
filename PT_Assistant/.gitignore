@@ -28,6 +28,8 @@ local.properties
 # PDT-specific
 .buildpath
 
+PT_Assistant/gen/com/example/pt_assistant/R.java
+appcompat_v7/gen/android/support/v7/appcompat/R.java
 
 #################
 ## Visual Studio
@@ -200,6 +202,8 @@ var/
 sdist/
 develop-eggs/
 .installed.cfg
+
+
 
 # Installer logs
 pip-log.txt
