@@ -1,5 +1,7 @@
 package com.example.pt_assistant;
 
+import org.json.JSONException;
+
 import com.example.pt_assistant.R;
 
 import android.content.Intent;
@@ -111,7 +113,13 @@ public class MainActivity extends ActionBarActivity {
 		intent.putExtra(EXTRA_MESSAGE, message);
 		startActivity(intent);
 	}
-   
+	//Test code for reporting
+	public void doReportStuff(View view)
+	{
+	   Report testReport = new Report();
+	   testReport.get_index_scores();
+	
+	}
 	public void createPatient(View view) {
 
 		openRegisterPatient();
