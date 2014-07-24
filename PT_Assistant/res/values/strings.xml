@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="button_report">Reports</string>
     <string name="app_name">PT Assistant</string>
     <string name="edit_message">Patient ID</string>
     <string name="action_settings">Settings</string>
@@ -42,5 +42,6 @@
         <item>LUMBAR STRAIN</item>
         <item>ROTATOR CUFF TEAR</item>
     </string-array>
+   
 
 </resources>
