@@ -19,7 +19,7 @@ import android.widget.Toast;
 
 public class Report {
 
-	private static final String GET_INDEX_URL = "http://199.255.250.71/get_paitient_data.php";
+	private static final String GET_INDEX_URL = "http://199.255.250.71/get_pain_data.php";
 
 	public void get_index_scores() { // For remote DB
 		new doReportAsyncTask().execute();
