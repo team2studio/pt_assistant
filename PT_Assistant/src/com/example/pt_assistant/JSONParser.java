@@ -125,8 +125,8 @@ public class JSONParser {
 		         conn.setReadTimeout(10000);
 		         conn.setConnectTimeout(15000);
 		         conn.setRequestMethod("GET");
-		         //conn.setDoInput(true);
-		         // conn.connect();
+		        // conn.setDoInput(true);
+		         //conn.connect();
 		         is = conn.getInputStream();
     		}
 

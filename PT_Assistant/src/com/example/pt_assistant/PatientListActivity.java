@@ -39,7 +39,7 @@ public class PatientListActivity extends ActionBarActivity {
 	public final static String EXTRA_MESSAGE = "com.example.pt_assistant.MESSAGE";
 	private static final String LOAD_PATIENTS_URL = "http://199.255.250.71/load_patients.php";
 	private static final String PID_NAME = "pid_name";
-	//TODO maybe just locl to method 
+	// TODO maybe just locl to method
 	private String pidname;
 
 	@Override
@@ -47,34 +47,34 @@ public class PatientListActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.patient_list_view);
 
-		//get the patient list from the web server
+		// get the patient list from the web server
 		new loadPatients().execute();
 	}
+
 	// This function gets the patient list from a local DB
-	List<Map>  GetPatientList() {
-		
-		
-		 String pid_name;
-		 List<Patient> patientList = pt_db.getAllPatients();
-		 List<Map> patlist = new ArrayList<Map>();
-		 // List<Map> patlist = new ArrayList<Map>();
-		 Patient thispat;
-		 Iterator<Patient> iterator = patientList.iterator();
-		 while (iterator.hasNext()) {
-		 Map map = new HashMap();
-		 thispat = iterator.next();
-		
-		 thispat.getName();
-		 pid_name = Integer.toString(thispat.getPatientID()) + "  "
-		 + thispat.getName();
-		
-		 map.put("pid_name", pid_name);
-		
-		 patlist.add(map);
-		
-		 }
-		
-		 return patlist;
+	List<Map> GetPatientList() {
+
+		String pid_name;
+		List<Patient> patientList = pt_db.getAllPatients();
+		List<Map> patlist = new ArrayList<Map>();
+		// List<Map> patlist = new ArrayList<Map>();
+		Patient thispat;
+		Iterator<Patient> iterator = patientList.iterator();
+		while (iterator.hasNext()) {
+			Map map = new HashMap();
+			thispat = iterator.next();
+
+			thispat.getName();
+			pid_name = Integer.toString(thispat.getPatientID()) + "  "
+					+ thispat.getName();
+
+			map.put("pid_name", pid_name);
+
+			patlist.add(map);
+
+		}
+
+		return patlist;
 		// ******************************************************************
 
 	}
@@ -95,8 +95,8 @@ public class PatientListActivity extends ActionBarActivity {
 		// hack for demo. Sergio
 		simpleAdpt = new SimpleAdapter(this,
 				(List<? extends Map<String, ?>>) patientList,
-				android.R.layout.simple_list_item_1,
-				new String[] { PID_NAME }, new int[] { android.R.id.text1 });
+				android.R.layout.simple_list_item_1, new String[] { PID_NAME },
+				new int[] { android.R.id.text1 });
 
 		lv.setAdapter(simpleAdpt);
 		// React to user clicks on item
@@ -219,17 +219,17 @@ public class PatientListActivity extends ActionBarActivity {
 		}
 
 		private String load_patients_json() {
-			
+
 			// JSON element ids from repsonse of php script:sergio
 			String TAG_SUCCESS = "success";
 			String TAG_MESSAGE = "message";
 			String TAG_PATIENTS = "patients";
 			String TAG_PID = "pid";
 			String TAG_NAME = "pname";
-			String p_id,name,pidName;
+			String p_id, name, pidName;
 			int success;
 			try {
-				
+
 				Log.d("request!", "starting");
 				// getting product details by making HTTP request
 				JSONObject json = jsonParser.getJSONFromUrl(LOAD_PATIENTS_URL);

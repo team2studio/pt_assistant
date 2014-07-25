@@ -117,7 +117,7 @@ public class MainActivity extends ActionBarActivity {
 	public void doReportStuff(View view)
 	{
 	   Report testReport = new Report();
-	   testReport.get_index_scores();
+	   testReport.get_patient_trend_data();
 	
 	}
 	public void createPatient(View view) {
