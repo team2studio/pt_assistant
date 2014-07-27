@@ -1,21 +1,28 @@
 package com.example.pt_assistant;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
+
 import android.test.InstrumentationTestCase;
+import android.util.Log;
 
 public class JUnit_TestCases extends InstrumentationTestCase {
 	
 	private static final String CREATE_PATIENT_URL = "http://199.255.250.71/register_patient.php";
 	private static final String UPDATE_PATIENT_URL = "http://199.255.250.71/update_patient.php";
 	private static final String CREATE_PATIENT_NOTES_URL = "http://199.255.250.71/patient_create_notes.php";
+	private static final String LOAD_INJURIES_URL = "http://199.255.250.71/load_injuries.php";
 	private static final String TAG_SUCCESS = "success";
 	
 	Patient p;
@@ -72,11 +79,11 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  	int success = 0;	//initialize success variable
 		  	
 			//set the Patient's ID, Name, Injury, Age, DOB, and Sex
-			p.setPatientID(1019);
-			p.setName("Amy Myers");
+			p.setPatientID(1020);
+			p.setName("Royal Myers");
 			p.setInjury(3);
-			p.setAge(30);
-			p.setDOB("02/03/1983");
+			p.setAge(66);
+			p.setDOB("02/03/1948");
 			p.setSex(0);
 			
 			String patient_name = p.getName();
@@ -121,9 +128,9 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 			//set the Patient's ID, Name, Injury, Age, DOB, and Sex
 			p.setPatientID(1007);
 			p.setName("Craig Smithson");
-			p.setInjury(2);		//LETS UPDATE THE PATIENT INJURY
-			p.setAge(34);
-			p.setDOB("02/06/1983");	//UPDATE THE PATIENTS DOB
+			p.setInjury(1);		//LETS UPDATE THE PATIENT INJURY
+			p.setAge(32);
+			p.setDOB("02/06/1982");	//UPDATE THE PATIENTS DOB
 			p.setSex(1);
 			
 			String patient_name = p.getName();
@@ -240,17 +247,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 			//if success equals 1, then the patient's notes was successfully created
 			assertTrue(success == 1);
 	  } 
-		
-		/*
-		@Test
-		public void testInitializeTreatmentPlans() {
-		  
-		  //initialize each treatment plan arraylist object
-		  tp.initializeTreatmentPlans();
-		  
-		  assertTrue(tp.getIsTreatmentPlansInitialized() == true);
-	  }	
-	  */
+	  
 		
 		@Test
 		public void testGenerateTreatmentPlan() {
@@ -288,11 +285,71 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  assertEquals(2, treatmentPlanVal);
 	  }	
 	  
+	  
 		@Test
 		public void testGetSpecificInjuryHelp() {
-			int injuryID = 5;
-			String commonInjury = injury.getSpecificInjuryHelp(injuryID);
 			
-			assertTrue(commonInjury.equalsIgnoreCase("ACL Injury"));
+		int success = 0;
+		List<Map> injuryList = null;
+		String TAG_INJURIES = "injuries";
+		String TAG_INJURY_NAME = "injuryName";
+		String TAG_INJURY_DESCRIPTION = "injuryDescription";
+		String injuryRecord = null;
+		String TAG_MESSAGE = "message";
+		final String LUMBAR_STRAIN_INJURY_AND_DESCRIPTION = "LUMBAR STRAIN" + "  " + "LOWER BACK MUSCLE STRAIN";
+		final String ROTATOR_CUFF_INJURY_AND_DESCRIPTION = "ROTATOR CUFF TEAR" + "  " + "ROTATOR CUFF TENDONS ARE TORN";
+		
+		try {
+
+			//load injuries from the database
+			JSONObject json = jsonParser.getJSONFromUrl(LOAD_INJURIES_URL);
+
+			// check your log for json response
+			Log.d("load injuries attempt", json.toString());
+
+			// json success tag
+			success = json.getInt(TAG_SUCCESS);
+			
+			//if success equals 1, then the injury data was successfully loaded from the db
+			assertTrue(success == 1);
+			
+			if (success == 1) {
+				injuryList = new ArrayList<Map>();
+				JSONArray jsonInjuryList = new JSONArray();
+				jsonInjuryList = json.getJSONArray(TAG_INJURIES);
+				for (int j = 0; j < jsonInjuryList.length(); j++) {
+					Map map = new HashMap();
+					JSONObject i = jsonInjuryList.getJSONObject(j);
+					injury.setInjuryName(i.getString(TAG_INJURY_NAME));
+					injury.setInjuryDescription(i.getString(TAG_INJURY_DESCRIPTION));
+					injuryRecord = injury.getInjuryName() + "  " + injury.getInjuryDescription();
+					map.put(j, injuryRecord);	//add key value pair
+					injuryList.add(map);	//add map of injuries to arraylist
+				}
+
+				Log.d("Successful: ", json.getString(TAG_MESSAGE));
+				//return json.getString(TAG_MESSAGE);
+			} else {
+					Log.d("Failure: ", json.getString(TAG_MESSAGE));
+					//failure = true;
+					//return json.getString(TAG_MESSAGE);
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		
+		//now lets compare our injury data to the injury data returned from the db
+		for (int k = 0; k < injuryList.size(); k++)	{		//loop through arraylist
+			Map testMap = (HashMap) injuryList.get(k);		//get HashMap object
+			Iterator entries = testMap.entrySet().iterator();	//create Iterator object
+			while (entries.hasNext()) {
+				Map.Entry entry = (Map.Entry) entries.next();
+				String injuryRecordFromDB = (String) entry.getValue();	//get value from each key
+				if (k == 0)		//should be lumbar strain
+					assertTrue(injuryRecordFromDB.equalsIgnoreCase(LUMBAR_STRAIN_INJURY_AND_DESCRIPTION));
+				else if (k == 1)	//should be rotator cuff injury
+					assertTrue(injuryRecordFromDB.equalsIgnoreCase(ROTATOR_CUFF_INJURY_AND_DESCRIPTION));
+			}
 		}
+	}
 }
