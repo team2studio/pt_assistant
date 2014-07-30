@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="button_report">Reports</string>
     <string name="app_name">PT Assistant</string>
     <string name="edit_message">Patient ID</string>
     <string name="action_settings">Settings</string>
     <string name="action_register_patient">Register Patient</string>
     <string name="title_activity_display_message">PT Assistant: Patient Record</string>
     <string name="button_get">Get Patient</string>
-    <string name="button_Register">Regsiter Patient</string>
+    <string name="button_Register">Register Patient</string>
     <string name="button_update">Update Patient</string>
     <string name="action_search">Search</string>
     <string name="button_create_patient">Create Patient</string>
     <string name="patient_name">Name</string>
-    <string name="patient_ID">Paitient ID</string>
+    <string name="patient_ID">Patient ID</string>
     <string name="injury_id">Injury ID</string>
     <string name="title_record_created_activity">Patient Registration</string>
     <string name="radio_male">Male</string>
@@ -43,6 +43,7 @@
         <item>LUMBAR STRAIN</item>
         <item>ROTATOR CUFF TEAR</item>
     </string-array>
+   
 
     <string name="title_activity_injury_lookup">InjuryLookupActivity</string>
 
