@@ -38,9 +38,12 @@
     <string name="exerciseOne"></string>
     <string name="exerciseTwo"></string>
     <string name="exerciseThree"></string>
+
     <string-array name="injury_array">
         <item>LUMBAR STRAIN</item>
         <item>ROTATOR CUFF TEAR</item>
     </string-array>
+
+    <string name="title_activity_injury_lookup">InjuryLookupActivity</string>
 
 </resources>
