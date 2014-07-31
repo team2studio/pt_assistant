@@ -86,13 +86,11 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 		p = (Patient)getIntent().getSerializableExtra("PatientObject");
 		pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
 				
-		EditText eText;
+		//EditText eText;
 		//notes = new Patient_Notes();
-		eText = (EditText) findViewById(R.id.editInjuryLookup);
-		pn.getInjury();
-		/*not sure what we want to do here. will figure out when we do injuries
-		We need to get the list of injuries here, we don't want to actually set it yet until Assessment*/
-		
+		//eText = (EditText) findViewById(R.id.editInjuryLookup);
+		//pn.getInjury();
+				
 		SeekBar seek;
 		seek = (SeekBar) findViewById(R.id.seekBarROM);
 		pn.setRangeOfMotion(seek.getProgress());

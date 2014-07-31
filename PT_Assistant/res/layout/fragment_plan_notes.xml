@@ -16,7 +16,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:onClick="backHome"
-        android:text="Back to SOAP Home" />
+        android:text="Back to Main Menu" />
 
     <EditText
         android:id="@+id/editPlanNotes"

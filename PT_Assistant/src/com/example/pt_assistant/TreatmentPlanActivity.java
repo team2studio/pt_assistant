@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -61,9 +62,18 @@ public class TreatmentPlanActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	/*Added by Ryan
-	Method to fill all the fields in the treatment plan to be triggered
-	from Jamel's treatment plan logic not GUI */
+	public void backToMain(View view) {
+		//receive serialized patient and notes objects from previous activity
+		p = (Patient)getIntent().getSerializableExtra("PatientObject");
+		notes = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
+		
+		//Serialize, start next activity and send intent
+		Intent intent = new Intent(this, MainActivity.class);
+		intent.putExtra("PatientObject", p);
+		intent.putExtra("PatientNotesObject", notes);
+		startActivity(intent);
+	}
+	
 	public void fill_treatmentPlan_fields() {
 		int i = 0;
 		String exercise1 = null;
