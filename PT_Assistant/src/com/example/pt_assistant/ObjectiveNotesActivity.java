@@ -119,17 +119,9 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 	}	
 	
 	public void lookupInjury(View view) {
-
-		//receive serialized patient and notes objects from previous activity
-		p = (Patient)getIntent().getSerializableExtra("PatientObject");
-		pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
-				
-		//Serialize, start next activity and send intent
+		//start next activity and send intent
 		Intent intent = new Intent(this, InjuryLookupActivity.class);
-		intent.putExtra("PatientObject", p);
-		intent.putExtra("PatientNotesObject", pn);
-		startActivity(intent);
-		
+		startActivity(intent);	
 	}
 	
 	/**
