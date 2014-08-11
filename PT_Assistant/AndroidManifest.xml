@@ -117,10 +117,12 @@
             android:label="@string/title_activity_trend_chart" >
         </activity>
         
-        <activity android:name="com.example.pt_assistant.TrendChartGUI" android:label="@string/title_activity_trend_chart_gui">
-        </activity><activity
-            android:name="com.example.pt_assistant.TrendchartmainActivity"
-            android:label="@string/title_activity_trendchartmain" >
+        <activity android:name="com.example.pt_assistant.TrendChartGUI" 
+            android:label="@string/title_activity_trend_chart_gui">
+        </activity>
+        <activity
+            android:name="com.example.pt_assistant.CreateReportActivity"
+            android:label="@string/title_activity_create_report" >
         </activity>
     </application>
 

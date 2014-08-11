@@ -152,7 +152,7 @@ public class MainActivity extends ActionBarActivity {
 		startActivity(intent);
 		
 	}
-	public void getReportQuery(View view){
+	public void getTrendChartGUI(View view){
 		// another activity
 		Intent intent = new Intent(this, TrendChartGUI.class);
 		intent.putExtra(EXTRA_MESSAGE, "test");
@@ -160,6 +160,7 @@ public class MainActivity extends ActionBarActivity {
 		
 	}
 	
+	/*
 	public void getTrendReport(View view){
 		// another activity
 		Intent intent = new Intent(this, TrendChartActivity.class);
@@ -167,5 +168,6 @@ public class MainActivity extends ActionBarActivity {
 		startActivity(intent);
 		
 	}
+	*/
 	
 }

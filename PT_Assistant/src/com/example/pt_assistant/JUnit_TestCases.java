@@ -23,6 +23,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 	private static final String UPDATE_PATIENT_URL = "http://199.255.250.71/update_patient.php";
 	private static final String CREATE_PATIENT_NOTES_URL = "http://199.255.250.71/patient_create_notes.php";
 	private static final String LOAD_INJURIES_URL = "http://199.255.250.71/load_injuries.php";
+	private static final String GET_INDEX_URL =   "http://199.255.250.71/get_patient_trend_data.php";
 	private static final String TAG_SUCCESS = "success";
 	
 	Patient p;
@@ -31,6 +32,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 	List<NameValuePair> params;
 	JSONParser jsonParser;
 	Injury injury;
+	Report r;
 	
 	  public JUnit_TestCases() {
 	    super();
@@ -70,8 +72,12 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 			
 			//create a new Injury object
 			injury = new Injury();
+			
+			//create a Report object
+			r = new Report();
 	  }
 	 
+	  
 	  
 	  @Test
 		public void testCreate_patient_profile() {
@@ -79,11 +85,11 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  	int success = 0;	//initialize success variable
 		  	
 			//set the Patient's ID, Name, Injury, Age, DOB, and Sex
-			p.setPatientID(1020);
-			p.setName("Royal Myers");
-			p.setInjury(3);
-			p.setAge(66);
-			p.setDOB("02/03/1948");
+			p.setPatientID(1022);
+			p.setName("Devon Mathers");
+			p.setInjury(5);
+			p.setAge(31);
+			p.setDOB("02/03/1983");
 			p.setSex(0);
 			
 			String patient_name = p.getName();
@@ -129,7 +135,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 			p.setPatientID(1007);
 			p.setName("Craig Smithson");
 			p.setInjury(1);		//LETS UPDATE THE PATIENT INJURY
-			p.setAge(32);
+			p.setAge(33);
 			p.setDOB("02/06/1982");	//UPDATE THE PATIENTS DOB
 			p.setSex(1);
 			
@@ -177,7 +183,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 			
 		    //lets test entering the patients notes
 		    //***SUBJECTIVE***
-		  	pn.setPastDiagnosis("jamel test");
+		  	pn.setPastDiagnosis("this is a 2nd test");
 		  	pn.setMedications("meds");			  	
 		  	pn.setOther_PatientHistory("test");
 		  	pn.setGoals("none");
@@ -196,7 +202,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  	pn.setInjury("LUMBAR STRAIN");
 		  	
 		  	//***PLAN***
-		  	pn.setAdditionalPlanNotes("test");
+		  	pn.setAdditionalPlanNotes("no additional notes at this time");
 			
 			String patient_id = String.valueOf(p.getPatientID());
 			String past_diagnosis = pn.getPastDiagnosis();
@@ -262,9 +268,9 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  	//***OBJECTIVE***
 		  	//BASED ON THIS SECTION, THIS PATIENT WILL HAVE PHASE 2 TREATMENT for 
 		  	//LOWER BACK INJURY
-		  	pn.setPain(6);
-		  	pn.setStrength(4);
-		  	pn.setRangeOfMotion(55);	//in degrees
+		  	pn.setPain(0);
+		  	pn.setStrength(10);
+		  	pn.setRangeOfMotion(60);	//in degrees
 		  	pn.setPalpation(1);
 		  	pn.setJointMobilization(1);
 		  	pn.setSpecialTest(1);
@@ -274,15 +280,15 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		  	pn.setInjury("LUMBAR STRAIN");
 		  	
 		  	//***PLAN***
-		  	pn.setAdditionalPlanNotes("More plan notes");
+		  	pn.setAdditionalPlanNotes("contact patients doctor");
 		  	
 		  //pass in the patient and the patients notes
-		  int treatmentPlanVal = tp.generateTreatmentPlan(pn);
+		  String treatmentPlanVal = tp.generateTreatmentPlan(pn);
 		  
 		  //determine if the treatment plan generated a value of 2
 		  //if true, we selected the correct treatment plan based on the
 		  //patients SOAP data
-		  assertEquals(2, treatmentPlanVal);
+		  assertEquals("LUMBAR STRAIN_3", treatmentPlanVal);
 	  }	
 	  
 	  
@@ -296,8 +302,8 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 		String TAG_INJURY_DESCRIPTION = "injuryDescription";
 		String injuryRecord = null;
 		String TAG_MESSAGE = "message";
-		final String LUMBAR_STRAIN_INJURY_AND_DESCRIPTION = "LUMBAR STRAIN" + "  " + "LOWER BACK MUSCLE STRAIN";
-		final String ROTATOR_CUFF_INJURY_AND_DESCRIPTION = "ROTATOR CUFF TEAR" + "  " + "ROTATOR CUFF TENDONS ARE TORN";
+		final String LUMBAR_STRAIN_INJURY_AND_DESCRIPTION = "LUMBAR STRAIN" + "  " + "A stretching injury to the ligaments, tendons, and muscles of the lower back.";
+		final String ROTATOR_CUFF_INJURY_AND_DESCRIPTION = "ROTATOR CUFF TEAR" + "  " + "A tear of one or more of the tendons of the four rotator cuff muscles.";
 		
 		try {
 
@@ -352,4 +358,18 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 			}
 		}
 	}
+		
+	  /*
+		@Test
+		public void testGetPatientTrendReport(){
+			String patient_id = "1211";
+			String injury_name = "LUMBAR STRAIN";	
+			
+			int reportGenerated = r.generateTrendReport(patient_id,injury_name);
+			
+			//determine if the report was generated successfully
+			assertTrue(reportGenerated == 1);
+		}
+		*/
+		
 }

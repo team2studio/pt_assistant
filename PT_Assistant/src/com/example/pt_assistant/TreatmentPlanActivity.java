@@ -75,7 +75,7 @@ public class TreatmentPlanActivity extends ActionBarActivity {
 	}
 	
 	public void fill_treatmentPlan_fields() {
-		int i = 0;
+		String selectedTreatmentPlanID = null;
 		String exercise1 = null;
 		String exercise2 = null;
 		String exercise3 = null;
@@ -93,8 +93,8 @@ public class TreatmentPlanActivity extends ActionBarActivity {
 		//notes.setInjury("ROTATOR CUFF TENDINITIS");
 		
 		//generate treatment plan based off Patient's SOAP data
-		i = tp.generateTreatmentPlan(notes);
-		Log.i(TAG, "We selected treatment plan id: "+i);
+		selectedTreatmentPlanID = tp.generateTreatmentPlan(notes);
+		Log.i(TAG, "We selected treatment plan id: "+selectedTreatmentPlanID);
 		
 		//retrieve arraylist of exercises from treatment plan description
 		exercises = tp.getTreatmentDescription();

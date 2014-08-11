@@ -48,7 +48,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="getReportQuery"
+            android:onClick="getTrendChartGUI"
             android:text="@string/button_report" />
 
      </LinearLayout>

@@ -5,9 +5,15 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
+
+
 // import com.example.listview1.CreateChart;
 import com.example.pt_assistant.TrendChartActivity;
 // import com.example.pt_assistant.R;
+
+
+
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -55,7 +61,6 @@ import android.os.Build;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import java.text.DecimalFormat;
 
 public class TrendChartGUI extends ActionBarActivity {
@@ -68,11 +73,13 @@ public class TrendChartGUI extends ActionBarActivity {
 	Button btSave, btPrint, btDone, btPatID;
 	RadioButton rbIndexscore, rbROM, rbPain, rbStrength;
 	RadioGroup rgMetric, rgInjuryType;
-
 	String patID;
+	Patient p;
+	Patient_Notes pn;
 
 	DecimalFormat formatter = new DecimalFormat("#0.0");
-
+	
+	//jamels onCreate method
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -83,8 +90,67 @@ public class TrendChartGUI extends ActionBarActivity {
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 		
+		//display header information
+	    tvHeader = (TextView)this.findViewById(R.id.tvHeader);
+	    tvHeader.setText("             TREND CHART MAIN MENU"); 
+	}
+	
+	//added by Jamel
+	public void getTrendReport(View view) {
+		p = new Patient();
+		pn = new Patient_Notes();
+		
+		EditText eText;
+		
+		//grab patient id entered by user
+		eText = (EditText)this.findViewById(R.id.dtpatid);
+		//p.setPatientID(Integer.parseInt(eText.getText().toString()));
+		patID = eText.getText().toString();
+		
+		//grab injury selected by user
+		rgInjuryType = (RadioGroup)this.findViewById(R.id.rgInjuryType);
+		
+		//determine what the user selected
+		switch (rgInjuryType.getCheckedRadioButtonId()) {
+		case R.id.rbLowerBack:
+			InjuryType = "LUMBAR STRAIN";
+			break;
+		case R.id.rbArm:
+			InjuryType = "ROTATOR CUFF TEAR";
+			break;
+		}
+		
+		//grab specific metric selected by user
+		rgMetric = (RadioGroup)this.findViewById(R.id.rgMetric);
+		switch (rgMetric.getCheckedRadioButtonId()) {
+		case R.id.rbStrength:
+			MetricType = "STRENGTH";
+			break;
+		case R.id.rbPain:
+			MetricType = "PAIN";
+			break;
+		case R.id.rbROM:
+			MetricType = "ROM";
+			break;
+		}
+		
+	}
+	
+	
+	/*
+	@Override
+	protected void 
+	onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_trend_chart_gui);
+
+		if (savedInstanceState == null) {
+			getSupportFragmentManager().beginTransaction()
+					.add(R.id.container, new PlaceholderFragment()).commit();
+		}
+		
         // code for trend chart main gui
-		/** display header with patient, current date, injury, therapist info */
+		// display header with patient, current date, injury, therapist info 
         
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
  	   //get current date time with Date()
@@ -96,10 +162,11 @@ public class TrendChartGUI extends ActionBarActivity {
       
       tvCumulativeChangeValue = (TextView)this.findViewById(R.id.tvCumualtiveChangeValue);
 	  tvProgressiveChangeVaue = (TextView)this.findViewById(R.id.tvProgressiveChangeValue);
-	  btPatID = (Button)this.findViewById(R.id.btpatid);
+	  
+	  //btPatID = (Button)this.findViewById(R.id.btpatid);
+	  
+	  //find the edit text
 	  dtPatID = (EditText)this.findViewById(R.id.dtpatid);
-	  
-	  
 	  
 	  btnCreateCharts = (ImageButton)this.findViewById(R.id.btnCreateChart);
 	  
@@ -108,10 +175,10 @@ public class TrendChartGUI extends ActionBarActivity {
 	  rgInjuryType = (RadioGroup)this.findViewById(R.id.rgInjuryType);
 	  
 	  btnCreateCharts.setOnClickListener(new OnClickListener() {
-		/** display graph for appropriate metric in chart area */
+		//display graph for appropriate metric in chart area 
 
 		@Override
-		/** display values for cumulative and progressive change below chart */
+		//display values for cumulative and progressive change below chart 
 		public void onClick(View v) {
 			// CreateChart cc = new CreateChart();
 			
@@ -121,7 +188,7 @@ public class TrendChartGUI extends ActionBarActivity {
 		//	tvProgressiveChangeVaue.setText(" " + String.valueOf(formatter.format(CreateChart.getProgressiveChangeValue()))+"%");
 		//	android.app.Dialog dlg = new android.app.Dialog(MainActivity.this); // XXX Testing purposes only
 			
-		/** get patient database query criteria for Metric and Injury Type */
+		// get patient database query criteria for Metric and Injury Type
 			
 			switch (rgMetric.getCheckedRadioButtonId()) {
 			case R.id.rbStrength:
@@ -176,6 +243,8 @@ public class TrendChartGUI extends ActionBarActivity {
 	  });
 		
 	}
+*/
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

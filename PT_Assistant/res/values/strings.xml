@@ -42,9 +42,13 @@
     <string-array name="injury_array">
         <item>LUMBAR STRAIN</item>
         <item>ROTATOR CUFF TEAR</item>
+        <item>ACL TEAR</item>
     </string-array>
    
 
     <string name="title_activity_injury_lookup">InjuryLookupActivity</string>
+    <string name="title_activity_create_report">CreateReportActivity</string>
+    <string name="title_activity_trend_chart">TrendChartActivity</string>
+    <string name="title_activity_trend_chart_gui">TrendChartGUIActivity</string>
 
 </resources>
