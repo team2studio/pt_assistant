@@ -50,7 +50,7 @@ public class Report {
 	}
 
 	// NOTE when ever going to network you must run it in a task
-	private class doReportTrendAsyncTask extends AsyncTask<String, Void, String> {
+	public class doReportTrendAsyncTask extends AsyncTask<String, Void, String> {
 		
 		JSONParser jsonParser  = new JSONParser();
 		String TAG_SUCCESS = "success";

@@ -1,0 +1,178 @@
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.pt_assistant.TrendChartGUI"
+    tools:ignore="MergeRootFrame" >
+
+    <Button
+        android:id="@+id/btDone"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="497dp"
+        android:layout_y="825dp"
+        android:text="Done" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="46dp"
+        android:layout_y="766dp"
+        android:text="Cumulative Change:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/tvCumualtiveChangeValue"
+        android:layout_width="73dp"
+        android:layout_height="wrap_content"
+        android:layout_x="211dp"
+        android:layout_y="767dp"
+        android:background="#839096"
+        android:text="    "
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ff3232" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="321dp"
+        android:layout_y="766dp"
+        android:text="Progressive Change:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/tvProgressiveChangeValue"
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:layout_x="492dp"
+        android:layout_y="766dp"
+        android:background="#839096"
+        android:text="    "
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ff3232" />
+
+    <RadioGroup
+        android:id="@+id/rgInjuryType"
+        android:layout_width="207dp"
+        android:layout_height="43dp"
+        android:layout_x="66dp"
+        android:layout_y="261dp"
+        android:background="#369de1"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rbLowerBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lower Back" />
+
+        <RadioButton
+            android:id="@+id/rbArm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Arm" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/rgMetric"
+        android:layout_width="329dp"
+        android:layout_height="43dp"
+        android:layout_x="0dp"
+        android:layout_y="154dp"
+        android:background="#e3b333"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rbROM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Range Of Motion" />
+
+        <RadioButton
+            android:id="@+id/rbPain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pain" />
+
+        <RadioButton
+            android:id="@+id/rbStrength"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Strength" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="138dp"
+        android:layout_y="126dp"
+        android:text="Metric"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageButton
+        android:id="@+id/btnCreateChart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="132dp"
+        android:layout_y="333dp"
+        android:contentDescription="Create Chart"
+        android:onClick="getTrendReport"
+        android:src="@drawable/pt_chart" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="127dp"
+        android:layout_y="392dp"
+        android:text="Create Chart" />
+
+    <EditText
+        android:id="@+id/dtpatid"
+        android:layout_width="156dp"
+        android:layout_height="wrap_content"
+        android:layout_x="153dp"
+        android:layout_y="44dp"
+        android:ems="10"
+        android:hint="Enter Patient ID"
+        android:inputType="number"
+        android:textAlignment="center" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/btpatid"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:layout_x="39dp"
+        android:layout_y="41dp"
+        android:text="Submit ID" />
+
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="608dp"
+        android:layout_height="wrap_content"
+        android:layout_x="-5dp"
+        android:layout_y="0dp"
+        android:background="#839096"
+        android:text="TextView"
+        android:textColor="#f8f7f5"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
+
+    <TextView
+        android:id="@+id/TextView01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="118dp"
+        android:layout_y="230dp"
+        android:text="Injury Type"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</AbsoluteLayout>
+

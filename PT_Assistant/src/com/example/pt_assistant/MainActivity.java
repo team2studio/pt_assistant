@@ -152,5 +152,20 @@ public class MainActivity extends ActionBarActivity {
 		startActivity(intent);
 		
 	}
-
+	public void getReportQuery(View view){
+		// another activity
+		Intent intent = new Intent(this, TrendChartGUI.class);
+		intent.putExtra(EXTRA_MESSAGE, "test");
+		startActivity(intent);
+		
+	}
+	
+	public void getTrendReport(View view){
+		// another activity
+		Intent intent = new Intent(this, TrendChartActivity.class);
+		intent.putExtra(EXTRA_MESSAGE, "test");
+		startActivity(intent);
+		
+	}
+	
 }
