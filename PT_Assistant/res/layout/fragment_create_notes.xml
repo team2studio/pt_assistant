@@ -18,4 +18,13 @@
         android:onClick="startNotes"
         android:text="Go to Patient Notes" />
 
+    <Button
+        android:id="@+id/buttonNotes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonNotes"
+        android:layout_alignLeft="@+id/buttonNotes"
+        android:onClick="getNotes"
+        android:text="Get Patient Notes" />
+
 </RelativeLayout>
