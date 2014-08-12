@@ -328,8 +328,7 @@ public class GetPatientActivity extends ActionBarActivity {
 				try {
 					// Building Parameters
 					List<NameValuePair> params = new ArrayList<NameValuePair>();
-					params.add(new BasicNameValuePair("patient_id", Integer
-							.toString(existPat.getPatientID())));
+					params.add(new BasicNameValuePair("patient_id", Integer.toString(existPat.getPatientID())));
 					params.add(new BasicNameValuePair("patient_name", existPat
 							.getName()));
 					params.add(new BasicNameValuePair("b_date", existPat
