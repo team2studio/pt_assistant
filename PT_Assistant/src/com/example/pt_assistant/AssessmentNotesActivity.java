@@ -28,6 +28,7 @@ import android.os.Build;
 public class AssessmentNotesActivity extends ActionBarActivity implements OnItemSelectedListener{
 	Patient_Notes pn;
 	Patient p;
+	boolean assm_get_notes =false;
 	private static final String TAG = "AssessmentNotesActivity";
 
 	@Override
@@ -54,6 +55,15 @@ public class AssessmentNotesActivity extends ActionBarActivity implements OnItem
         
         // Spinner click listener
         spin.setOnItemSelectedListener(this);
+        
+        if (savedInstanceState == null){
+	        Intent intent = getIntent();
+	        String getnotes = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+	        assm_get_notes = false;
+			if (getnotes!= null && getnotes.equals("getnotes")){
+				assm_get_notes  = true;
+			}
+        }
 	}
 
 	@Override
@@ -94,6 +104,11 @@ public class AssessmentNotesActivity extends ActionBarActivity implements OnItem
 
 		//Serialize, start next activity and send intent
 		Intent intent = new Intent(this, PlanNotesActivity.class);
+		
+		if (assm_get_notes)
+		{
+			intent.putExtra(MainActivity.EXTRA_MESSAGE, "getnotes");
+		}
 		intent.putExtra("PatientObject", p);
 		intent.putExtra("PatientNotesObject", pn);
 		startActivity(intent);

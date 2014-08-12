@@ -34,7 +34,7 @@ public class PlanNotesActivity extends ActionBarActivity {
 	Patient_Notes notes;
 	Patient p;
 	JSONParser jsonParser = new JSONParser();
-	
+	boolean plan_get_notes = false;
 	// Progress Dialog
 	private ProgressDialog pDialog;
 	private static final String CREATE_PATIENT_NOTES_URL = "http://199.255.250.71/patient_create_notes.php";
@@ -51,6 +51,14 @@ public class PlanNotesActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		 if (savedInstanceState == null){
+		        Intent intent = getIntent();
+		        String getnotes = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+		        plan_get_notes = false;
+				if (getnotes!= null && getnotes.equals("getnotes")){
+					plan_get_notes  = true;
+				}
+	      }
 		
 	}
 
@@ -86,6 +94,11 @@ public class PlanNotesActivity extends ActionBarActivity {
 		
 		//Serialize, start next activity and send intent
 		Intent intent = new Intent(this, PlanNotesActivity.class);
+		
+		if (plan_get_notes)
+		{
+			intent.putExtra(MainActivity.EXTRA_MESSAGE, "getnotes");
+		}
 		intent.putExtra("PatientObject", p);
 		intent.putExtra("PatientNotesObject", notes);
 		startActivity(intent);

@@ -137,8 +137,14 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 
 		// Serialize, start next activity and send intent
 		Intent intent = new Intent(this, ObjectiveNotesActivity.class);
+		if (get_notes)
+		{
+			intent.putExtra(MainActivity.EXTRA_MESSAGE, "getnotes");
+		}
 		intent.putExtra("PatientObject", p);
 		intent.putExtra("PatientNotesObject", pn);
+		
+		
 		startActivity(intent);
 
 	}

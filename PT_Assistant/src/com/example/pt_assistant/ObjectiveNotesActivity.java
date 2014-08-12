@@ -21,7 +21,7 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 	Patient p;
 	 private SeekBar seekBar;
 	 private TextView textViewCtr;
-
+     private boolean obj_get_notes = false;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,6 +32,15 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 			}
+		if (savedInstanceState == null){
+			Intent intent = getIntent();
+			String getnotes = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+			obj_get_notes = false;
+			if (getnotes!= null && getnotes.equals("getnotes")){
+				obj_get_notes  = true;
+			}
+		}
+		
 		/*
 			  seekBar = (SeekBar) findViewById(R.id.seekBarROM);
 			  textViewCtr = (TextView) findViewById(R.id.textViewROMCount);
@@ -109,9 +118,13 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 		
 		seek = (SeekBar) findViewById(R.id.seekBarSpecialTest);
 		pn.setSpecialTest(seek.getProgress());
-
+		
 		//Serialize, start next activity and send intent
 		Intent intent = new Intent(this, AssessmentNotesActivity.class);
+		if (obj_get_notes)
+		{
+			intent.putExtra(MainActivity.EXTRA_MESSAGE, "getnotes");
+		}
 		intent.putExtra("PatientObject", p);
 		intent.putExtra("PatientNotesObject", pn);
 		startActivity(intent);
