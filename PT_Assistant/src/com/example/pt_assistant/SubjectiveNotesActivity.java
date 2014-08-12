@@ -34,9 +34,10 @@ import android.os.Build;
 
 public class SubjectiveNotesActivity extends ActionBarActivity {
 	Patient_Notes pn;
+	
 	Patient p;
 	JSONParser jsonParser = new JSONParser();
-
+    boolean get_notes;
 	// Progress Dialog
 	private ProgressDialog pDialog;
 	private static final String GET_PATIENT_NOTES_URL = "http://199.255.250.71/get_patient_notes.php";
@@ -72,8 +73,19 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
-
-		new GetSessionNotes().execute();
+		
+		Intent intent = getIntent();
+		String getnotes = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+		
+		get_notes = false;
+		if (savedInstanceState == null){
+			if (getnotes!= null && getnotes.equals("getnotes")){
+			   get_notes = true;
+			   p = (Patient) getIntent().getSerializableExtra("PatientObject");
+			   new GetSessionNotes().execute();
+			}
+		}
+	
 	}
 
 	@Override
@@ -100,8 +112,11 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 
 		// receive serialized patient and notes objects from previous activity
 		p = (Patient) getIntent().getSerializableExtra("PatientObject");
-		pn = (Patient_Notes) getIntent().getSerializableExtra(
+		if (get_notes == false)
+		{
+		    pn = (Patient_Notes) getIntent().getSerializableExtra(
 				"PatientNotesObject");
+		}
 
 		EditText eText;
 		// notes = new Patient_Notes();
@@ -166,7 +181,8 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 			// TODO Auto-generated method stub
 			// Building Parameters
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("patient_id", Integer.toString( p.getPatientID() ) ));
+			String temp = Integer.toString(p.getPatientID());
+			params.add(new BasicNameValuePair("patient_id",temp  ));
 			
 			try {
 				
@@ -177,9 +193,10 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 				int success = json.getInt(TAG_SUCCESS);
 
 				if (success == 1) {
+					pn = new Patient_Notes();
 					JSONArray jsonPatNotesList = new JSONArray();
 					jsonPatNotesList = json.getJSONArray("pat_notes");
-
+					
 					for (int i = 0; i < jsonPatNotesList.length(); i++) {
 
 						JSONObject c = jsonPatNotesList.getJSONObject(i);
@@ -223,12 +240,29 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 					pDialog.dismiss();
 					// creates the toast
 					Context context = getApplicationContext();
-					CharSequence text = "Successfully added Patient Notes!";
+					CharSequence text = "Successfully got  Patient Notes!";
 					int duration = Toast.LENGTH_SHORT;
 
 					Toast toast = Toast.makeText(context, text, duration);
 					toast.show();
-					finish();
+					
+					EditText eText;
+					// notes = new Patient_Notes();
+					eText = (EditText) findViewById(R.id.editPastDiag);
+					eText.setText(pn.getPastDiagnosis());
+
+					eText = (EditText) findViewById(R.id.editMedications);
+					eText.setText (pn.getMedications());
+
+					eText = (EditText) findViewById(R.id.editOther);
+					eText.setText(pn.getOther_PatientHistory());
+//
+					eText = (EditText) findViewById(R.id.editGoals);
+					eText.setText(pn.getGoals());
+//
+					eText = (EditText) findViewById(R.id.editReason);
+					eText.setText (pn.getReasons());
+					
 				}
 			}
 			if (file_url != null) {
