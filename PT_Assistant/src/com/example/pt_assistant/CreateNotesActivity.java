@@ -59,7 +59,20 @@ public class CreateNotesActivity extends ActionBarActivity {
 		startActivity(intent);
 		
 	}	
-	
+	public void getNotes(View view) {
+		
+		
+		//receive serialized patient and notes objects from previous activity
+		Patient p = (Patient)getIntent().getSerializableExtra("PatientObject");
+		
+		//Serialize, start next activity and send intent
+		
+		Intent intent = new Intent(this, SubjectiveNotesActivity.class);
+		intent.putExtra(MainActivity.EXTRA_MESSAGE, "getnotes");
+		intent.putExtra("PatientObject", p);
+		startActivity(intent);
+		
+	}	
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
