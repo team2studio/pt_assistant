@@ -8,9 +8,11 @@ import java.util.Date;
 
 
 
+
 // import com.example.listview1.CreateChart;
 import com.example.pt_assistant.TrendChartActivity;
 // import com.example.pt_assistant.R;
+
 
 
 
@@ -76,6 +78,7 @@ public class TrendChartGUI extends ActionBarActivity {
 	String patID;
 	Patient p;
 	Patient_Notes pn;
+	Metrics m;
 
 	DecimalFormat formatter = new DecimalFormat("#0.0");
 	
@@ -99,13 +102,13 @@ public class TrendChartGUI extends ActionBarActivity {
 	public void getTrendReport(View view) {
 		p = new Patient();
 		pn = new Patient_Notes();
-		
+		m = new Metrics();
 		EditText eText;
 		
 		//grab patient id entered by user
 		eText = (EditText)this.findViewById(R.id.dtpatid);
-		//p.setPatientID(Integer.parseInt(eText.getText().toString()));
-		patID = eText.getText().toString();
+		p.setPatientID(Integer.parseInt(eText.getText().toString()));
+		//patID = eText.getText().toString();
 		
 		//grab injury selected by user
 		rgInjuryType = (RadioGroup)this.findViewById(R.id.rgInjuryType);
@@ -114,9 +117,11 @@ public class TrendChartGUI extends ActionBarActivity {
 		switch (rgInjuryType.getCheckedRadioButtonId()) {
 		case R.id.rbLowerBack:
 			InjuryType = "LUMBAR STRAIN";
+			pn.setInjury(InjuryType);
 			break;
 		case R.id.rbArm:
 			InjuryType = "ROTATOR CUFF TEAR";
+			pn.setInjury(InjuryType);
 			break;
 		}
 		
@@ -125,15 +130,24 @@ public class TrendChartGUI extends ActionBarActivity {
 		switch (rgMetric.getCheckedRadioButtonId()) {
 		case R.id.rbStrength:
 			MetricType = "STRENGTH";
+			m.setSpecificMetric(MetricType);
 			break;
 		case R.id.rbPain:
 			MetricType = "PAIN";
+			m.setSpecificMetric(MetricType);
 			break;
 		case R.id.rbROM:
 			MetricType = "ROM";
+			m.setSpecificMetric(MetricType);
 			break;
 		}
 		
+		//Serialize, start next activity and send intent
+		Intent intent = new Intent(this, TrendChartActivity.class);
+		intent.putExtra("PatientObject", p);
+		intent.putExtra("PatientNotesObject", pn);
+		intent.putExtra("SpecificMetricObject", m);
+		startActivity(intent);
 	}
 	
 	
