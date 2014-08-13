@@ -89,9 +89,6 @@ public class TreatmentPlanActivity extends ActionBarActivity {
 		p = (Patient)getIntent().getSerializableExtra("PatientObject");
 		notes = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
 		
-		//ADDED IN BY JAMEL...BUT WE NEED TO SET THE INJURY IN THE GUI TO MAKE THIS WORK
-		//notes.setInjury("ROTATOR CUFF TENDINITIS");
-		
 		//generate treatment plan based off Patient's SOAP data
 		selectedTreatmentPlanID = tp.generateTreatmentPlan(notes);
 		Log.i(TAG, "We selected treatment plan id: "+selectedTreatmentPlanID);
