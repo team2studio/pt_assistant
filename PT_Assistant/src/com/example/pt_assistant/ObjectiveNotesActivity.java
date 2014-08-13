@@ -54,6 +54,25 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 			obj_get_notes = false;
 			if (getnotes != null && getnotes.equals("getnotes")) {
 				obj_get_notes = true;
+				pn = (Patient_Notes) getIntent().getSerializableExtra("PatientNotesObject");
+				SeekBar seek;
+				seek = (SeekBar) findViewById(R.id.seekBarROM);
+				seek.setProgress(pn.getRangeOfMotion());
+
+				seek = (SeekBar) findViewById(R.id.seekBarStrength);
+				seek.setProgress(pn.getStrength());
+
+				seek = (SeekBar) findViewById(R.id.seekBarJointMob);
+				seek.setProgress(pn.getJointMobilization());
+
+				seek = (SeekBar) findViewById(R.id.seekBarPain);
+				seek.setProgress(pn.getPain());
+
+				seek = (SeekBar) findViewById(R.id.seekBarPalpation);
+				seek.setProgress(pn.getPalpation());
+
+				seek = (SeekBar) findViewById(R.id.seekBarSpecialTest);
+				seek.setProgress(pn.getSpecialTest());
 			}
 		}
 
@@ -246,9 +265,12 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 
 		// receive serialized patient and notes objects from previous activity
 		p = (Patient) getIntent().getSerializableExtra("PatientObject");
-		pn = (Patient_Notes) getIntent().getSerializableExtra(
-				"PatientNotesObject");
 
+		if (obj_get_notes == false)
+		{
+		    pn = (Patient_Notes) getIntent().getSerializableExtra("PatientNotesObject");
+		}
+		
 		// EditText eText;
 		// notes = new Patient_Notes();
 		// eText = (EditText) findViewById(R.id.editInjuryLookup);
