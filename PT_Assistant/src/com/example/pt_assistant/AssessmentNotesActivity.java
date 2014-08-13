@@ -62,6 +62,21 @@ public class AssessmentNotesActivity extends ActionBarActivity implements OnItem
 	        assm_get_notes = false;
 			if (getnotes!= null && getnotes.equals("getnotes")){
 				assm_get_notes  = true;
+				pn = (Patient_Notes) getIntent().getSerializableExtra("PatientNotesObject");
+				EditText eText;
+				eText = (EditText) findViewById(R.id.editAssessment);
+				eText.setText(pn.getPatient_diagnosis());
+				
+				String databaseValue = pn.getInjury();
+			       if (databaseValue.equalsIgnoreCase("LUMBAR STRAIN")){
+			        spin.setSelection(0);
+			       }
+			       else if (databaseValue.equalsIgnoreCase("ROTATOR CUFF TEAR")){
+				        spin.setSelection(1);
+				       }
+			       else if (databaseValue.equalsIgnoreCase("ACL TEAR")){
+				        spin.setSelection(2);
+				       }
 			}
         }
 	}
@@ -90,8 +105,12 @@ public class AssessmentNotesActivity extends ActionBarActivity implements OnItem
 
 		//receive serialized patient and notes objects from previous activity
 		p = (Patient)getIntent().getSerializableExtra("PatientObject");
-		pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
-				
+		
+		if (assm_get_notes == false)
+		{
+		    pn = (Patient_Notes) getIntent().getSerializableExtra("PatientNotesObject");
+		}
+	
 		EditText eText;
 		//notes = new Patient_Notes();
 		eText = (EditText) findViewById(R.id.editAssessment);
