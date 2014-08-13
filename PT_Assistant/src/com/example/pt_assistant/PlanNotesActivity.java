@@ -31,7 +31,7 @@ import android.widget.Toast;
 import android.os.Build;
 
 public class PlanNotesActivity extends ActionBarActivity {
-	Patient_Notes notes;
+	Patient_Notes pn;
 	Patient p;
 	JSONParser jsonParser = new JSONParser();
 	boolean plan_get_notes = false;
@@ -57,6 +57,10 @@ public class PlanNotesActivity extends ActionBarActivity {
 		        plan_get_notes = false;
 				if (getnotes!= null && getnotes.equals("getnotes")){
 					plan_get_notes  = true;
+					pn = (Patient_Notes) getIntent().getSerializableExtra("PatientNotesObject");
+					/*EditText eText;
+					eText = (EditText) findViewById(R.id.editPlanNotes);
+					eText.setText(pn.getAdditionalPlanNotes());*/
 				}
 	      }
 		
@@ -85,12 +89,16 @@ public class PlanNotesActivity extends ActionBarActivity {
 	public void setPlanNotes(View view) {
 		//receive serialized patient and notes objects from previous activity
 		p = (Patient)getIntent().getSerializableExtra("PatientObject");
-		notes = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
+		
+		if (plan_get_notes == false)
+		{
+		    pn = (Patient_Notes) getIntent().getSerializableExtra("PatientNotesObject");
+		}
 		
 		EditText eText;
-		//notes = new Patient_Notes();
+		//pn = new Patient_Notes();
 		eText = (EditText) findViewById(R.id.editPlanNotes);
-		notes.setAdditionalPlanNotes(eText.getText().toString());
+		pn.setAdditionalPlanNotes(eText.getText().toString());
 		
 		//Serialize, start next activity and send intent
 		Intent intent = new Intent(this, PlanNotesActivity.class);
@@ -100,22 +108,22 @@ public class PlanNotesActivity extends ActionBarActivity {
 			intent.putExtra(MainActivity.EXTRA_MESSAGE, "getnotes");
 		}
 		intent.putExtra("PatientObject", p);
-		intent.putExtra("PatientNotesObject", notes);
+		intent.putExtra("PatientNotesObject", pn);
 		startActivity(intent);
 
 		new EnterSessionNotes().execute();
 
 	}	
-
+	
 	public void generateTreatmentPlan(View view) {
 		//receive serialized patient and notes objects from previous activity
 		p = (Patient)getIntent().getSerializableExtra("PatientObject");
-		notes = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
+		pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
 		
 		//Serialize, start next activity and send intent
 		Intent intent = new Intent(this, TreatmentPlanActivity.class);
 		intent.putExtra("PatientObject", p);
-		intent.putExtra("PatientNotesObject", notes);
+		intent.putExtra("PatientNotesObject", pn);
 		startActivity(intent);
 
 	}
@@ -123,12 +131,12 @@ public class PlanNotesActivity extends ActionBarActivity {
 	public void backHome(View view) {
 		//receive serialized patient and notes objects from previous activity
 		p = (Patient)getIntent().getSerializableExtra("PatientObject");
-		notes = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
+		pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
 		
 		//Serialize, start next activity and send intent
 		Intent intent = new Intent(this, MainActivity.class);
 		intent.putExtra("PatientObject", p);
-		intent.putExtra("PatientNotesObject", notes);
+		intent.putExtra("PatientNotesObject", pn);
 		startActivity(intent);
 
 	}
@@ -173,20 +181,20 @@ public class PlanNotesActivity extends ActionBarActivity {
 			// Check for success tag
 			int success;
 			String patient_id = String.valueOf(p.getPatientID());
-			String past_diagnosis = notes.getPastDiagnosis();
-			String other = notes.getOther_PatientHistory();
-			String medications = notes.getMedications();
-			String goals = notes.getGoals();
-			String reasons = notes.getReasons();
-			String range_of_motion = String.valueOf(notes.getRangeOfMotion());
-			String strength = String.valueOf(notes.getStrength());
-			String joint_mobilization = String.valueOf(notes.getJointMobilization());
-			String pain = String.valueOf(notes.getPain());
-			String palpation = String.valueOf(notes.getPalpation());
-			String special_test = String.valueOf(notes.getSpecialTest());
-			String injury_name = notes.getInjury();
-			String diagnosis = notes.getPatient_diagnosis();
-			String additional_plan_notes = notes.getAdditionalPlanNotes();
+			String past_diagnosis = pn.getPastDiagnosis();
+			String other = pn.getOther_PatientHistory();
+			String medications = pn.getMedications();
+			String goals = pn.getGoals();
+			String reasons = pn.getReasons();
+			String range_of_motion = String.valueOf(pn.getRangeOfMotion());
+			String strength = String.valueOf(pn.getStrength());
+			String joint_mobilization = String.valueOf(pn.getJointMobilization());
+			String pain = String.valueOf(pn.getPain());
+			String palpation = String.valueOf(pn.getPalpation());
+			String special_test = String.valueOf(pn.getSpecialTest());
+			String injury_name = pn.getInjury();
+			String diagnosis = pn.getPatient_diagnosis();
+			String additional_plan_notes = pn.getAdditionalPlanNotes();
 
 			try{
 				
