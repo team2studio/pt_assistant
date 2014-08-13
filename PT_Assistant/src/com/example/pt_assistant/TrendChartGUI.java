@@ -123,6 +123,10 @@ public class TrendChartGUI extends ActionBarActivity {
 			InjuryType = "ROTATOR CUFF TEAR";
 			pn.setInjury(InjuryType);
 			break;
+		case R.id.rbACL:
+			InjuryType = "ACL TEAR";
+			pn.setInjury(InjuryType);
+			break;
 		}
 		
 		//grab specific metric selected by user

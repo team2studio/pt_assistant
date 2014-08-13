@@ -57,9 +57,9 @@
 
     <RadioGroup
         android:id="@+id/rgInjuryType"
-        android:layout_width="207dp"
+        android:layout_width="328dp"
         android:layout_height="43dp"
-        android:layout_x="66dp"
+        android:layout_x="-6dp"
         android:layout_y="261dp"
         android:background="#369de1"
         android:orientation="horizontal" >
@@ -68,13 +68,18 @@
             android:id="@+id/rbLowerBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lower Back" />
+            android:text="Lumbar Strain" />
 
         <RadioButton
             android:id="@+id/rbArm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Arm" />
+            android:text="Rotator Cuff" />
+        <RadioButton
+            android:id="@+id/rbACL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ACL" />
     </RadioGroup>
 
     <RadioGroup
@@ -146,14 +151,6 @@
         <requestFocus />
     </EditText>
 
-    <Button
-        android:id="@+id/btpatid"
-        android:layout_width="112dp"
-        android:layout_height="wrap_content"
-        android:layout_x="39dp"
-        android:layout_y="41dp"
-        android:text="Submit ID" />
-
     <TextView
         android:id="@+id/tvHeader"
         android:layout_width="608dp"
@@ -173,6 +170,14 @@
         android:layout_y="230dp"
         android:text="Injury Type"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="42dp"
+        android:layout_y="53dp"
+        android:text="Enter Patient ID:" />
 
 </AbsoluteLayout>
 
