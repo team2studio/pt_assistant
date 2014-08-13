@@ -11,7 +11,9 @@ import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
-// import com.example.pt_assistant.R;
+
+
+
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -67,15 +69,17 @@ public class TrendChartActivity extends ActionBarActivity {
 	String KEY_STRENT_LVL = "6";
 	String KEY_PAIN_LVL = "7";
 	
-	
+	private static final String TAG_MESSAGE = "message";
 	private static final String GET_INDEX_URL =   "http://199.255.250.71/get_patient_trend_data.php";
 	List<Map> patientTrendList;
 	Map<String, String> patTrendmap;
 	int pat_data [];
 	
-	
-	
-	
+	//added by Jamel
+	Patient p;
+	Patient_Notes pn;
+	Metrics m;
+	private ProgressDialog pDialog;
 	
 	// First Create a Graphical View object called mChart.
 
@@ -86,6 +90,8 @@ public class TrendChartActivity extends ActionBarActivity {
 	          "1/1/14", "2/3/14" , "2/17/14", "3/2/14", "5/4/14", "6/12/14",
 
 	          "7/4/14", "7/21/14" };
+	
+	private String testMonths[];
 	
 	
 	// Get report data from database using the query parameters
@@ -115,6 +121,7 @@ public class TrendChartActivity extends ActionBarActivity {
 		@Override
 		protected void onPostExecute(String result) {
 			
+			/*
 			Iterator<Map> it = patientTrendList.iterator();
 			
 			Map map = new HashMap();
@@ -131,31 +138,64 @@ public class TrendChartActivity extends ActionBarActivity {
 				Log.d("pain level: ", (String )map.get(KEY_PAIN_LVL));
 				Log.d("injury name: ", (String )map.get(KEY_INURY_NAME));
 				Log.d("record ", "next record");
-				
-				
-				
-				
 			}
+			*/
+			
+			//call Bill's OpenChart method
+			//OpenChart();
+			// dismiss the dialog once product deleted
+			
+			/*
+						if (pDialog != null) {
+							if (pDialog.isShowing()) {
+								pDialog.dismiss();
+								// creates the toast
+								Context context = getApplicationContext();
+								CharSequence text = "Found the patients data!!";
+								int duration = Toast.LENGTH_SHORT;
 
+								Toast toast = Toast.makeText(context, text, duration);
+								toast.show();
+								finish();
+							}
+						}
+						if (result != null) {
+							Toast.makeText(TrendChartActivity.this, result,
+									Toast.LENGTH_LONG).show();
+						}
+						
+						*/
+			OpenChart();
 		}
 
 		@Override
 		protected void onPreExecute() {
-
+			/*
+			super.onPreExecute();
+			pDialog = new ProgressDialog(TrendChartActivity.this);
+			pDialog.setMessage("Attempting to find the patients data...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+			*/
 		}
 
 		@Override
 		protected void onProgressUpdate(Void... values) {
 		}
 		
-		private void report_async_get_trend_data()
+		private String report_async_get_trend_data()
 		{
 			
+			//get objects passed in
+			//receive serialized patient and notes objects from previous activity
+			p = (Patient)getIntent().getSerializableExtra("PatientObject");
+			pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
 			
 			// Building Parameters
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair("patient_id", "1007"));
-			params.add(new BasicNameValuePair("injuryName", "LOWER BACK INJURY"));
+			params.add(new BasicNameValuePair("patient_id", Integer.toString(p.getPatientID())));
+			params.add(new BasicNameValuePair("injuryName", pn.getInjury()));
 			try {
 				String temp1,temp2,temp3,temp4,temp5,temp6,temp7,temp8;
 				// getting product details by making HTTP request
@@ -180,27 +220,23 @@ public class TrendChartActivity extends ActionBarActivity {
 						patTrendmap.put(KEY_THERAPIST, c.getString(JSON_THERAPIST_NAME));
 						patTrendmap.put(KEY_STRENT_LVL, c.getString(JSON_STRENGTH));
 						patTrendmap.put(KEY_PAIN_LVL, c.getString(JSON_PAIN));
-						patientTrendList.add(patTrendmap);
-						
-						
-						
-//						 temp1 =   c.getString(PAT_NAME);
-//						 temp2 =  c.getString(ROM);
-//						 temp3 = c.getString(EVAL_DATE);
-//						 temp4 = c.getString(INJURY_NAME);
-//						 temp5 = c.getString(THERAPIST_NAME);
-//						 temp6 = c.getString(STRENGTH);
-//						 temp7 = c.getString(PAIN);
-					  
-					
+						patientTrendList.add(patTrendmap);				
 					}
 					
-
+					Log.d("Found the patient information!", json.toString());
+					
+					return json.getString(TAG_MESSAGE);
+				}
+				else {
+					Log.d("Did not find the patient information!",
+							json.getString(TAG_MESSAGE));
+					return json.getString(TAG_MESSAGE);
 				}
 
 			} catch (JSONException e) {
-				Thread.interrupted();
+				e.printStackTrace();
 			}
+			return null;
 			
 		}
 		
@@ -210,10 +246,54 @@ public class TrendChartActivity extends ActionBarActivity {
 	   
 	 private void OpenChart()
 	    {
-	     // Define the number of elements you want in the chart.
-	    
-	     
+		 Iterator<Map> it = patientTrendList.iterator();
+			
+			Map map = new HashMap();
+			
+	// Define the number of elements you want in the chart. 
 	  int z[]={0,1,2,3,4,5,6,7};
+	  
+	  //added by Jamel
+	  ArrayList<Integer> totalElements = new ArrayList<Integer>();
+	  
+	  //determine how many objects are in the patient trend list
+	  int anArray[];
+	  String anArray2[];
+	  //String testMonths[];
+	  int size = patientTrendList.size();
+	  anArray = new int[size];
+	  anArray2 = new String[size];
+	  testMonths = new String[size];
+	  ArrayList<String> storePainVals = new ArrayList<String>();
+	  ArrayList<String> storeMonthVals = new ArrayList<String>();
+	  ArrayList<String> storeROMVals = new ArrayList<String>();
+	  ArrayList<String> storeStrengthVals = new ArrayList<String>();
+	  
+	  while(it.hasNext()){
+			
+			map = it.next();
+			
+			Log.d("patient name: ", (String )map.get(KEY_PATNAME));
+			
+			patient_name = (String)map.get(KEY_PATNAME);
+					
+			Log.d("eval date: ", (String )map.get(KEY_EVAL_DATE));
+			storeMonthVals.add((String)map.get(KEY_EVAL_DATE));
+			
+			Log.d("rom: ", (String )map.get(KEY_ROM));
+			storeROMVals.add((String)map.get(KEY_ROM));
+			
+			Log.d("therapist name: ", (String )map.get(KEY_THERAPIST));
+			Log.d("strength: ", (String )map.get(KEY_STRENT_LVL));
+			storeStrengthVals.add((String)map.get(KEY_STRENT_LVL));
+			
+			Log.d("pain level: ", (String )map.get(KEY_PAIN_LVL));
+			storePainVals.add((String)map.get(KEY_PAIN_LVL));	//added by Jamel
+			
+			Log.d("injury name: ", (String )map.get(KEY_INURY_NAME));
+			Log.d("record ", "next record");
+		}
+		
 	     
 	     
 	  String x[]={"0","0","0","0","0","0","0","0"};
@@ -227,9 +307,26 @@ public class TrendChartActivity extends ActionBarActivity {
 	  
 	  cumulative_change = 0.1;
 	  prog_change = 0.1;
-		
-		 if (charttype == "PAIN")
+	  
+	  //added by Jamel
+	  m = (Metrics)getIntent().getSerializableExtra("SpecificMetricObject");
+	  charttype = m.getSpecificMetric();
+	  if (charttype != null){
+		  Log.d("Metrics object is not null!","Chart type equals: "+charttype);
+	  }else{
+		  Log.d("Metrics object is ","null!!");
+	  }
+	  
+	 // patient_name = "Jamel Test";
+	  
+		 if (charttype.equalsIgnoreCase("PAIN"))
 		 {
+			 Log.d("WE MADE IT HERE!!"," WE ARE IN THE PAIN STATEMENT");
+			 for (int i=0; i < anArray.length; i++)
+			 {
+				 anArray[i] = i;
+			 }
+			 /*
 			 z[0]=0;
 			 z[1]=1;
 			 z[2]=2;
@@ -238,7 +335,14 @@ public class TrendChartActivity extends ActionBarActivity {
 			 z[5]=5;
 			 z[6]=6;
 			 z[7]=7;
-		     
+		     */
+			 
+			 for (int i=0; i < anArray2.length; i++)
+			 {
+				 anArray2[i] = storePainVals.get(i).toString();
+			 }
+			 
+			 /*
 		     x[0]="9";
 		     x[1]="6";
 		     x[2]="5";
@@ -247,11 +351,18 @@ public class TrendChartActivity extends ActionBarActivity {
 		     x[5]="2";
 		     x[6]="2";
 		     x[7]="1";
-		     
+		     */
+			 
+			 double Y1 =  Double.parseDouble(anArray2[0]);
+			 double Y2 =  Double.parseDouble(anArray2[anArray2.length-1]);
+			 double Y3 = Double.parseDouble(anArray2[anArray2.length-2]);
+			 
+			 /*
 		     double Y1 =  Double.parseDouble(x[0]);
 			 double Y2 =  Double.parseDouble(x[x.length-1]);
 			 double Y3 = Double.parseDouble(x[x.length-2]);
-					
+			*/
+			 
 			 cumulative_change = ((Y2 - Y1)/Y1)*100;
 			 prog_change = ((Y2 - Y3)/Y3)*100;
 		     
@@ -262,9 +373,14 @@ public class TrendChartActivity extends ActionBarActivity {
 		//	 prog_change = ((Integer.parseInt(x[x.length-1]) - Integer.parseInt(x[x.length-2]))/Integer.parseInt(x[x.length-2]))*100;
 		
 		 }   
-		 else if (charttype == "ROM")
+		 else if (charttype.equalsIgnoreCase("ROM"))
 		 {
-			
+			 Log.d("WE MADE IT HERE!!"," WE ARE IN THE ROM STATEMENT");
+			 for (int i=0; i < anArray.length; i++)
+			 {
+				 anArray[i] = i;
+			 }
+			 /*
 		     z[0]=0;
 			 z[1]=1;
 			 z[2]=2;
@@ -273,8 +389,13 @@ public class TrendChartActivity extends ActionBarActivity {
 			 z[5]=5;
 			 z[6]=6;
 			 z[7]=7;
+		     */
 		     
-		     
+			 for (int i=0; i < anArray2.length; i++)
+			 {
+				 anArray2[i] = storeROMVals.get(i).toString();
+			 }
+			 /*
 		     x[0]="5";
 		     x[1]="22";
 		     x[2]="25";
@@ -283,6 +404,7 @@ public class TrendChartActivity extends ActionBarActivity {
 		     x[5]="70";
 		     x[6]="80";
 		     x[7]="90";
+		     */
 		     
 		  //   cumulative_change = ((x[x.length-1] - x[0])/x[0])*100;
 		  //	 prog_change = ((x[x.length-1] - x[x.length - 2])/x[x.length - 2])*100;
@@ -293,9 +415,17 @@ public class TrendChartActivity extends ActionBarActivity {
 		     
 		     // cumulative_change = ((double)(xx[xx.length-1] - xx[0])/(double)xx[0])*100;
 			 // prog_change = ((double)(xx[xx.length-1] - xx[xx.length-2])/(double)xx[xx.length-2])*100;
+			 
+			 //original code
+			 /*
 			double Y1 =  Double.parseDouble(x[0]);
 			double Y2 =  Double.parseDouble(x[x.length-1]);
 			double Y3 = Double.parseDouble(x[x.length-2]);
+			*/
+			 
+			double Y1 =  Double.parseDouble(anArray2[0]);
+			 double Y2 =  Double.parseDouble(anArray2[anArray2.length-1]);
+			 double Y3 = Double.parseDouble(anArray2[anArray2.length-2]);
 		
 		
 		   cumulative_change = ((Y2 - Y1)/Y1)*100;
@@ -303,13 +433,16 @@ public class TrendChartActivity extends ActionBarActivity {
 			//	 prog_change = 20.0;
 			 
 		 }   
-		 else if (charttype == "STRENGTH")
+		 else if (charttype.equalsIgnoreCase("STRENGTH"))
 		 {
 			// int z2[]={0,1,2,3,4,5,6,7};
-		     
-		     
+			 Log.d("WE MADE IT HERE!!"," WE ARE IN THE STRENGTH STATEMENT");
+			 for (int i=0; i < anArray.length; i++)
+			 {
+				 anArray[i] = i;
+			 }
 		    // int x2[]={0,5,23,30,59,65,88,84};
-		     
+		     /*
 		     z[0]=0;
 			 z[1]=1;
 			 z[2]=2;
@@ -318,7 +451,14 @@ public class TrendChartActivity extends ActionBarActivity {
 			 z[5]=5;
 			 z[6]=6;
 			 z[7]=7;
-		     
+		     */
+			 
+			 for (int i=0; i < anArray2.length; i++)
+			 {
+				 anArray2[i] = storeStrengthVals.get(i).toString();
+			 }
+			 
+			 /*
 		     x[0]="4";
 		     x[1]="5";
 		     x[2]="23";
@@ -327,11 +467,18 @@ public class TrendChartActivity extends ActionBarActivity {
 		     x[5]="65";
 		     x[6]="88";
 		     x[7]="91";
-		     
+		     */
+			 
+			 //original code
+			 /*
 		     double Y1 =  Double.parseDouble(x[0]);
 			 double Y2 =  Double.parseDouble(x[x.length-1]);
 			 double Y3 = Double.parseDouble(x[x.length-2]);
-			
+			*/
+			 
+			 double Y1 =  Double.parseDouble(anArray2[0]);
+			 double Y2 =  Double.parseDouble(anArray2[anArray2.length-1]);
+			 double Y3 = Double.parseDouble(anArray2[anArray2.length-2]);
 			
 			 cumulative_change = ((Y2 - Y1)/Y1)*100;
 			 prog_change = ((Y2 - Y3)/Y3)*100;
@@ -349,7 +496,7 @@ public class TrendChartActivity extends ActionBarActivity {
 		 else
 		 {
 			 // do nothing
-			 
+			 Log.d("WE MADE IT HERE!!"," WE ARE IN THE DO NOTHING STATEMENT");
 			 cumulative_change = 0.1;
 			 prog_change = 0.1;
 		 }
@@ -359,11 +506,19 @@ public class TrendChartActivity extends ActionBarActivity {
 	      // Create XY Series for X Series.
 	     XYSeries xSeries=new XYSeries(charttype +" Index");
 	     
-
+/*
 	     //  Adding data to the X Series.
 	     for(int i=0;i<z.length;i++)
 	     {
 	      xSeries.add(z[i],Integer.parseInt(x[i]));
+	   
+	     }
+	     */
+	     
+	 //  Adding data to the X Series.
+	     for(int i=0;i<anArray.length;i++)
+	     {
+	      xSeries.add(anArray[i],Integer.parseInt(anArray2[i]));
 	   
 	     }
 
@@ -372,7 +527,7 @@ public class TrendChartActivity extends ActionBarActivity {
 	     XYMultipleSeriesDataset dataset=new XYMultipleSeriesDataset();
 	     
 	      // Add X series to the Dataset.   
-	 dataset.addSeries(xSeries);
+	     dataset.addSeries(xSeries);
 	     
 	     
 	      // Create XYSeriesRenderer to customize XSeries
@@ -380,6 +535,10 @@ public class TrendChartActivity extends ActionBarActivity {
 	     XYSeriesRenderer Xrenderer=new XYSeriesRenderer();
 	     Xrenderer.setColor(Color.GREEN);
 	     Xrenderer.setPointStyle(PointStyle.DIAMOND);
+	     
+	     //added by Jamel
+	     //Xrenderer.setPointStrokeWidth(3);
+	     
 	     Xrenderer.setDisplayChartValues(true);
 	     Xrenderer.setLineWidth(2);
 	     Xrenderer.setFillPoints(true);
@@ -387,6 +546,8 @@ public class TrendChartActivity extends ActionBarActivity {
 	     // Create XYMultipleSeriesRenderer to customize the whole chart
 
 	     XYMultipleSeriesRenderer mRenderer=new XYMultipleSeriesRenderer();
+	  // Adding the XSeriesRenderer to the MultipleRenderer. 
+	     mRenderer.addSeriesRenderer(Xrenderer);
 	     
 	     mRenderer.setChartTitle(charttype +" Trend Chart" + ":"+" "+ patient_name
 	    		                 + "    Total: " + formatter.format(cumulative_change) + "%"
@@ -397,24 +558,61 @@ public class TrendChartActivity extends ActionBarActivity {
 	     mRenderer.setXLabels(0);
 	     mRenderer.setPanEnabled(false);
 	   
+	     if (charttype.equalsIgnoreCase("STRENGTH") || (charttype.equalsIgnoreCase("PAIN"))){
+	    	//jamel test
+		     mRenderer.setYAxisMin(0.0);
+		     mRenderer.setYAxisMax(10.0);
+	     }
+	     else if (charttype.equalsIgnoreCase("ROM")){
+	    	//jamel test
+		     mRenderer.setYAxisMin(0.0);
+		     mRenderer.setYAxisMax(180.0);
+	     }
+	     
 	     mRenderer.setShowGrid(true);
 	 
 	     mRenderer.setClickEnabled(true);
 	     
+	     //add months from arraylist object
+	     for (int i=0; i < testMonths.length; i++)
+		 {
+	    	 testMonths[i] = storeMonthVals.get(i).toString();
+		 }
+	     
+	     /*
 	     for(int i=0;i<z.length;i++)
 	     {
 	      mRenderer.addXTextLabel(i, mMonth[i]);
 	     }
+	     */
+	     
+	     for(int i=0;i<anArray.length;i++)
+	     {
+	      mRenderer.addXTextLabel(i, testMonths[i]);
+	     }
 	     
 	       // Adding the XSeriesRenderer to the MultipleRenderer. 
-	     mRenderer.addSeriesRenderer(Xrenderer);
+	     //mRenderer.addSeriesRenderer(Xrenderer);
 	  
 	     
 	     LinearLayout chart_container=(LinearLayout)findViewById(R.id.Chart_layout);
 
+	     if (chart_container != null){
+			  Log.d("chart_container is ","not null!!");
+		  }else{
+			  Log.d("chart_container is ","null!!");
+		  }
+	     
 	   // Creating an intent to plot line chart using dataset and multipleRenderer
 	     
 	     mChart=(GraphicalView)ChartFactory.getLineChartView(this, dataset, mRenderer);
+	     
+	     
+	     if (mChart != null){
+			  Log.d("mChart is ","not null!!");
+		  }else{
+			  Log.d("mChart is ","null!!");
+		  }
 	     
 	     //  Adding click event to the Line Chart.
 
@@ -439,11 +637,12 @@ public class TrendChartActivity extends ActionBarActivity {
 	      select_series="Y Series";
 	     }
 	     
-	     String month=mMonth[(int)series_selection.getXValue()];
+	    // String month=mMonth[(int)series_selection.getXValue()];
+	     String month = testMonths[(int)series_selection.getXValue()];
 	     
 	     int amount=(int)series_selection.getValue();
 	     
-	     Toast.makeText(getBaseContext(), select_series+"in" + month+":"+amount, Toast.LENGTH_LONG).show();
+	     Toast.makeText(getBaseContext(), select_series+" in " + month+": "+amount, Toast.LENGTH_LONG).show();
 	    }
 	   }
 	  });
@@ -459,14 +658,24 @@ public class TrendChartActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_trend_chart);
-		charttype = "PAIN";
-    	patient_name = "Mays, Bill";
-        OpenChart();
+		//setContentView(R.layout.activity_trend_chart);
+		
+		//test by Jamel
+		setContentView(R.layout.fragment_trend_chart);
+		
+		/*
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		*/
+		
+		//this works
+		get_patient_trend_data();
+		
+		//charttype = "PAIN";
+    	//patient_name = "Mays, Bill";
+       // OpenChart();
 	}
 
 	@Override
