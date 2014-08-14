@@ -23,7 +23,7 @@
     <string name="injury_code">injury code</string>
     <string name="button_getPatientList"> Patient List</string>
     <string name="pattient_list"> Patients</string>
-    <string name="title_activity_trend_report">TrendReportActivity</string>
+    <string name="title_activity_trend_report">TrendReport</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_create_notes">CreateNotes</string>
     <string name="title_activity_subjective_notes">SubjectiveNotes</string>
@@ -47,9 +47,9 @@
     </string-array>
 
     <string name="title_activity_injury_lookup">InjuryLookup</string>
-    <string name="title_activity_create_report">CreateReportActivity</string>
-    <string name="title_activity_trend_chart">TrendChartActivity</string>
-    <string name="title_activity_trend_chart_gui">TrendChartGUIActivity</string>
+    <string name="title_activity_create_report">CreateReport</string>
+    <string name="title_activity_trend_chart">TrendChart</string>
+    <string name="title_activity_trend_chart_gui">TrendChartGUI</string>
     <string name="title_activity_splash">SplashActivity</string>
 
 </resources>
