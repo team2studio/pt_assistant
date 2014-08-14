@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="button_report">Reports</string>
     <string name="app_name">PT Assistant</string>
     <string name="edit_message">Patient ID</string>
@@ -24,12 +25,12 @@
     <string name="pattient_list"> Patients</string>
     <string name="title_activity_trend_report">TrendReportActivity</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_create_notes">CreateNotesActivity</string>
+    <string name="title_activity_create_notes">CreateNotes</string>
     <string name="title_activity_subjective_notes">SubjectiveNotes</string>
-    <string name="title_activity_objective_notes">ObjectiveNotesActivity</string>
-    <string name="title_activity_assessment_notes">AssessmentNotesActivity</string>
-    <string name="title_activity_plan_notes">PlanNotesActivity</string>
-    <string name="title_activity_treatment_plan">TreatmentPlanActivity</string>
+    <string name="title_activity_objective_notes">ObjectiveNotes</string>
+    <string name="title_activity_assessment_notes">AssessmentNotes</string>
+    <string name="title_activity_plan_notes">PlanNotes</string>
+    <string name="title_activity_treatment_plan">TreatmentPlan</string>
     <string name="injuryName"></string>
     <string name="phaseName"></string>
     <string name="instructIntReps"></string>
@@ -44,11 +45,11 @@
         <item>ROTATOR CUFF TEAR</item>
         <item>ACL TEAR</item>
     </string-array>
-   
 
-    <string name="title_activity_injury_lookup">InjuryLookupActivity</string>
+    <string name="title_activity_injury_lookup">InjuryLookup</string>
     <string name="title_activity_create_report">CreateReportActivity</string>
     <string name="title_activity_trend_chart">TrendChartActivity</string>
     <string name="title_activity_trend_chart_gui">TrendChartGUIActivity</string>
+    <string name="title_activity_splash">SplashActivity</string>
 
 </resources>
