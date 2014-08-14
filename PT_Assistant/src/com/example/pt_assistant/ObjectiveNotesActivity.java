@@ -225,7 +225,7 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 			public void onProgressChanged(SeekBar seekBar, int progresValue,
 					boolean fromUser) {
 				// TODO Auto-generated method stub
-				textViewSpecCtr.setText("Special Test: " + progresValue);
+				textViewSpecCtr.setText("Spec Test: " + progresValue);
 			}
 
 			@Override
