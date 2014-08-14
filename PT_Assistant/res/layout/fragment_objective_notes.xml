@@ -1,81 +1,44 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="446dp"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/custom_background"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.pt_assistant.ObjectiveNotesActivity$PlaceholderFragment" >
-    
-    
 
     <TextView
         android:id="@+id/textViewRom"
+        style="@style/PTFont.Dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Range of Motion"
+        android:text="ROM       "
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <SeekBar
-        android:id="@+id/seekBarROM"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/textViewRom"
-        android:layout_below="@+id/textViewRom"
-        android:max="10" />
-
-    <TextView
-        android:id="@+id/textViewStrength"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/seekBarROM"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/textViewRom"
-        android:text="Strength"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <SeekBar
-        android:id="@+id/seekBarStrength"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textViewStrength"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/seekBarROM"
-        android:max="@integer/strengthMax" />
 
     <TextView
         android:id="@+id/textViewJointMob"
+        style="@style/PTFont.Dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/seekBarROM"
         android:layout_below="@+id/seekBarROM"
         android:layout_marginTop="40dp"
-        android:text="Joint Mobilization"
+        android:text="Joint Mobs"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <SeekBar
-        android:id="@+id/seekBarJointMob"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/seekBarROM"
-        android:layout_below="@+id/textViewJointMob"
-        android:max="@integer/jointMobMax" />
 
     <TextView
         android:id="@+id/textViewPain"
+        style="@style/PTFont.Dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textViewJointMob"
         android:layout_alignBottom="@+id/textViewJointMob"
         android:layout_alignLeft="@+id/seekBarStrength"
-        android:text="Pain"
+        android:text="Pain      "
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <SeekBar
@@ -83,61 +46,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textViewPain"
+        android:layout_alignRight="@+id/textViewPain"
         android:layout_alignTop="@+id/seekBarJointMob"
         android:max="@integer/painMax" />
-
-    <TextView
-        android:id="@+id/textViewPalpation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/seekBarJointMob"
-        android:layout_below="@+id/seekBarJointMob"
-        android:layout_marginTop="40dp"
-        android:text="Palpation"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <SeekBar
-        android:id="@+id/seekBarPalpation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignRight="@+id/seekBarJointMob"
-        android:layout_below="@+id/textViewPalpation"
-        android:max="@integer/palpMax" />
-
-    <TextView
-        android:id="@+id/textViewSpecialTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textViewPalpation"
-        android:layout_alignLeft="@+id/seekBarPain"
-        android:text="Special Test"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <SeekBar
         android:id="@+id/seekBarSpecialTest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textViewSpecialTest"
+        android:layout_alignRight="@+id/textViewSpecialTest"
         android:layout_alignTop="@+id/seekBarPalpation"
         android:max="@integer/specTestMax" />
-
-    <Button
-        android:id="@+id/buttonInjuryLookup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/seekBarPalpation"
-        android:layout_below="@+id/seekBarPalpation"
-        android:layout_marginTop="56dp"
-        android:onClick="lookupInjury"
-        android:text="Injury Lookup" />
 
     <TextView
         android:id="@+id/textViewROMCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/seekBarROM"
-        android:layout_below="@+id/seekBarROM" />
+        android:layout_below="@+id/seekBarROM"
+        style="@style/PTFont.Dark" />
 
     <Button
         android:id="@+id/buttonNext2"
@@ -146,7 +74,101 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_marginBottom="14dp"
         android:onClick="setObjective"
-        android:text="Next" />
+        android:text="Next"
+        android:background="@drawable/custom_button"
+        android:textAppearance="@style/PTFont.Dark" />
+
+    <TextView
+        android:id="@+id/textViewStrength"
+        style="@style/PTFont.Dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/seekBarROM"
+        android:layout_toRightOf="@+id/buttonInjuryLookup"
+        android:text="Strength  "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <SeekBar
+        android:id="@+id/seekBarJointMob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textViewJointMob"
+        android:layout_below="@+id/textViewJointMob"
+        android:layout_marginTop="17dp"
+        android:max="@integer/jointMobMax" />
+
+    <SeekBar
+        android:id="@+id/seekBarROM"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textViewRom"
+        android:layout_below="@+id/textViewRom"
+        android:layout_marginTop="16dp"
+        android:max="10" />
+
+    <SeekBar
+        android:id="@+id/seekBarStrength"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewStrength"
+        android:layout_alignRight="@+id/textViewStrength"
+        android:layout_alignTop="@+id/seekBarROM"
+        android:max="@integer/strengthMax" />
+
+    <TextView
+        android:id="@+id/textViewSpecialTest"
+        style="@style/PTFont.Dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/seekBarSpecialTest"
+        android:layout_alignLeft="@+id/seekBarPain"
+        android:layout_marginBottom="21dp"
+        android:text="Spec Test "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewPalpation"
+        style="@style/PTFont.Dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewSpecialTest"
+        android:layout_alignBottom="@+id/textViewSpecialTest"
+        android:layout_alignLeft="@+id/seekBarJointMob"
+        android:text="Palpation "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <SeekBar
+        android:id="@+id/seekBarPalpation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonInjuryLookup"
+        android:layout_alignLeft="@+id/textViewPalpation"
+        android:layout_alignRight="@+id/textViewPalpation"
+        android:layout_marginBottom="22dp"
+        android:max="@integer/palpMax" />
+
+    <Button
+        android:id="@+id/buttonInjuryLookup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttonNext2"
+        android:layout_toRightOf="@+id/textViewROMCount"
+        android:background="@drawable/custom_button"
+        android:onClick="lookupInjury"
+        android:text="Injury Lookup"
+        android:textAppearance="@style/PTFont.Dark" />
+
+    <Button
+        android:id="@+id/Button01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seekBarPalpation"
+        android:layout_toLeftOf="@+id/seekBarSpecialTest"
+        android:background="@drawable/custom_button"
+        android:onClick="lookupInjury"
+        android:text="Injury Lookup"
+        android:textAppearance="@style/PTFont.Dark" />
 
 </RelativeLayout>

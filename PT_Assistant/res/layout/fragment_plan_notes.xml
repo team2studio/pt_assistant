@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.pt_assistant.PlanNotesActivity$PlaceholderFragment" >
+    tools:context="com.example.pt_assistant.PlanNotesActivity$PlaceholderFragment"
+    android:background="@drawable/custom_background" >
 
     <Button
         android:id="@+id/buttonBack1"
@@ -15,8 +16,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:background="@drawable/custom_button"
         android:onClick="backHome"
-        android:text="Back to Main Menu" />
+        android:text="Home"
+        android:textAppearance="@style/PTFont.Dark" />
 
     <EditText
         android:id="@+id/editPlanNotes"
@@ -27,26 +30,31 @@
         android:layout_alignRight="@+id/buttonBack1"
         android:layout_marginTop="60dp"
         android:ems="10"
-        android:inputType="textMultiLine" />
+        android:inputType="textMultiLine"
+        style="@style/PTFont.Dark" />
 
     <TextView
         android:id="@+id/textViewPlanNotes"
+        style="@style/PTFont.Dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="Additional Plan Notes"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/buttonSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/textViewPlanNotes"
         android:layout_below="@+id/editPlanNotes"
-        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/custom_button"
         android:onClick="setPlanNotes"
-        android:text="Submit Notes" />
+        android:text="Submit Notes"
+        android:textAppearance="@style/PTFont.Dark" />
 
     <Button
         android:id="@+id/buttonGenPlan"
@@ -54,8 +62,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonSubmit"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/custom_button"
         android:onClick="generateTreatmentPlan"
-        android:text="Generate Treatment Plan" />
+        android:text="Generate Treatment Plan"
+        android:textAppearance="@style/PTFont.Dark" />
 
 </RelativeLayout>

@@ -1,7 +1,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="@drawable/custom_background" >
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="445dp"
@@ -18,6 +19,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="Treatment Plan"
+        style="@style/PTFont.Dark" 
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -28,7 +30,8 @@
         android:layout_below="@+id/textViewTreatmentPlan"
         android:layout_marginTop="36dp"
         android:text="Injury: "
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        style="@style/PTFont.Dark" />
 
     <TextView
         android:id="@+id/instructIntReps"
@@ -38,7 +41,8 @@
         android:layout_alignBottom="@+id/textViewInstruct1"
         android:layout_toRightOf="@+id/textViewInstruct1"
         android:inputType="number"
-        android:text="@string/instructIntReps" />
+        android:text="@string/instructIntReps"
+        android:textColor="@color/Navy" />
 
     <TextView
         android:id="@+id/instructIntMin"
@@ -47,7 +51,8 @@
         android:layout_alignLeft="@+id/textViewInstruct1"
         android:layout_below="@+id/instructIntReps"
         android:inputType="number"
-        android:text="@string/instructIntMin" />
+        android:text="@string/instructIntMin"
+        android:textColor="@color/Navy" />
 
     <TextView
         android:id="@+id/textViewInstruct5"
@@ -56,7 +61,8 @@
         android:layout_alignBaseline="@+id/instructIntMin"
         android:layout_alignBottom="@+id/instructIntMin"
         android:layout_toRightOf="@+id/instructIntMin"
-        android:text=" to " />
+        android:text=" to "
+        android:textColor="@color/Navy" />
 
     <TextView
         android:id="@+id/instructIntMax"
@@ -66,7 +72,8 @@
         android:layout_alignBottom="@+id/textViewInstruct5"
         android:layout_toRightOf="@+id/textViewInstruct5"
         android:inputType="number"
-        android:text="@string/instructIntMax" />
+        android:text="@string/instructIntMax"
+        android:textColor="@color/Navy" />
 
     <TextView
         android:id="@+id/textViewInstruct6"
@@ -75,7 +82,8 @@
         android:layout_alignBaseline="@+id/instructIntMax"
         android:layout_alignBottom="@+id/instructIntMax"
         android:layout_toRightOf="@+id/instructIntMax"
-        android:text=" mins a day." />
+        android:text=" mins a day."
+        android:textColor="@color/Navy" />
 
     <TextView
         android:id="@+id/textViewPhase"
@@ -85,7 +93,8 @@
         android:layout_below="@+id/injuryName"
         android:layout_marginTop="15dp"
         android:text="Phase: "
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        style="@style/PTFont.Dark" />
 
     <TextView
         android:id="@+id/phaseName"
@@ -94,7 +103,8 @@
         android:layout_alignLeft="@+id/textViewPhase"
         android:layout_below="@+id/textViewPhase"
         android:inputType="text"
-        android:text="@string/phaseName" />
+        android:text="@string/phaseName"
+        style="@style/PTFont.Dark" />
 
     <TextView
         android:id="@+id/injuryName"
@@ -103,7 +113,8 @@
         android:layout_alignLeft="@+id/textViewInjury2"
         android:layout_below="@+id/textViewInjury2"
         android:inputType="text"
-        android:text="@string/injuryName" />
+        android:text="@string/injuryName"
+        style="@style/PTFont.Dark" />
 
     <TextView
         android:id="@+id/textViewInstructions"
@@ -113,7 +124,8 @@
         android:layout_below="@+id/phaseName"
         android:layout_marginTop="24dp"
         android:text="Instructions:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        style="@style/PTFont.Dark" />
 
     <TextView
         android:id="@+id/textViewInstruct1"
@@ -122,7 +134,8 @@
         android:layout_alignLeft="@+id/textViewInstructions"
         android:layout_below="@+id/textViewInstructions"
         android:layout_marginTop="19dp"
-        android:text="For each exercise, repeat " />
+        android:text="For each exercise, repeat "
+        android:textColor="@color/Navy" />
 
     <TextView
         android:id="@+id/textViewExercises"
@@ -132,7 +145,8 @@
         android:layout_below="@+id/instructIntMin"
         android:layout_marginTop="24dp"
         android:text="Exercises"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        style="@style/PTFont.Dark" />
 
     <TextView
         android:id="@+id/exerciseOne"
@@ -141,7 +155,8 @@
         android:layout_alignLeft="@+id/textViewExercises"
         android:layout_below="@+id/textViewExercises"
         android:layout_marginTop="19dp"
-        android:text="@string/exerciseOne" />
+        android:text="@string/exerciseOne"
+        android:textColor="@color/Navy" />
 
     <TextView
         android:id="@+id/exerciseTwo"
@@ -149,7 +164,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/exerciseOne"
         android:layout_below="@+id/exerciseOne"
-        android:text="@string/exerciseTwo" />
+        android:text="@string/exerciseTwo"
+        android:textColor="@color/Navy" />
 
     <TextView
         android:id="@+id/exerciseThree"
@@ -157,7 +173,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/exerciseTwo"
         android:layout_below="@+id/exerciseTwo"
-        android:text="@string/exerciseThree" />
+        android:text="@string/exerciseThree"
+        android:textColor="@color/Navy" />
 
     <TextView
         android:id="@+id/textViewInstruct2"
@@ -166,7 +183,8 @@
         android:layout_alignBaseline="@+id/instructIntReps"
         android:layout_alignBottom="@+id/instructIntReps"
         android:layout_toRightOf="@+id/instructIntReps"
-        android:text=" times for " />
+        android:text=" times for "
+        android:textColor="@color/Navy" />
 
     <Button
         android:id="@+id/buttonMain"
@@ -175,8 +193,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/exerciseThree"
+        android:background="@drawable/custom_button"
         android:onClick="backToMain"
-        android:text="Main Menu" />
+        android:text="Home"
+        android:textAppearance="@style/PTFont.Dark" />
 
 </RelativeLayout>
 </ScrollView>

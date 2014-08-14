@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.pt_assistant.AssessmentNotesActivity$PlaceholderFragment" >
+    tools:context="com.example.pt_assistant.AssessmentNotesActivity$PlaceholderFragment"
+    android:background="@drawable/custom_background" >
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,7 +25,8 @@
             android:layout_below="@+id/textViewAssess"
             android:layout_marginTop="42dp"
             android:text="Injury"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/PTFont.Dark" />
 
         <Spinner
             android:id="@+id/spinnerInjury"
@@ -32,16 +34,19 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/textViewInjury"
             android:layout_toRightOf="@+id/textViewAssess"
-            android:entries="@array/injury_array" />
+            android:entries="@array/injury_array"
+            style="@style/PTFont.Dark" />
 
         <EditText
             android:id="@+id/editAssessment"
+            style="@style/PTFont.Dark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/textViewInjury"
             android:layout_below="@+id/spinnerInjury"
             android:layout_marginTop="39dp"
             android:ems="10"
+            android:hint="Description"
             android:inputType="textMultiLine" >
 
             <requestFocus />
@@ -55,17 +60,21 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
             android:onClick="setAssessment"
-            android:text="Next" />
+            android:text="Next"
+            android:background="@drawable/custom_button"
+            android:textAppearance="@style/PTFont.Dark" />
 
         <TextView
             android:id="@+id/textViewAssess"
+            style="@style/PTFont.Dark"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="28dp"
             android:text="Diagnosis"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="20sp" />
 
     </RelativeLayout>
 

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.pt_assistant.TrendChartGUI"
-    tools:ignore="MergeRootFrame" >
+    tools:ignore="MergeRootFrame"
+    android:background="@drawable/custom_background" >
 
     <Button
         android:id="@+id/btDone"
@@ -110,15 +111,6 @@
             android:text="Strength" />
     </RadioGroup>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_x="138dp"
-        android:layout_y="126dp"
-        android:text="Metric"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <ImageButton
         android:id="@+id/btnCreateChart"
         android:layout_width="wrap_content"
@@ -135,21 +127,8 @@
         android:layout_height="wrap_content"
         android:layout_x="127dp"
         android:layout_y="392dp"
-        android:text="Create Chart" />
-
-    <EditText
-        android:id="@+id/dtpatid"
-        android:layout_width="156dp"
-        android:layout_height="wrap_content"
-        android:layout_x="153dp"
-        android:layout_y="44dp"
-        android:ems="10"
-        android:hint="Enter Patient ID"
-        android:inputType="number"
-        android:textAlignment="center" >
-
-        <requestFocus />
-    </EditText>
+        android:text="Create Chart"
+        android:textColor="@color/Navy" />
 
     <TextView
         android:id="@+id/tvHeader"
@@ -164,20 +143,50 @@
 
     <TextView
         android:id="@+id/TextView01"
+        style="@style/PTFont.Dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="118dp"
-        android:layout_y="230dp"
+        android:layout_x="96dp"
+        android:layout_y="231dp"
         android:text="Injury Type"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/PTFont.Dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="121dp"
+        android:layout_y="126dp"
+        android:text="Metric"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_x="42dp"
-        android:layout_y="53dp"
-        android:text="Enter Patient ID:" />
+        android:layout_x="14dp"
+        android:layout_y="54dp"
+        android:text="Enter Patient ID:"
+        android:textColor="@color/Navy" />
+
+    <EditText
+        android:id="@+id/dtpatid"
+        style="@style/PTFont.Dark"
+        android:layout_width="198dp"
+        android:layout_height="wrap_content"
+        android:layout_x="117dp"
+        android:layout_y="45dp"
+        android:ems="10"
+        android:hint="Enter Patient ID"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="16sp" >
+
+        <requestFocus />
+    </EditText>
 
 </AbsoluteLayout>
 

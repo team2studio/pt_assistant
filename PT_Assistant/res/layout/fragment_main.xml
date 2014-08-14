@@ -2,23 +2,29 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent" 
 	android:layout_height="fill_parent"
-	android:orientation="vertical" >
+	android:orientation="vertical" 
+	android:gravity="center"
+    android:background="@drawable/custom_background" >
    
   <LinearLayout
-      android:layout_width="317dp"
-      android:layout_height="wrap_content" >
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:gravity="center" >
 
        <Button
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
+           android:background="@drawable/custom_button"
            android:onClick="sendMessage"
-           android:text="@string/button_get" />
+           android:text="@string/button_get"
+           android:textAppearance="@style/PTFont.Dark" />
         
        <EditText
           	android:id="@+id/patient_ID"
           	android:layout_width="wrap_content"
          	android:layout_height="wrap_content"
-          	android:hint="@string/edit_message" />
+          	android:hint="@string/edit_message"
+          	style="@style/PTFont.Dark" />
      </LinearLayout>
     
     <LinearLayout
@@ -27,29 +33,31 @@
         android:orientation="vertical" >
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="257dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ptDimens"
+            android:background="@drawable/custom_button"
             android:onClick="createPatient"
-            android:text="@string/button_Register" />
-
-     </LinearLayout>
-     
-     <LinearLayout 
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent" 
-        android:orientation="vertical" >
+            android:text="@string/button_Register"
+            android:textAppearance="@style/PTFont.Dark" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ptDimens"
+            android:background="@drawable/custom_button"
             android:onClick="getPatientList"
-            android:text="@string/button_getPatientList" />
+            android:text="@string/button_getPatientList"
+            android:textAppearance="@style/PTFont.Dark" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/ptDimens"
+            android:background="@drawable/custom_button"
             android:onClick="getTrendChartGUI"
-            android:text="@string/button_report" />
+            android:text="@string/button_report"
+            android:textAppearance="@style/PTFont.Dark" />
 
      </LinearLayout>
    

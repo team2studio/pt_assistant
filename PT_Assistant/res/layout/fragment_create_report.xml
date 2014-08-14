@@ -6,16 +6,19 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.pt_assistant.CreateReportActivity$PlaceholderFragment" >
+    tools:context="com.example.pt_assistant.CreateReportActivity$PlaceholderFragment"
+    android:background="@drawable/custom_background" >
 
     <TextView
         android:id="@+id/textView1"
+        style="@style/PTFont.Dark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="Patient_Name"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -25,46 +28,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
         android:text="Date-P_ID-Injury-Therapist"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginBottom="26dp"
-        android:text="Index" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_centerVertical="true"
-        android:text="ROM" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/button2"
-        android:text="Pain" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button3"
-        android:layout_alignBottom="@+id/button3"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:text="Stren" />
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        style="@style/PTFont.Dark" />
 
     <DatePicker
         android:id="@+id/datePicker1"
@@ -72,5 +37,49 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView2" />
+
+    <Button
+        android:id="@+id/button4"
+        style="@style/PTFont.Dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button3"
+        android:layout_alignBottom="@+id/button3"
+        android:layout_toRightOf="@+id/button3"
+        android:background="@drawable/custom_button"
+        android:text="Stren" />
+
+    <Button
+        android:id="@+id/button1"
+        style="@style/PTFont.Dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_toLeftOf="@+id/textView1"
+        android:background="@drawable/custom_button"
+        android:text="Index" />
+
+    <Button
+        android:id="@+id/button3"
+        style="@style/PTFont.Dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_toRightOf="@+id/button2"
+        android:background="@drawable/custom_button"
+        android:text="Pain" />
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/PTFont.Dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/datePicker1"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/custom_button"
+        android:text="ROM" />
 
 </RelativeLayout>
