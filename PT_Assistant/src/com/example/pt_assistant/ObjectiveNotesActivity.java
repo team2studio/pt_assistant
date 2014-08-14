@@ -88,7 +88,7 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 			public void onProgressChanged(SeekBar seekBar, int progresValue,
 					boolean fromUser) {
 				// TODO Auto-generated method stub
-				textViewROMCtr.setText("Range of Motion: " + progresValue);
+				textViewROMCtr.setText("ROM: " + progresValue);
 			}
 
 			@Override
@@ -142,7 +142,7 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 			public void onProgressChanged(SeekBar seekBar, int progresValue,
 					boolean fromUser) {
 				// TODO Auto-generated method stub
-				textViewJointCtr.setText("Joint Mobilization: " + progresValue);
+				textViewJointCtr.setText("Joint Mobs: " + progresValue);
 			}
 
 			@Override
