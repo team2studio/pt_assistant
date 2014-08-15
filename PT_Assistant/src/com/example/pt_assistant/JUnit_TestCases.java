@@ -24,6 +24,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 	private static final String CREATE_PATIENT_NOTES_URL = "http://199.255.250.71/patient_create_notes.php";
 	private static final String LOAD_INJURIES_URL = "http://199.255.250.71/load_injuries.php";
 	private static final String GET_INDEX_URL =   "http://199.255.250.71/get_patient_trend_data.php";
+	private static final String TAG_MESSAGE = "message";
 	private static final String TAG_SUCCESS = "success";
 	
 	Patient p;
@@ -77,7 +78,7 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 			r = new Report();
 	  }
 	 
-	  
+	  /*
 	  
 	  @Test
 		public void testCreate_patient_profile() {
@@ -358,18 +359,77 @@ public class JUnit_TestCases extends InstrumentationTestCase {
 			}
 		}
 	}
-		
-	  /*
+		*/
+	  
 		@Test
 		public void testGetPatientTrendReport(){
-			String patient_id = "1211";
-			String injury_name = "LUMBAR STRAIN";	
+			String charttype, patient_name;
+			String JSON_PAT_NAME =        "name";
+			String JSON_ROM =             "range_of_motion";
+			String JSON_EVAL_DATE =       "evaldate";
+			String JSON_INJURY_NAME =     "injury_name";
+			String JSON_THERAPIST_NAME =  "therapist_name";
+			String JSON_STRENGTH =        "strength";
+			String JSON_PAIN =            "pain";
+			String KEY_PATNAME =   "1";
+			String KEY_ROM =       "2";
+			String KEY_EVAL_DATE = "3";
+			String KEY_INURY_NAME = "4";
+			String KEY_THERAPIST = "5";
+			String KEY_STRENT_LVL = "6";
+			String KEY_PAIN_LVL = "7";
+			List<Map> patientTrendList;
+			Map<String, String> patTrendmap;
+			JSONParser jsonParser  = new JSONParser();
+			String result = null;
+			int success = 0;
 			
-			int reportGenerated = r.generateTrendReport(patient_id,injury_name);
+			// Building Parameters
+						List<NameValuePair> params = new ArrayList<NameValuePair>();
+						params.add(new BasicNameValuePair("patient_id", "1030"));
+						params.add(new BasicNameValuePair("injuryName", "LUMBAR STRAIN"));
+						try {
+							// getting product details by making HTTP request
+							JSONObject json = jsonParser.makeHttpRequest(GET_INDEX_URL,
+									"GET", params);
+							// json success tag
+							success = json.getInt(TAG_SUCCESS);
+
+							if (success == 1) {
+								patientTrendList =  new ArrayList<Map>();
+								JSONArray jsonPatTrendList = new JSONArray();
+								jsonPatTrendList = json.getJSONArray("trend_data");
+								
+								for (int i= 0;i<jsonPatTrendList.length();i++){
+									
+									JSONObject c = jsonPatTrendList.getJSONObject(i);
+									patTrendmap = new HashMap<String, String>();
+									patTrendmap.put(KEY_PATNAME, c.getString(JSON_PAT_NAME));
+									patTrendmap.put(KEY_ROM, c.getString(JSON_ROM));
+									patTrendmap.put(KEY_EVAL_DATE, c.getString(JSON_EVAL_DATE));
+									patTrendmap.put(KEY_INURY_NAME, c.getString(JSON_INJURY_NAME));
+									patTrendmap.put(KEY_THERAPIST, c.getString(JSON_THERAPIST_NAME));
+									patTrendmap.put(KEY_STRENT_LVL, c.getString(JSON_STRENGTH));
+									patTrendmap.put(KEY_PAIN_LVL, c.getString(JSON_PAIN));
+									patientTrendList.add(patTrendmap);				
+								}
+								
+								Log.d("Found the patient information!", json.toString());
+								
+								result =  json.getString(TAG_MESSAGE);
+							}
+							else {
+								Log.d("Did not find the patient information!",json.getString(TAG_MESSAGE));
+								result =  json.getString(TAG_MESSAGE);
+							}
+
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
 			
-			//determine if the report was generated successfully
-			assertTrue(reportGenerated == 1);
+			//determine if we have patient notes data for this patient
+			assertTrue(success == 1);
 		}
-		*/
+		
 		
 }
