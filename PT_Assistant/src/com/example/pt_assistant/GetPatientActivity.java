@@ -30,6 +30,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+
 public class GetPatientActivity extends ActionBarActivity {
 	// for local DB
 	PT_SQLiteHelper pt_db = new PT_SQLiteHelper(this);
@@ -39,24 +41,12 @@ public class GetPatientActivity extends ActionBarActivity {
 	private ProgressDialog pDialog;
 	Patient existPat;
 
-	// localhost :
-	// testing on your device
-	// put your local ip instead, on windows, run CMD > ipconfig
-	// or in mac's terminal type ifconfig and look for the ip under en0 or en1
-	// private static final String CREATE_PATIENT_URL =
-	// "http://xxx.xxx.x.x:1234/webservice/login.php";
-
-	// testing on Emulator:
-	// private static final String GET_PATIENT_URL =
-	// "http://192.168.1.8/webservice/get_patient.php";
+	//url scripts for getting and updating a patient
 	private static final String UPDATE_PATIENT_URL = "http://199.255.250.71/update_patient.php";
-	private static final String GET_PATIENT_URL =    "http://199.255.250.71/get_patient.php";
+	private static final String GET_PATIENT_URL = "http://199.255.250.71/get_patient.php";
 	private String GET_PATIENT = "get patient";
 	private String UPDATE_PATIENT = "update patient";
 
-	// testing from a real server:
-	// private static final String CREATE_PATIENT_URL =
-	// "http://www.yourdomain.com/webservice/login.php";
 	public void fill_patient_fields(Patient pat) {
 		EditText eText;
 		eText = (EditText) findViewById(R.id.editname);
@@ -162,16 +152,16 @@ public class GetPatientActivity extends ActionBarActivity {
 		new doPatient(UPDATE_PATIENT).execute();
 
 	}
-	
+
 	public void gotoNotes(View view) {
 		EditText eText;
 		existPat = new Patient();
 
 		eText = (EditText) findViewById(R.id.editpid);
 		existPat.setPatientID(Integer.parseInt(eText.getText().toString()));
-		
-		//Serialize, start next activity and send intent
-		//Patient p = new Patient();
+
+		// Serialize, start next activity and send intent
+		// Patient p = new Patient();
 		Intent intent = new Intent(this, CreateNotesActivity.class);
 		intent.putExtra("PatientObject", existPat);
 		startActivity(intent);
@@ -198,7 +188,8 @@ public class GetPatientActivity extends ActionBarActivity {
 	// JSON element ids from repsonse of php script:sergio
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
-
+    // Async tasks are necessary for retrieving data from the remote DB. 
+	// You cannot do this in the main activity
 	class doPatient extends AsyncTask<String, String, String> {
 		private String doWhat;
 
@@ -231,7 +222,7 @@ public class GetPatientActivity extends ActionBarActivity {
 			// TODO Auto-generated method stub
 			// Check for success tag
 			// get the patient info from the DB server
-			if (doWhat.equals(GET_PATIENT))  {
+			if (doWhat.equals(GET_PATIENT)) {
 				result = get_patient_json(args[0]);
 			} else if (doWhat.equals(UPDATE_PATIENT)) {
 				result = update_patient_json();
@@ -250,7 +241,6 @@ public class GetPatientActivity extends ActionBarActivity {
 		 * **/
 		protected void onPostExecute(String file_url) {
 
-			
 			pDialog.dismiss();
 			if (failure == false) {
 				// fill in the GUI
@@ -328,7 +318,8 @@ public class GetPatientActivity extends ActionBarActivity {
 				try {
 					// Building Parameters
 					List<NameValuePair> params = new ArrayList<NameValuePair>();
-					params.add(new BasicNameValuePair("patient_id", Integer.toString(existPat.getPatientID())));
+					params.add(new BasicNameValuePair("patient_id", Integer
+							.toString(existPat.getPatientID())));
 					params.add(new BasicNameValuePair("patient_name", existPat
 							.getName()));
 					params.add(new BasicNameValuePair("b_date", existPat

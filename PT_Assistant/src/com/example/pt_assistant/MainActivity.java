@@ -113,13 +113,14 @@ public class MainActivity extends ActionBarActivity {
 		intent.putExtra(EXTRA_MESSAGE, message);
 		startActivity(intent);
 	}
-	//Test code for reporting
-	public void doReportStuff(View view)
-	{
-	   Report testReport = new Report();
-	   testReport.get_patient_trend_data();
-	
+
+	// Test code for reporting
+	public void doReportStuff(View view) {
+		Report testReport = new Report();
+		testReport.get_patient_trend_data();
+
 	}
+
 	public void createPatient(View view) {
 
 		openRegisterPatient();
@@ -145,29 +146,29 @@ public class MainActivity extends ActionBarActivity {
 		 * startActivity(intent);
 		 */
 	}
-	public void getPatientList(View view){
+
+	public void getPatientList(View view) {
 		// another activity
 		Intent intent = new Intent(this, PatientListActivity.class);
 		intent.putExtra(EXTRA_MESSAGE, "test");
 		startActivity(intent);
-		
+
 	}
-	public void getTrendChartGUI(View view){
+
+	public void getTrendChartGUI(View view) {
 		// another activity
 		Intent intent = new Intent(this, TrendChartGUI.class);
 		intent.putExtra(EXTRA_MESSAGE, "test");
 		startActivity(intent);
-		
+
 	}
-	
+
 	/*
-	public void getTrendReport(View view){
-		// another activity
-		Intent intent = new Intent(this, TrendChartActivity.class);
-		intent.putExtra(EXTRA_MESSAGE, "test");
-		startActivity(intent);
-		
-	}
-	*/
-	
+	 * public void getTrendReport(View view){ // another activity Intent intent
+	 * = new Intent(this, TrendChartActivity.class);
+	 * intent.putExtra(EXTRA_MESSAGE, "test"); startActivity(intent);
+	 * 
+	 * }
+	 */
+
 }

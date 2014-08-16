@@ -40,30 +40,32 @@ public class PlanNotesActivity extends ActionBarActivity {
 	private static final String CREATE_PATIENT_NOTES_URL = "http://199.255.250.71/patient_create_notes.php";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_plan_notes);
 
-		
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
-		 if (savedInstanceState == null){
-		        Intent intent = getIntent();
-		        String getnotes = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-		        plan_get_notes = false;
-				if (getnotes!= null && getnotes.equals("getnotes")){
-					plan_get_notes  = true;
-					pn = (Patient_Notes) getIntent().getSerializableExtra("PatientNotesObject");
-					/*EditText eText;
-					eText = (EditText) findViewById(R.id.editPlanNotes);
-					eText.setText(pn.getAdditionalPlanNotes());*/
-				}
-	      }
-		
+		if (savedInstanceState == null) {
+			Intent intent = getIntent();
+			String getnotes = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+			plan_get_notes = false;
+			if (getnotes != null && getnotes.equals("getnotes")) {
+				plan_get_notes = true;
+				pn = (Patient_Notes) getIntent().getSerializableExtra(
+						"PatientNotesObject");
+				/*
+				 * EditText eText; eText = (EditText)
+				 * findViewById(R.id.editPlanNotes);
+				 * eText.setText(pn.getAdditionalPlanNotes());
+				 */
+			}
+		}
+
 	}
 
 	@Override
@@ -85,26 +87,25 @@ public class PlanNotesActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	public void setPlanNotes(View view) {
-		//receive serialized patient and notes objects from previous activity
-		p = (Patient)getIntent().getSerializableExtra("PatientObject");
-		
-		if (plan_get_notes == false)
-		{
-		    pn = (Patient_Notes) getIntent().getSerializableExtra("PatientNotesObject");
+		// receive serialized patient and notes objects from previous activity
+		p = (Patient) getIntent().getSerializableExtra("PatientObject");
+
+		if (plan_get_notes == false) {
+			pn = (Patient_Notes) getIntent().getSerializableExtra(
+					"PatientNotesObject");
 		}
-		
+
 		EditText eText;
-		//pn = new Patient_Notes();
+		// pn = new Patient_Notes();
 		eText = (EditText) findViewById(R.id.editPlanNotes);
 		pn.setAdditionalPlanNotes(eText.getText().toString());
-		
-		//Serialize, start next activity and send intent
+
+		// Serialize, start next activity and send intent
 		Intent intent = new Intent(this, PlanNotesActivity.class);
-		
-		if (plan_get_notes)
-		{
+
+		if (plan_get_notes) {
 			intent.putExtra(MainActivity.EXTRA_MESSAGE, "getnotes");
 		}
 		intent.putExtra("PatientObject", p);
@@ -113,34 +114,36 @@ public class PlanNotesActivity extends ActionBarActivity {
 
 		new EnterSessionNotes().execute();
 
-	}	
-	
+	}
+
 	public void generateTreatmentPlan(View view) {
-		//receive serialized patient and notes objects from previous activity
-		p = (Patient)getIntent().getSerializableExtra("PatientObject");
-		pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
-		
-		//Serialize, start next activity and send intent
+		// receive serialized patient and notes objects from previous activity
+		p = (Patient) getIntent().getSerializableExtra("PatientObject");
+		pn = (Patient_Notes) getIntent().getSerializableExtra(
+				"PatientNotesObject");
+
+		// Serialize, start next activity and send intent
 		Intent intent = new Intent(this, TreatmentPlanActivity.class);
 		intent.putExtra("PatientObject", p);
 		intent.putExtra("PatientNotesObject", pn);
 		startActivity(intent);
 
 	}
-	
+
 	public void backHome(View view) {
-		//receive serialized patient and notes objects from previous activity
-		p = (Patient)getIntent().getSerializableExtra("PatientObject");
-		pn = (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
-		
-		//Serialize, start next activity and send intent
+		// receive serialized patient and notes objects from previous activity
+		p = (Patient) getIntent().getSerializableExtra("PatientObject");
+		pn = (Patient_Notes) getIntent().getSerializableExtra(
+				"PatientNotesObject");
+
+		// Serialize, start next activity and send intent
 		Intent intent = new Intent(this, MainActivity.class);
 		intent.putExtra("PatientObject", p);
 		intent.putExtra("PatientNotesObject", pn);
 		startActivity(intent);
 
 	}
-	
+
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
@@ -157,7 +160,8 @@ public class PlanNotesActivity extends ActionBarActivity {
 			return rootView;
 		}
 	}
-	
+	// Async tasks are necessary for retrieving data from the remote DB. 
+	// You cannot do this in the  activity window
 	class EnterSessionNotes extends AsyncTask<String, String, String> {
 
 		/**
@@ -177,7 +181,7 @@ public class PlanNotesActivity extends ActionBarActivity {
 		@Override
 		protected String doInBackground(String... args) {
 			// TODO Auto-generated method stub
-			
+
 			// Check for success tag
 			int success;
 			String patient_id = String.valueOf(p.getPatientID());
@@ -188,7 +192,8 @@ public class PlanNotesActivity extends ActionBarActivity {
 			String reasons = pn.getReasons();
 			String range_of_motion = String.valueOf(pn.getRangeOfMotion());
 			String strength = String.valueOf(pn.getStrength());
-			String joint_mobilization = String.valueOf(pn.getJointMobilization());
+			String joint_mobilization = String.valueOf(pn
+					.getJointMobilization());
 			String pain = String.valueOf(pn.getPain());
 			String palpation = String.valueOf(pn.getPalpation());
 			String special_test = String.valueOf(pn.getSpecialTest());
@@ -196,26 +201,30 @@ public class PlanNotesActivity extends ActionBarActivity {
 			String diagnosis = pn.getPatient_diagnosis();
 			String additional_plan_notes = pn.getAdditionalPlanNotes();
 
-			try{
-				
-				//build parameters sent in the http request
+			try {
+
+				// build parameters sent in the http request
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
 				params.add(new BasicNameValuePair("patient_id", patient_id));
-				params.add(new BasicNameValuePair("past_diagnosis", past_diagnosis));
+				params.add(new BasicNameValuePair("past_diagnosis",
+						past_diagnosis));
 				params.add(new BasicNameValuePair("other", other));
 				params.add(new BasicNameValuePair("medications", medications));
 				params.add(new BasicNameValuePair("goals", goals));
 				params.add(new BasicNameValuePair("reasons", reasons));
-				params.add(new BasicNameValuePair("range_of_motion", range_of_motion));
+				params.add(new BasicNameValuePair("range_of_motion",
+						range_of_motion));
 				params.add(new BasicNameValuePair("strength", strength));
-				params.add(new BasicNameValuePair("joint_mobilization", joint_mobilization));
+				params.add(new BasicNameValuePair("joint_mobilization",
+						joint_mobilization));
 				params.add(new BasicNameValuePair("pain", pain));
 				params.add(new BasicNameValuePair("palpation", palpation));
 				params.add(new BasicNameValuePair("special_test", special_test));
 				params.add(new BasicNameValuePair("injury_name", injury_name));
 				params.add(new BasicNameValuePair("diagnosis", diagnosis));
-				params.add(new BasicNameValuePair("additional_plan_notes", additional_plan_notes));
-				
+				params.add(new BasicNameValuePair("additional_plan_notes",
+						additional_plan_notes));
+
 				// make http request
 				JSONObject json = jsonParser.makeHttpRequest(
 						CREATE_PATIENT_NOTES_URL, "POST", params);
@@ -225,12 +234,13 @@ public class PlanNotesActivity extends ActionBarActivity {
 
 				// json success tag
 				success = json.getInt(TAG_SUCCESS);
-				
+
 				if (success == 1) {
-					Log.d("Patient notes created successfully!", json.toString());
-					
+					Log.d("Patient notes created successfully!",
+							json.toString());
+
 					return json.getString(TAG_MESSAGE);
-					
+
 				} else {
 					Log.d("Creating patient notes failed!",
 							json.getString(TAG_MESSAGE));
@@ -244,7 +254,7 @@ public class PlanNotesActivity extends ActionBarActivity {
 			return null;
 
 		}
-		
+
 		/**
 		 * After completing background task Dismiss the progress dialog
 		 * **/
@@ -269,7 +279,7 @@ public class PlanNotesActivity extends ActionBarActivity {
 			}
 
 		}
-		
+
 	}
 
 }

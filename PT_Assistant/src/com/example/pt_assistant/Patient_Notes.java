@@ -2,36 +2,34 @@ package com.example.pt_assistant;
 
 import java.io.Serializable;
 
-
 public class Patient_Notes implements Serializable {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//Subjective Section
+	// Subjective Section
 	private String pastDiagnosis;
 	private String medications;
 	private String other_PatientHistory;
 	private String goals;
 	private String reasons;
-	
-	//Objective Section
+
+	// Objective Section
 	private int pain;
 	private int strength;
 	private int rangeOfMotion;
 	private int palpation;
 	private int jointMobilization;
 	private int special_test;
-	
-	//Assessment Section
+
+	// Assessment Section
 	private String patient_diagnosis;
 	private String injury;
-	
-	//Plan Section
+
+	// Plan Section
 	private String additional_plan_notes;
-	
-	
+
 	public String getPastDiagnosis() {
 		return pastDiagnosis;
 	}
@@ -108,40 +106,39 @@ public class Patient_Notes implements Serializable {
 		return additional_plan_notes;
 	}
 
-	public void setAdditionalPlanNotes(
-			String additional_plan_notes) {
+	public void setAdditionalPlanNotes(String additional_plan_notes) {
 		this.additional_plan_notes = additional_plan_notes;
 	}
-	
-	public void setInjury(String injury){
+
+	public void setInjury(String injury) {
 		this.injury = injury;
 	}
-	
-	public String getInjury(){
+
+	public String getInjury() {
 		return injury;
 	}
-		
-	public void setGoals(String goals){
+
+	public void setGoals(String goals) {
 		this.goals = goals;
 	}
-	
-	public String getGoals(){
+
+	public String getGoals() {
 		return goals;
 	}
-	
-	public void setReasons(String reasons){
+
+	public void setReasons(String reasons) {
 		this.reasons = reasons;
 	}
-	
-	public String getReasons(){
+
+	public String getReasons() {
 		return reasons;
 	}
-	
-	public void setSpecialTest(int special_test){
+
+	public void setSpecialTest(int special_test) {
 		this.special_test = special_test;
 	}
-	
-	public int getSpecialTest(){
+
+	public int getSpecialTest() {
 		return special_test;
 	}
 }

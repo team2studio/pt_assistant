@@ -1,5 +1,5 @@
 package com.example.pt_assistant;
-
+//This was used for the local db solution before we went to remote db.
 import java.util.LinkedList;
 import java.util.List;
 
@@ -182,13 +182,12 @@ public class PT_SQLiteHelper extends SQLiteOpenHelper {
 		return i;
 
 	}
-	
-	
+
 	public long addPatientNotes(Patient patient, Patient_Notes notes) {
-		//no implementation
+		// no implementation
 		return 0;
 	}
-	
+
 	// Deleting single book
 	// public void deleteBook(Book book) {
 

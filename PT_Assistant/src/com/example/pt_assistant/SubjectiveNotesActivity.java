@@ -34,36 +34,34 @@ import android.os.Build;
 
 public class SubjectiveNotesActivity extends ActionBarActivity {
 	Patient_Notes pn;
-	
+
 	Patient p;
 	JSONParser jsonParser = new JSONParser();
-    boolean get_notes;
+	boolean get_notes;
 	// Progress Dialog
 	private ProgressDialog pDialog;
 	private static final String GET_PATIENT_NOTES_URL = "http://199.255.250.71/get_patient_notes.php";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
 	Map<String, String> patNotesdmap;
-	
-	
-	//private static final String JSONPATID =           "patid";
-	private static final String JSON_PAST_DIAG =      "pastdiag";
-	private static final String JSON_OTHER =          "patother";
-	private static final String JSON_MED =            "patmed";
-	private static final String JSON_GOALS =          "patggoals";
-	private static final String JSON_REASONS =        "patreasons";
-	private static final String JSON_ROM =            "patrom";
-	private static final String JSON_STRENGTH =       "patstrength";
-	private static final String JSON_JOINT =          "patjoint";
-	private static final String JSON_PAIN =           "patpain";
-	private static final String JSON_PALP =           "patpalp";
-	private static final String JSON_SPEC_TEST =      "patspectst";
-	private static final String JSON_INJURY_NAME =    "patinjname";
-	private static final String JSON_DIAG =           "patdiag";
-	private static final String JSON_ADD_NOTES =      "pataddnotes";
-	private static final String JSON_ENTRY_DATE =     "patentrydate";
 
-	
+	// private static final String JSONPATID = "patid";
+	private static final String JSON_PAST_DIAG = "pastdiag";
+	private static final String JSON_OTHER = "patother";
+	private static final String JSON_MED = "patmed";
+	private static final String JSON_GOALS = "patggoals";
+	private static final String JSON_REASONS = "patreasons";
+	private static final String JSON_ROM = "patrom";
+	private static final String JSON_STRENGTH = "patstrength";
+	private static final String JSON_JOINT = "patjoint";
+	private static final String JSON_PAIN = "patpain";
+	private static final String JSON_PALP = "patpalp";
+	private static final String JSON_SPEC_TEST = "patspectst";
+	private static final String JSON_INJURY_NAME = "patinjname";
+	private static final String JSON_DIAG = "patdiag";
+	private static final String JSON_ADD_NOTES = "pataddnotes";
+	private static final String JSON_ENTRY_DATE = "patentrydate";
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -73,19 +71,20 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
-		
+
 		Intent intent = getIntent();
 		String getnotes = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-		
+
 		get_notes = false;
-		if (savedInstanceState == null){
-			if (getnotes!= null && getnotes.equals("getnotes")){
-			   get_notes = true;
-			   p = (Patient) getIntent().getSerializableExtra("PatientObject");
-			   new GetSessionNotes().execute();
+		if (savedInstanceState == null) {
+			if (getnotes != null && getnotes.equals("getnotes")) {
+				get_notes = true;
+				p = (Patient) getIntent().getSerializableExtra("PatientObject");
+
+				new GetSessionNotes().execute();
 			}
 		}
-	
+
 	}
 
 	@Override
@@ -112,10 +111,9 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 
 		// receive serialized patient and notes objects from previous activity
 		p = (Patient) getIntent().getSerializableExtra("PatientObject");
-		if (get_notes == false)
-		{
-		    pn = (Patient_Notes) getIntent().getSerializableExtra(
-				"PatientNotesObject");
+		if (get_notes == false) {
+			pn = (Patient_Notes) getIntent().getSerializableExtra(
+					"PatientNotesObject");
 		}
 
 		EditText eText;
@@ -137,14 +135,12 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 
 		// Serialize, start next activity and send intent
 		Intent intent = new Intent(this, ObjectiveNotesActivity.class);
-		if (get_notes)
-		{
+		if (get_notes) {
 			intent.putExtra(MainActivity.EXTRA_MESSAGE, "getnotes");
 		}
 		intent.putExtra("PatientObject", p);
 		intent.putExtra("PatientNotesObject", pn);
-		
-		
+
 		startActivity(intent);
 
 	}
@@ -165,7 +161,8 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 			return rootView;
 		}
 	}
-
+	// Async tasks are necessary for retrieving data from the remote DB. 
+	// You cannot do this in the  activity window
 	class GetSessionNotes extends AsyncTask<String, String, String> {
 
 		/**
@@ -188,13 +185,13 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 			// Building Parameters
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
 			String temp = Integer.toString(p.getPatientID());
-			params.add(new BasicNameValuePair("patient_id",temp  ));
-			
+			params.add(new BasicNameValuePair("patient_id", temp));
+
 			try {
-				
+
 				// getting product details by making HTTP request
-				JSONObject json = jsonParser.makeHttpRequest(GET_PATIENT_NOTES_URL,
-						"GET", params);
+				JSONObject json = jsonParser.makeHttpRequest(
+						GET_PATIENT_NOTES_URL, "GET", params);
 				// json success tag
 				int success = json.getInt(TAG_SUCCESS);
 
@@ -202,26 +199,30 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 					pn = new Patient_Notes();
 					JSONArray jsonPatNotesList = new JSONArray();
 					jsonPatNotesList = json.getJSONArray("pat_notes");
-					
+
 					for (int i = 0; i < jsonPatNotesList.length(); i++) {
 
 						JSONObject c = jsonPatNotesList.getJSONObject(i);
-						//patTrendmap = new HashMap<String, String>();
+						// patTrendmap = new HashMap<String, String>();
 						pn.setPastDiagnosis(c.getString(JSON_PAST_DIAG));
 						pn.setOther_PatientHistory(c.getString(JSON_OTHER));
 						pn.setMedications(c.getString(JSON_MED));
 						pn.setGoals(c.getString(JSON_GOALS));
 						pn.setReasons(c.getString(JSON_REASONS));
-						pn.setRangeOfMotion(Integer.parseInt(c.getString(JSON_ROM)));
-						pn.setStrength(Integer.parseInt(c.getString(JSON_STRENGTH)));
-						pn.setJointMobilization(Integer.parseInt(c.getString(JSON_JOINT)));
+						pn.setRangeOfMotion(Integer.parseInt(c
+								.getString(JSON_ROM)));
+						pn.setStrength(Integer.parseInt(c
+								.getString(JSON_STRENGTH)));
+						pn.setJointMobilization(Integer.parseInt(c
+								.getString(JSON_JOINT)));
 						pn.setPain(Integer.parseInt(c.getString(JSON_PAIN)));
 						pn.setPalpation(Integer.parseInt(c.getString(JSON_PALP)));
-						pn.setSpecialTest(Integer.parseInt(c.getString(JSON_SPEC_TEST)));
+						pn.setSpecialTest(Integer.parseInt(c
+								.getString(JSON_SPEC_TEST)));
 						pn.setInjury(c.getString(JSON_INJURY_NAME));
 						pn.setPatient_diagnosis(c.getString(JSON_DIAG));
 						pn.setAdditionalPlanNotes(c.getString(JSON_ADD_NOTES));
-						
+
 						break;
 
 					}
@@ -251,24 +252,24 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 
 					Toast toast = Toast.makeText(context, text, duration);
 					toast.show();
-					
+
 					EditText eText;
 					// notes = new Patient_Notes();
 					eText = (EditText) findViewById(R.id.editPastDiag);
 					eText.setText(pn.getPastDiagnosis());
 
 					eText = (EditText) findViewById(R.id.editMedications);
-					eText.setText (pn.getMedications());
+					eText.setText(pn.getMedications());
 
 					eText = (EditText) findViewById(R.id.editOther);
 					eText.setText(pn.getOther_PatientHistory());
-//
+					//
 					eText = (EditText) findViewById(R.id.editGoals);
 					eText.setText(pn.getGoals());
-//
+					//
 					eText = (EditText) findViewById(R.id.editReason);
-					eText.setText (pn.getReasons());
-					
+					eText.setText(pn.getReasons());
+
 				}
 			}
 			if (file_url != null) {

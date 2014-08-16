@@ -1,5 +1,5 @@
 package com.example.pt_assistant;
-
+//This class creates or registers a new patient
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,19 +40,8 @@ public class CreatePatientActivity extends ActionBarActivity {
 
 	// php login script location for remote DB
 
-	// localhost :
-	// testing on your device
-	// put your local ip instead, on windows, run CMD > ipconfig
-	// or in mac's terminal type ifconfig and look for the ip under en0 or en1
-	// private static final String CREATE_PATIENT_URL =
-	// "http://xxx.xxx.x.x:1234/webservice/login.php";
-
-	// testing on Emulator: http://199.255.250.71
+	// this is the script used for creating a new patient
 	private static final String CREATE_PATIENT_URL = "http://199.255.250.71/register_patient.php";
-
-	// testing from a real server:
-	// private static final String CREATE_PATIENT_URL =
-	// "http://www.yourdomain.com/webservice/login.php";
 
 	// JSON element ids from repsonse of php script:sergio
 	private static final String TAG_SUCCESS = "success";
@@ -135,9 +124,6 @@ public class CreatePatientActivity extends ActionBarActivity {
 		//
 		new RegisterPatient().execute();
 
-		
-		
-
 	}
 
 	/**
@@ -156,7 +142,8 @@ public class CreatePatientActivity extends ActionBarActivity {
 			return rootView;
 		}
 	}
-
+	// Async tasks are necessary for retrieving data from the remote DB. 
+	// You cannot do this in the main activity
 	class RegisterPatient extends AsyncTask<String, String, String> {
 
 		/**
@@ -206,12 +193,12 @@ public class CreatePatientActivity extends ActionBarActivity {
 
 				// json success tag
 				success = json.getInt(TAG_SUCCESS);
-				
+
 				if (success == 1) {
 					Log.d("patient created Successful!", json.toString());
-					
+
 					return json.getString(TAG_MESSAGE);
-					
+
 				} else {
 					Log.d("create patient Failure!",
 							json.getString(TAG_MESSAGE));

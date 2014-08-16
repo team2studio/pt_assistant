@@ -25,10 +25,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.os.Build;
 
-public class AssessmentNotesActivity extends ActionBarActivity implements OnItemSelectedListener{
+public class AssessmentNotesActivity extends ActionBarActivity implements
+		OnItemSelectedListener {
 	Patient_Notes pn;
 	Patient p;
-	boolean assm_get_notes =false;
+	boolean assm_get_notes = false;
 	private static final String TAG = "AssessmentNotesActivity";
 
 	@Override
@@ -36,49 +37,50 @@ public class AssessmentNotesActivity extends ActionBarActivity implements OnItem
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_assessment_notes);
 
-		
-		/*if (savedInstanceState == null) {
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
-		}*/
-        // Spinner element
-        Spinner spin = (Spinner) findViewById(R.id.spinnerInjury);
- 
-        // Creating adapter for spinner
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.injury_array, android.R.layout.simple_spinner_item);
- 
-        // Drop down layout style - list view with radio button
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
- 
-        // attaching adapter to spinner
-        spin.setAdapter(adapter);
-        
-        // Spinner click listener
-        spin.setOnItemSelectedListener(this);
-        
-        if (savedInstanceState == null){
-	        Intent intent = getIntent();
-	        String getnotes = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-	        assm_get_notes = false;
-			if (getnotes!= null && getnotes.equals("getnotes")){
-				assm_get_notes  = true;
-				pn = (Patient_Notes) getIntent().getSerializableExtra("PatientNotesObject");
+		/*
+		 * if (savedInstanceState == null) {
+		 * getSupportFragmentManager().beginTransaction() .add(R.id.container,
+		 * new PlaceholderFragment()).commit(); }
+		 */
+		// Spinner element
+		Spinner spin = (Spinner) findViewById(R.id.spinnerInjury);
+
+		// Creating adapter for spinner
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+				this, R.array.injury_array,
+				android.R.layout.simple_spinner_item);
+
+		// Drop down layout style - list view with radio button
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+		// attaching adapter to spinner
+		spin.setAdapter(adapter);
+
+		// Spinner click listener
+		spin.setOnItemSelectedListener(this);
+
+		if (savedInstanceState == null) {
+			Intent intent = getIntent();
+			String getnotes = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+			assm_get_notes = false;
+			if (getnotes != null && getnotes.equals("getnotes")) {
+				assm_get_notes = true;
+				pn = (Patient_Notes) getIntent().getSerializableExtra(
+						"PatientNotesObject");
 				EditText eText;
 				eText = (EditText) findViewById(R.id.editAssessment);
 				eText.setText(pn.getPatient_diagnosis());
-				
+
 				String databaseValue = pn.getInjury();
-			       if (databaseValue.equalsIgnoreCase("LUMBAR STRAIN")){
-			        spin.setSelection(0);
-			       }
-			       else if (databaseValue.equalsIgnoreCase("ROTATOR CUFF TEAR")){
-				        spin.setSelection(1);
-				       }
-			       else if (databaseValue.equalsIgnoreCase("ACL TEAR")){
-				        spin.setSelection(2);
-				       }
+				if (databaseValue.equalsIgnoreCase("LUMBAR STRAIN")) {
+					spin.setSelection(0);
+				} else if (databaseValue.equalsIgnoreCase("ROTATOR CUFF TEAR")) {
+					spin.setSelection(1);
+				} else if (databaseValue.equalsIgnoreCase("ACL TEAR")) {
+					spin.setSelection(2);
+				}
 			}
-        }
+		}
 	}
 
 	@Override
@@ -103,38 +105,36 @@ public class AssessmentNotesActivity extends ActionBarActivity implements OnItem
 
 	public void setAssessment(View view) {
 
-		//receive serialized patient and notes objects from previous activity
-		p = (Patient)getIntent().getSerializableExtra("PatientObject");
-		
-		if (assm_get_notes == false)
-		{
-		    pn = (Patient_Notes) getIntent().getSerializableExtra("PatientNotesObject");
+		// receive serialized patient and notes objects from previous activity
+		p = (Patient) getIntent().getSerializableExtra("PatientObject");
+
+		if (assm_get_notes == false) {
+			pn = (Patient_Notes) getIntent().getSerializableExtra(
+					"PatientNotesObject");
 		}
-	
+
 		EditText eText;
-		//notes = new Patient_Notes();
+		// notes = new Patient_Notes();
 		eText = (EditText) findViewById(R.id.editAssessment);
 		pn.setPatient_diagnosis(eText.getText().toString());
-		
+
 		Spinner spin;
 		spin = (Spinner) findViewById(R.id.spinnerInjury);
-		Log.i(TAG, "Injury name is: "+spin.getSelectedItem().toString());
+		Log.i(TAG, "Injury name is: " + spin.getSelectedItem().toString());
 		pn.setInjury(spin.getSelectedItem().toString());
 
-		//Serialize, start next activity and send intent
+		// Serialize, start next activity and send intent
 		Intent intent = new Intent(this, PlanNotesActivity.class);
-		
-		if (assm_get_notes)
-		{
+
+		if (assm_get_notes) {
 			intent.putExtra(MainActivity.EXTRA_MESSAGE, "getnotes");
 		}
 		intent.putExtra("PatientObject", p);
 		intent.putExtra("PatientNotesObject", pn);
 		startActivity(intent);
 
-		
-	}	
-	
+	}
+
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
@@ -155,16 +155,17 @@ public class AssessmentNotesActivity extends ActionBarActivity implements OnItem
 	@Override
 	public void onItemSelected(AdapterView<?> pn, View view, int position,
 			long id) {
-        String item = pn.getItemAtPosition(position).toString();
-        
-        // Showing selected spinner item
-        //Toast.makeText(pn.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+		String item = pn.getItemAtPosition(position).toString();
+
+		// Showing selected spinner item
+		// Toast.makeText(pn.getContext(), "Selected: " + item,
+		// Toast.LENGTH_LONG).show();
 	}
 
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

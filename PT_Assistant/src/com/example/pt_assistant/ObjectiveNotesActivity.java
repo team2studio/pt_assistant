@@ -54,7 +54,8 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 			obj_get_notes = false;
 			if (getnotes != null && getnotes.equals("getnotes")) {
 				obj_get_notes = true;
-				pn = (Patient_Notes) getIntent().getSerializableExtra("PatientNotesObject");
+				pn = (Patient_Notes) getIntent().getSerializableExtra(
+						"PatientNotesObject");
 				SeekBar seek;
 				seek = (SeekBar) findViewById(R.id.seekBarROM);
 				seek.setProgress(pn.getRangeOfMotion());
@@ -76,7 +77,7 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 			}
 		}
 
-		// /////////////////Seek ROM 
+		// /////////////////Seek ROM
 		seekROM = (SeekBar) findViewById(R.id.seekBarROM);
 		textViewROMCtr = (TextView) findViewById(R.id.textViewRom);
 		// Initialize the textview with '0'
@@ -129,8 +130,9 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 				// textViewCtr.setText(progress + "/" + seekBar.getMax());
 			}
 		});
-		// /////////////////////Seek Joint///////////////////////////////////////////
-	
+		// /////////////////////Seek
+		// Joint///////////////////////////////////////////
+
 		seekJoint = (SeekBar) findViewById(R.id.seekBarJointMob);
 		textViewJointCtr = (TextView) findViewById(R.id.textViewJointMob);
 		// Initialize the textview with '0'
@@ -156,10 +158,9 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 				// textViewCtr.setText(progress + "/" + seekBar.getMax());
 			}
 		});
-		// ////////////////////////Seek Pain/////////////////////////////////////
-	
-		
-		
+		// ////////////////////////Seek
+		// Pain/////////////////////////////////////
+
 		seekPain = (SeekBar) findViewById(R.id.seekBarPain);
 		textViewPainCtr = (TextView) findViewById(R.id.textViewPain);
 		// Initialize the textview with '0'
@@ -185,8 +186,9 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 				// textViewCtr.setText(progress + "/" + seekBar.getMax());
 			}
 		});
-		// ///////////////////////////////Seek Palp////////////////////////////////////
-		
+		// ///////////////////////////////Seek
+		// Palp////////////////////////////////////
+
 		seekPalp = (SeekBar) findViewById(R.id.seekBarPalpation);
 		textViewPalp = (TextView) findViewById(R.id.textViewPalpation);
 		// Initialize the textview with '0'
@@ -212,8 +214,9 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 				// textViewCtr.setText(progress + "/" + seekBar.getMax());
 			}
 		});
-		// //////////////////////////Seek Spec/////////////////////////////////////
-		
+		// //////////////////////////Seek
+		// Spec/////////////////////////////////////
+
 		seekSpec = (SeekBar) findViewById(R.id.seekBarSpecialTest);
 		textViewSpecCtr = (TextView) findViewById(R.id.textViewSpecialTest);
 		// Initialize the textview with '0'
@@ -266,11 +269,11 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 		// receive serialized patient and notes objects from previous activity
 		p = (Patient) getIntent().getSerializableExtra("PatientObject");
 
-		if (obj_get_notes == false)
-		{
-		    pn = (Patient_Notes) getIntent().getSerializableExtra("PatientNotesObject");
+		if (obj_get_notes == false) {
+			pn = (Patient_Notes) getIntent().getSerializableExtra(
+					"PatientNotesObject");
 		}
-		
+
 		// EditText eText;
 		// notes = new Patient_Notes();
 		// eText = (EditText) findViewById(R.id.editInjuryLookup);

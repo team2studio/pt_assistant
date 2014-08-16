@@ -10,7 +10,7 @@ public class Patient implements Serializable {
 	private int age;
 	private String DOB;
 	private static final long serialVersionUID = -2813029214068905410L;
-	
+
 	public int getSex() {
 		return sex;
 	}

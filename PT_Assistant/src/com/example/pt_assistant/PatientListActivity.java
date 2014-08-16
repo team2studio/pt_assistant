@@ -159,7 +159,8 @@ public class PatientListActivity extends ActionBarActivity {
 		return true;
 	}
 
-	// This task
+	// Async tasks are necessary for retrieving data from the remote DB. 
+	// You cannot do this in the  activity window
 	class loadPatients extends AsyncTask<String, String, String> {
 		boolean failure = false;
 		List<Map> patientList;
