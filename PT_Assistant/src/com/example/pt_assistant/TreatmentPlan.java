@@ -128,7 +128,7 @@ public class TreatmentPlan {
 		this.rom_max_val = rom_max_val;
 	}
 
-	// add rehabilitation exercises to arraylist
+	// add rehab exercises to arraylist
 	public ArrayList<String> setRehabilitationExercises(String injuryType) {
 		ArrayList<String> injuryArrayList = null;
 

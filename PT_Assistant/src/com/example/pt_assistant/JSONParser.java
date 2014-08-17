@@ -108,7 +108,7 @@ public class JSONParser {
 				// request 1. DefaultHttpClient
 				// and the other is HttpURLConnection. I did this because of
 				// slow response time on first query to server
-				// Turns out either method is not faster than the other
+				// Turns out neither method is faster than the other
 				String paramString = URLEncodedUtils.format(params, "utf-8");
 				url += "?" + paramString;
 

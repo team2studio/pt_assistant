@@ -104,14 +104,6 @@ public class GetPatientActivity extends ActionBarActivity {
 		 */
 	}
 
-	// @Override
-	// public boolean onCreateOptionsMenu(Menu menu) {
-	//
-	// // Inflate the menu; this adds items to the action bar if it is present.
-	// getMenuInflater().inflate(R.menu.display_message, menu);
-	// return true;
-	// }
-
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
@@ -219,7 +211,7 @@ public class GetPatientActivity extends ActionBarActivity {
 		@Override
 		protected String doInBackground(String... args) {
 			String result;
-			// TODO Auto-generated method stub
+			// Auto-generated method stub
 			// Check for success tag
 			// get the patient info from the DB server
 			if (doWhat.equals(GET_PATIENT)) {

@@ -32,7 +32,6 @@ public class MainActivity extends ActionBarActivity {
 
 		setContentView(R.layout.activity_get_patient);
 
-		// getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		// If your minSdkVersion is 11 or higher, instead use:
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -68,9 +67,9 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	private void openRegisterPatient() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
-		// keep this code here for reference on sending a class object to
+		// keep this code for reference on sending a class object to
 		// another activity
 		Intent intent = new Intent(this, CreatePatientActivity.class);
 		intent.putExtra(EXTRA_MESSAGE, "test");
@@ -78,12 +77,12 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 	private void openSettings() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
 	private void openSearch() {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 
@@ -124,8 +123,8 @@ public class MainActivity extends ActionBarActivity {
 	public void createPatient(View view) {
 
 		openRegisterPatient();
-		// ****** DO not delete this code yet ******* Sergio
-		// DO NOT DELETE this code used for reference on sending a class object
+		// ****** DO not delete this code *******
+		// Code used for reference on sending a class object
 		// to another activity
 		// EditText eText;
 		/*
@@ -162,13 +161,5 @@ public class MainActivity extends ActionBarActivity {
 		startActivity(intent);
 
 	}
-
-	/*
-	 * public void getTrendReport(View view){ // another activity Intent intent
-	 * = new Intent(this, TrendChartActivity.class);
-	 * intent.putExtra(EXTRA_MESSAGE, "test"); startActivity(intent);
-	 * 
-	 * }
-	 */
 
 }

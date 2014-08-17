@@ -239,7 +239,6 @@ public class TrendChartActivity extends ActionBarActivity {
 		// Define the number of elements you want in the chart.
 		int z[] = { 0, 1, 2, 3, 4, 5, 6, 7 };
 
-		// added by Jamel
 		ArrayList<Integer> totalElements = new ArrayList<Integer>();
 
 		// determine how many objects are in the patient trend list
@@ -292,7 +291,7 @@ public class TrendChartActivity extends ActionBarActivity {
 		cumulative_change = 0.1;
 		prog_change = 0.1;
 
-		// added by Jamel
+		// get metrics
 		m = (Metrics) getIntent().getSerializableExtra("SpecificMetricObject");
 		charttype = m.getSpecificMetric();
 		if (charttype != null) {
@@ -301,8 +300,6 @@ public class TrendChartActivity extends ActionBarActivity {
 		} else {
 			Log.d("Metrics object is ", "null!!");
 		}
-
-		// patient_name = "Jamel Test";
 
 		if (charttype.equalsIgnoreCase("PAIN")) {
 			Log.d("WE MADE IT HERE!!", " WE ARE IN THE PAIN STATEMENT");
@@ -317,32 +314,14 @@ public class TrendChartActivity extends ActionBarActivity {
 				anArray2[i] = storePainVals.get(i).toString();
 			}
 
-			/*
-			 * x[0]="9"; x[1]="6"; x[2]="5"; x[3]="5"; x[4]="3"; x[5]="2";
-			 * x[6]="2"; x[7]="1";
-			 */
+
 
 			double Y1 = Double.parseDouble(anArray2[0]);
 			double Y2 = Double.parseDouble(anArray2[anArray2.length - 1]);
 			double Y3 = Double.parseDouble(anArray2[anArray2.length - 2]);
 
-			/*
-			 * double Y1 = Double.parseDouble(x[0]); double Y2 =
-			 * Double.parseDouble(x[x.length-1]); double Y3 =
-			 * Double.parseDouble(x[x.length-2]);
-			 */
-
 			cumulative_change = ((Y2 - Y1) / Y1) * 100;
 			prog_change = ((Y2 - Y3) / Y3) * 100;
-
-			// cumulative_change = ((x[x.length-1] - x[0])/x[0])*100;
-			// prog_change = ((x[x.length-1] - x[x.length - 2])/x[x.length -
-			// 2])*100;
-
-			// cumulative_change =((Integer.parseInt(x[x.length-1]) -
-			// Integer.parseInt(x[0]))/Integer.parseInt(x[0]))*100;
-			// prog_change = ((Integer.parseInt(x[x.length-1]) -
-			// Integer.parseInt(x[x.length-2]))/Integer.parseInt(x[x.length-2]))*100;
 
 		} else if (charttype.equalsIgnoreCase("ROM")) {
 			Log.d("WE MADE IT HERE!!", " WE ARE IN THE ROM STATEMENT");
@@ -356,30 +335,6 @@ public class TrendChartActivity extends ActionBarActivity {
 			for (int i = 0; i < anArray2.length; i++) {
 				anArray2[i] = storeROMVals.get(i).toString();
 			}
-			/*
-			 * x[0]="5"; x[1]="22"; x[2]="25"; x[3]="38"; x[4]="60"; x[5]="70";
-			 * x[6]="80"; x[7]="90";
-			 */
-
-			// cumulative_change = ((x[x.length-1] - x[0])/x[0])*100;
-			// prog_change = ((x[x.length-1] - x[x.length - 2])/x[x.length -
-			// 2])*100;
-
-			// for (int i=1; i<x.length; i++ ) {
-			// pat_data[i] = Integer.parseInt(x[i]);
-			// }
-
-			// cumulative_change = ((double)(xx[xx.length-1] -
-			// xx[0])/(double)xx[0])*100;
-			// prog_change = ((double)(xx[xx.length-1] -
-			// xx[xx.length-2])/(double)xx[xx.length-2])*100;
-
-			// original code
-			/*
-			 * double Y1 = Double.parseDouble(x[0]); double Y2 =
-			 * Double.parseDouble(x[x.length-1]); double Y3 =
-			 * Double.parseDouble(x[x.length-2]);
-			 */
 
 			double Y1 = Double.parseDouble(anArray2[0]);
 			double Y2 = Double.parseDouble(anArray2[anArray2.length - 1]);
@@ -395,26 +350,10 @@ public class TrendChartActivity extends ActionBarActivity {
 			for (int i = 0; i < anArray.length; i++) {
 				anArray[i] = i;
 			}
-			// int x2[]={0,5,23,30,59,65,88,84};
-			/*
-			 * z[0]=0; z[1]=1; z[2]=2; z[3]=3; z[4]=4; z[5]=5; z[6]=6; z[7]=7;
-			 */
 
 			for (int i = 0; i < anArray2.length; i++) {
 				anArray2[i] = storeStrengthVals.get(i).toString();
 			}
-
-			/*
-			 * x[0]="4"; x[1]="5"; x[2]="23"; x[3]="30"; x[4]="59"; x[5]="65";
-			 * x[6]="88"; x[7]="91";
-			 */
-
-			// original code
-			/*
-			 * double Y1 = Double.parseDouble(x[0]); double Y2 =
-			 * Double.parseDouble(x[x.length-1]); double Y3 =
-			 * Double.parseDouble(x[x.length-2]);
-			 */
 
 			double Y1 = Double.parseDouble(anArray2[0]);
 			double Y2 = Double.parseDouble(anArray2[anArray2.length - 1]);
@@ -423,17 +362,6 @@ public class TrendChartActivity extends ActionBarActivity {
 			cumulative_change = ((Y2 - Y1) / Y1) * 100;
 			prog_change = ((Y2 - Y3) / Y3) * 100;
 
-			// cumulative_change = ((x[7] - x[0])/x[0])*100;
-			// prog_change = ((x[7] - x[6])/x[6])*100;
-
-			// cumulative_change = ((x[x.length-1] - x[0])/x[0])*100;
-			// prog_change = ((x[x.length-1] -
-			// x[x.length-2])/x[x.length-2])*100;
-
-			// cumulative_change = ((Integer.parseInt(x[x.length-1]) -
-			// Integer.parseInt(x[0]))/Integer.parseInt(x[0]))*100;
-			// prog_change = ((Integer.parseInt(x[x.length-1]) -
-			// Integer.parseInt(x[x.length-2]))/Integer.parseInt(x[x.length-2]))*100;
 		}
 
 		else {
@@ -446,12 +374,6 @@ public class TrendChartActivity extends ActionBarActivity {
 		// Create XY Series for X Series.
 		XYSeries xSeries = new XYSeries(charttype + " Index");
 
-		/*
-		 * // Adding data to the X Series. for(int i=0;i<z.length;i++) {
-		 * xSeries.add(z[i],Integer.parseInt(x[i]));
-		 * 
-		 * }
-		 */
 
 		// Adding data to the X Series.
 		for (int i = 0; i < anArray.length; i++) {
@@ -591,7 +513,7 @@ public class TrendChartActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		// setContentView(R.layout.activity_trend_chart);
 
-		// test by Jamel
+		// test
 		setContentView(R.layout.fragment_trend_chart);
 
 		/*

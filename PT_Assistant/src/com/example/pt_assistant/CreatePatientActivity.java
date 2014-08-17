@@ -38,8 +38,6 @@ public class CreatePatientActivity extends ActionBarActivity {
 	// For local DB
 	PT_SQLiteHelper pt_db = new PT_SQLiteHelper(this);
 
-	// php login script location for remote DB
-
 	// this is the script used for creating a new patient
 	private static final String CREATE_PATIENT_URL = "http://199.255.250.71/register_patient.php";
 
@@ -52,12 +50,9 @@ public class CreatePatientActivity extends ActionBarActivity {
 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_create_patient);
-		// Patient pat = new Patient();
-		// Get he message from the intent
-		// Intent intent = getIntent();
 
 		/******
-		 * DO not delete this code yet ******* Sergio pat = (Patient)
+		 * DO not delete ******* pat = (Patient)
 		 * intent.getSerializableExtra("Patient");
 		 * 
 		 * //this is the local DB pt_db.addPatient(pat); TextView textView = new
@@ -71,14 +66,6 @@ public class CreatePatientActivity extends ActionBarActivity {
 		 */
 
 	}
-
-	// @Override
-	// public boolean onCreateOptionsMenu(Menu menu) {
-	//
-	// // Inflate the menu; this adds items to the action bar if it is present.
-	// getMenuInflater().inflate(R.menu.display_message, menu);
-	// return true;
-	// }
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -163,7 +150,7 @@ public class CreatePatientActivity extends ActionBarActivity {
 
 		@Override
 		protected String doInBackground(String... args) {
-			// TODO Auto-generated method stub
+			// Auto-generated method stub
 			// Check for success tag
 			int success;
 			String patient_name = newPat.getName();

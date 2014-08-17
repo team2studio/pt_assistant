@@ -130,8 +130,7 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 				// textViewCtr.setText(progress + "/" + seekBar.getMax());
 			}
 		});
-		// /////////////////////Seek
-		// Joint///////////////////////////////////////////
+		// /////////////////////Seek Joint////////////////
 
 		seekJoint = (SeekBar) findViewById(R.id.seekBarJointMob);
 		textViewJointCtr = (TextView) findViewById(R.id.textViewJointMob);
@@ -158,8 +157,7 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 				// textViewCtr.setText(progress + "/" + seekBar.getMax());
 			}
 		});
-		// ////////////////////////Seek
-		// Pain/////////////////////////////////////
+		// ////////////////////////Seek Pain/////////////////////////////
 
 		seekPain = (SeekBar) findViewById(R.id.seekBarPain);
 		textViewPainCtr = (TextView) findViewById(R.id.textViewPain);
@@ -186,8 +184,7 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 				// textViewCtr.setText(progress + "/" + seekBar.getMax());
 			}
 		});
-		// ///////////////////////////////Seek
-		// Palp////////////////////////////////////
+		// ///////////////////////////////Seek Palp/////////////////////
 
 		seekPalp = (SeekBar) findViewById(R.id.seekBarPalpation);
 		textViewPalp = (TextView) findViewById(R.id.textViewPalpation);
@@ -214,8 +211,7 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 				// textViewCtr.setText(progress + "/" + seekBar.getMax());
 			}
 		});
-		// //////////////////////////Seek
-		// Spec/////////////////////////////////////
+		// //////////////////////////Seek Spec//////////////////////////
 
 		seekSpec = (SeekBar) findViewById(R.id.seekBarSpecialTest);
 		textViewSpecCtr = (TextView) findViewById(R.id.textViewSpecialTest);
@@ -274,11 +270,6 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 					"PatientNotesObject");
 		}
 
-		// EditText eText;
-		// notes = new Patient_Notes();
-		// eText = (EditText) findViewById(R.id.editInjuryLookup);
-		// pn.getInjury();
-
 		SeekBar seek;
 		seek = (SeekBar) findViewById(R.id.seekBarROM);
 		pn.setRangeOfMotion(seek.getProgress());
@@ -323,14 +314,6 @@ public class ObjectiveNotesActivity extends ActionBarActivity {
 		public PlaceholderFragment() {
 		}
 
-		// @Override
-		// public View onCreateView(LayoutInflater inflater, ViewGroup
-		// container,
-		// Bundle savedInstanceState) {
-		// View rootView = inflater.inflate(R.layout.fragment_objective_notes,
-		// container, false);
-		// return rootView;
-		// }
 	}
 
 }

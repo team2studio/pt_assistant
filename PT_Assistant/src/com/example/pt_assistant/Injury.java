@@ -21,10 +21,4 @@ public class Injury {
 		this.injuryDescription = injuryDescription;
 	}
 
-	/*
-	 * public String getSpecificInjuryHelp(int injuryID){ String commonInjury1 =
-	 * null; //NO IMPLEMENTATION - MAKE IT FAIL if (injuryID == 5){
-	 * commonInjury1 = "Kneck Injury"; } return commonInjury1; }
-	 */
-
 }

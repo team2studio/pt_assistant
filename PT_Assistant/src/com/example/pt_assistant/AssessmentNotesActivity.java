@@ -164,7 +164,7 @@ public class AssessmentNotesActivity extends ActionBarActivity implements
 
 	@Override
 	public void onNothingSelected(AdapterView<?> arg0) {
-		// TODO Auto-generated method stub
+		// Auto-generated method stub
 
 	}
 

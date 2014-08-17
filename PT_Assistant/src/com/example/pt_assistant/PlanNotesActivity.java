@@ -58,11 +58,6 @@ public class PlanNotesActivity extends ActionBarActivity {
 				plan_get_notes = true;
 				pn = (Patient_Notes) getIntent().getSerializableExtra(
 						"PatientNotesObject");
-				/*
-				 * EditText eText; eText = (EditText)
-				 * findViewById(R.id.editPlanNotes);
-				 * eText.setText(pn.getAdditionalPlanNotes());
-				 */
 			}
 		}
 
@@ -180,7 +175,7 @@ public class PlanNotesActivity extends ActionBarActivity {
 
 		@Override
 		protected String doInBackground(String... args) {
-			// TODO Auto-generated method stub
+			// Auto-generated method stub
 
 			// Check for success tag
 			int success;

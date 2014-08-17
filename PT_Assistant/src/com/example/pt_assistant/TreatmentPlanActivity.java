@@ -27,17 +27,6 @@ public class TreatmentPlanActivity extends ActionBarActivity {
 		// setContentView(R.layout.activity_treatment_plan);
 		setContentView(R.layout.fragment_treatment_plan);
 
-		/*
-		 * if (savedInstanceState == null) {
-		 * getSupportFragmentManager().beginTransaction() .add(R.id.container,
-		 * new PlaceholderFragment()).commit(); }
-		 */
-
-		// receive serialized patient and notes objects from previous activity
-		// p = (Patient)getIntent().getSerializableExtra("PatientObject");
-		// notes =
-		// (Patient_Notes)getIntent().getSerializableExtra("PatientNotesObject");
-
 		fill_treatmentPlan_fields();
 	}
 
@@ -113,18 +102,10 @@ public class TreatmentPlanActivity extends ActionBarActivity {
 		}
 
 		eText.setText(notes.getInjury()); //
-
+        // populate treatment plan fields
 		eText = (TextView) findViewById(R.id.phaseName);
 		eText.setText(tp.getTreatmentType());
 
-		/*
-		 * The next few aren't clear on how we want to get them from the base
-		 * class yet so I just left the GUI tie ins and then made suggestions
-		 * for getters in the base with code we would need for that case
-		 * commented out. I know you(Jamel) have a plan with the array lists and
-		 * your condition checks so I'll leave it up to you how to get the rest
-		 * out.
-		 */
 		eText = (TextView) findViewById(R.id.instructIntReps);
 		eText.setText(Integer.toString(tp.getExerciseReps()));
 
@@ -148,7 +129,7 @@ public class TreatmentPlanActivity extends ActionBarActivity {
 				exercise3 = exercises.get(j);
 			}
 		}
-
+        // populate three recommended exercises
 		eText = (TextView) findViewById(R.id.exerciseOne);
 		eText.setText(exercise1);
 

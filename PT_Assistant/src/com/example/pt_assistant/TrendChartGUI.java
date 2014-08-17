@@ -73,7 +73,7 @@ public class TrendChartGUI extends ActionBarActivity {
 
 	DecimalFormat formatter = new DecimalFormat("#0.0");
 
-	// jamels onCreate method
+	// onCreate method
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -89,7 +89,7 @@ public class TrendChartGUI extends ActionBarActivity {
 		tvHeader.setText("             TREND CHART MAIN MENU");
 	}
 
-	// added by Jamel
+	// get report
 	public void getTrendReport(View view) {
 		p = new Patient();
 		pn = new Patient_Notes();
@@ -144,90 +144,6 @@ public class TrendChartGUI extends ActionBarActivity {
 		intent.putExtra("SpecificMetricObject", m);
 		startActivity(intent);
 	}
-
-	/*
-	 * @Override protected void onCreate(Bundle savedInstanceState) {
-	 * super.onCreate(savedInstanceState);
-	 * setContentView(R.layout.activity_trend_chart_gui);
-	 * 
-	 * if (savedInstanceState == null) {
-	 * getSupportFragmentManager().beginTransaction() .add(R.id.container, new
-	 * PlaceholderFragment()).commit(); }
-	 * 
-	 * // code for trend chart main gui // display header with patient, current
-	 * date, injury, therapist info
-	 * 
-	 * DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy"); //get current
-	 * date time with Date() Date date = new Date(); CurrentDate =
-	 * dateFormat.format(date);
-	 * 
-	 * tvHeader = (TextView)this.findViewById(R.id.tvHeader);
-	 * tvHeader.setText("             TREND CHART MAIN MENU");
-	 * 
-	 * tvCumulativeChangeValue =
-	 * (TextView)this.findViewById(R.id.tvCumualtiveChangeValue);
-	 * tvProgressiveChangeVaue =
-	 * (TextView)this.findViewById(R.id.tvProgressiveChangeValue);
-	 * 
-	 * //btPatID = (Button)this.findViewById(R.id.btpatid);
-	 * 
-	 * //find the edit text dtPatID = (EditText)this.findViewById(R.id.dtpatid);
-	 * 
-	 * btnCreateCharts = (ImageButton)this.findViewById(R.id.btnCreateChart);
-	 * 
-	 * // rbROM = (RadioButton)this.findViewById(R.id.rbROM); rgMetric =
-	 * (RadioGroup)this.findViewById(R.id.rgMetric); rgInjuryType =
-	 * (RadioGroup)this.findViewById(R.id.rgInjuryType);
-	 * 
-	 * btnCreateCharts.setOnClickListener(new OnClickListener() { //display
-	 * graph for appropriate metric in chart area
-	 * 
-	 * @Override //display values for cumulative and progressive change below
-	 * chart public void onClick(View v) { // CreateChart cc = new
-	 * CreateChart();
-	 * 
-	 * // MainActivity.this.startActivity(cc.execute(MainActivity.this));
-	 * 
-	 * // tvCumulativeChangeValue.setText(" "+
-	 * String.valueOf(formatter.format(CreateChart
-	 * .getCumulativeChangeValue()))+"%"); //
-	 * tvProgressiveChangeVaue.setText(" " +
-	 * String.valueOf(formatter.format(CreateChart
-	 * .getProgressiveChangeValue()))+"%"); // android.app.Dialog dlg = new
-	 * android.app.Dialog(MainActivity.this); // XXX Testing purposes only
-	 * 
-	 * // get patient database query criteria for Metric and Injury Type
-	 * 
-	 * switch (rgMetric.getCheckedRadioButtonId()) { case R.id.rbStrength: //
-	 * dlg.setTitle("0"); MetricType = "STRENGTH"; break; case R.id.rbPain: //
-	 * dlg.setTitle("1"); MetricType = "PAIN"; break; case R.id.rbROM: //
-	 * dlg.setTitle("2"); MetricType = "ROM"; break; // default: //
-	 * dlg.setTitle(rgMetric.getCheckedRadioButtonId()); // int num =
-	 * rgMetric.getCheckedRadioButtonId(); // break; }
-	 * 
-	 * switch (rgInjuryType.getCheckedRadioButtonId()) { case R.id.rbLowerBack:
-	 * // dlg.setTitle("0"); InjuryType = "Lower_Back"; break; case R.id.rbArm:
-	 * // dlg.setTitle("1"); InjuryType = "Arm"; break; // default: //
-	 * dlg.setTitle(rgMetric.getCheckedRadioButtonId()); // int num =
-	 * rgMetric.getCheckedRadioButtonId(); // break; } // dlg.show(); // XXX
-	 * 
-	 * // call report method to retrieve data from back-end system
-	 * 
-	 * // call create chart method to display trend-chart using patient data
-	 * 
-	 * }
-	 * 
-	 * });
-	 * 
-	 * btPatID.setOnClickListener(new OnClickListener() {
-	 * 
-	 * @Override public void onClick(View arg0) { patID =
-	 * dtPatID.getText().toString(); }
-	 * 
-	 * });
-	 * 
-	 * }
-	 */
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

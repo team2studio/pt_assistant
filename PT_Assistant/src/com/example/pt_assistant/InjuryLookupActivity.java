@@ -75,8 +75,6 @@ public class InjuryLookupActivity extends ActionBarActivity {
 				android.R.layout.simple_list_item_1,
 				new String[] { INJURY_NAME }, new int[] { android.R.id.text1 });
 
-		// not sure what goes here yet so I left text1 in, still figuring some
-		// of this out
 		lv.setAdapter(simpleAdpt);
 		// React to user clicks on item
 		lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -129,7 +127,7 @@ public class InjuryLookupActivity extends ActionBarActivity {
 		@Override
 		protected String doInBackground(String... args) {
 			String result;
-			// TODO Auto-generated method stub
+			// Auto-generated method stub
 			// Check for success tag
 
 			result = retrieve_all_injuries_json();

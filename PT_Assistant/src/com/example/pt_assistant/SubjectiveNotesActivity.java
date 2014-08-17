@@ -117,7 +117,7 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 		}
 
 		EditText eText;
-		// notes = new Patient_Notes();
+		
 		eText = (EditText) findViewById(R.id.editPastDiag);
 		pn.setPastDiagnosis(eText.getText().toString());
 
@@ -181,7 +181,7 @@ public class SubjectiveNotesActivity extends ActionBarActivity {
 
 		@Override
 		protected String doInBackground(String... args) {
-			// TODO Auto-generated method stub
+			// Auto-generated method stub
 			// Building Parameters
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
 			String temp = Integer.toString(p.getPatientID());
